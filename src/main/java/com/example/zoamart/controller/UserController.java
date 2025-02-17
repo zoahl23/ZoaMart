@@ -1,6 +1,7 @@
 package com.example.zoamart.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.zoamart.service.UserService;
@@ -15,7 +16,10 @@ public class UserController {
     }
 
     @RequestMapping("/")
-    public String getHomePage() {
+    public String getHomePage(Model model) {
+        String test = this.userService.handleHello();
+        model.addAttribute("keyhihi", test);
+        model.addAttribute("nameKey", "gia tri");
         return "index";
     }
 
