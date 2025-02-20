@@ -12,7 +12,7 @@ import com.example.zoamart.service.UserService;
 @Controller
 public class UserController {
 
-    private UserService userService;
+    private final UserService userService;
 
     public UserController(UserService userService) {
         this.userService = userService;
@@ -20,8 +20,6 @@ public class UserController {
 
     @RequestMapping("/")
     public String getHomePage(Model model) {
-        String test = this.userService.handleHello();
-        model.addAttribute("keyhihi", test);
         model.addAttribute("nameKey", "gia tri");
         return "index";
     }
@@ -35,6 +33,7 @@ public class UserController {
     @RequestMapping(value = "/admin/user/create1", method = RequestMethod.POST)
     public String createUserPage(Model model, @ModelAttribute("newUser") User u) {
         System.out.println("helo" + u);
+        this.userService.handleSaveUser(u);
         return "index";
     }
 
