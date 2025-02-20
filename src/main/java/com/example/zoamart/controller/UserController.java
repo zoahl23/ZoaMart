@@ -1,5 +1,7 @@
 package com.example.zoamart.controller;
 
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -20,6 +22,11 @@ public class UserController {
 
     @RequestMapping("/")
     public String getHomePage(Model model) {
+        List<User> arrList = this.userService.getAllUsers();
+        System.out.println(arrList);
+        List<User> arrEmail = this.userService.getAllUsersByEmail("1@gmail.com");
+        System.out.println(arrEmail);
+
         model.addAttribute("nameKey", "gia tri");
         return "index";
     }
