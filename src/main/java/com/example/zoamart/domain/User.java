@@ -1,11 +1,19 @@
 package com.example.zoamart.domain;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // ID tự động tăng
@@ -15,6 +23,21 @@ public class User {
     private String fullName;
     private String address;
     private String phone;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
+
+    // roleId
+    // many users to one role
+    @ManyToOne
+    @JoinColumn(name = "role_id")
+    private Role role;
+
+    // one user to many orders
+    @OneToMany(mappedBy = "user")
+    private List<Order> orders;
+
+    @OneToMany(mappedBy = "user")
+    private List<Review> reviews;
 
     public long getId() {
         return id;
@@ -64,10 +87,27 @@ public class User {
         this.phone = phone;
     }
 
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
     @Override
     public String toString() {
         return "User [id=" + id + ", email=" + email + ", password=" + password + ", fullName=" + fullName
-                + ", address=" + address + ", phone=" + phone + "]";
+                + ", address=" + address + ", phone=" + phone + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt
+                + "]";
     }
 
 }
