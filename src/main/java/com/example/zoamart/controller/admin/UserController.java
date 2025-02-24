@@ -1,11 +1,13 @@
 package com.example.zoamart.controller.admin;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -52,10 +54,32 @@ public class UserController {
         return "admin/user/create";
     }
 
+    @RequestMapping("/admin/user/update/{id}") // GET
+    public String getUpdateUserPage(Model model, @PathVariable long id) {
+        User user = this.userService.getUserById(id);
+        model.addAttribute("newUser", user);
+        return "admin/user/update";
+    }
+
     @RequestMapping(value = "/admin/user/create", method = RequestMethod.POST)
     public String createUserPage(Model model, @ModelAttribute("newUser") User u) {
-        System.out.println("helo" + u);
+        LocalDateTime ldt = LocalDateTime.now();
+        u.setCreatedAt(ldt);
         this.userService.handleSaveUser(u);
+        return "redirect:/admin/user";
+    }
+
+    @PostMapping(value = "/admin/user/update")
+    public String updateUserPage(Model model, @ModelAttribute("newUser") User u) {
+        User user = this.userService.getUserById(u.getId());
+        LocalDateTime ldt = LocalDateTime.now();
+        if (user != null) {
+            user.setFullName(u.getFullName());
+            user.setPhone(u.getPhone());
+            user.setAddress(u.getAddress());
+            user.setUpdatedAt(ldt);
+            this.userService.handleSaveUser(user);
+        }
         return "redirect:/admin/user";
     }
 
