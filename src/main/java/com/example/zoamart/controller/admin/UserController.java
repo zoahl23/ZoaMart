@@ -1,4 +1,4 @@
-package com.example.zoamart.controller;
+package com.example.zoamart.controller.admin;
 
 import java.util.List;
 
@@ -33,7 +33,7 @@ public class UserController {
 
     @RequestMapping("/admin/user") // GET
     public String getUserPage(Model model) {
-        return "admin/user/table-user";
+        return "admin/user/show";
     }
 
     @RequestMapping("/admin/user/create") // GET
