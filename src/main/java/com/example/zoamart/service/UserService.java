@@ -32,4 +32,7 @@ public class UserService {
         return this.userRepository.save(user);
     }
 
+    public void deleteAUser(long id) {
+        this.userRepository.deleteById(id);
+    }
 }

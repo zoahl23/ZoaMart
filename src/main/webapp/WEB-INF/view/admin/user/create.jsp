@@ -2,59 +2,86 @@
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 
-
-
+            <!DOCTYPE html>
             <html lang="en">
+            <!-- rts header area start -->
 
             <head>
-                <meta charset="UTF-8">
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <title>Document</title>
-                <!-- Latest compiled and minified CSS -->
-                <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
-                <!-- Latest compiled JavaScript -->
-                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>ZOA Mart</title>
+                    <link rel="shortcut icon" type="image/x-icon" href="images/fav.png">
+                    <!-- plugins css -->
+                    <link rel="stylesheet preload" href="/css/plugins.css" as="style">
+                    <!-- Latest compiled and minified CSS -->
+                    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+                        rel="stylesheet">
 
-                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+                    <!-- Latest compiled JavaScript -->
+                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-                <link href="/css/demo.css" rel="stylesheet">
 
-            </head>
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+                    <link rel="stylesheet preload" href="/css/style.css" as="style">
+                </head>
+                <!-- rts header area end -->
 
             <body>
-                <div class="container mt-5">
-                    <div class="row">
-                        <div class="col-md-6 col-12 mx-auto">
-                            <h3>Create a user</h3>
-                            <hr />
-                            <form:form method="post" action="/admin/user/create" modelAttribute="newUser">
-                                <div class="mb-3">
-                                    <label class="form-label">Email:</label>
-                                    <form:input type="email" class="form-control" path="email" />
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label">Password:</label>
-                                    <form:input type="password" class="form-control" path="password" />
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label">Phone number:</label>
-                                    <form:input type="text" class="form-control" path="phone" />
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label">Full Name:</label>
-                                    <form:input type="text" class="form-control" path="fullName" />
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label">Address:</label>
-                                    <form:input type="text" class="form-control" path="address" />
-                                </div>
 
-                                <button type="submit" class="btn btn-primary">Create</button>
-                            </form:form>
+                <div class="ekomart_dashboard">
+
+                    <!-- rts header area start -->
+                    <jsp:include page="../layout/sidebar.jsp" />
+                    <!-- rts header area end -->
+
+                    <div class="right-area-body-content">
+                        <jsp:include page="../layout/header.jsp" />
+
+                        <div class="body-root-inner">
+                            <div class="container mt-5">
+                                <div class="row">
+                                    <div class="col-md-6 col-12 mx-auto">
+                                        <h3>Create a user</h3>
+                                        <hr />
+                                        <form:form method="post" action="/admin/user/create" modelAttribute="newUser">
+                                            <div class="mb-3">
+                                                <label class="form-label">Email:</label>
+                                                <form:input type="email" class="form-control" path="email" />
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label">Password:</label>
+                                                <form:input type="password" class="form-control" path="password" />
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label">Phone number:</label>
+                                                <form:input type="text" class="form-control" path="phone" />
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label">Full Name:</label>
+                                                <form:input type="text" class="form-control" path="fullName" />
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label">Address:</label>
+                                                <form:input type="text" class="form-control" path="address" />
+                                            </div>
+
+                                            <button type="submit" class="btn btn-primary">Create</button>
+                                        </form:form>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <!-- all plugins js here -->
+                <script src="js/plugins.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/apexcharts@3.27.0/dist/apexcharts.min.js"></script>
+                <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+                <!-- main js Custom -->
+                <script src="js/main.js"></script>
+                <!-- rts header area end -->
             </body>
 
             </html>
