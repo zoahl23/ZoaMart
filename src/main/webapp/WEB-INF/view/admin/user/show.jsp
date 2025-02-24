@@ -40,7 +40,7 @@
                         <jsp:include page="../layout/header.jsp" />
 
                         <div class="body-root-inner">
-                            <jsp:include page="../user/table-user.jsp" />
+                            <jsp:include page="../user/table.jsp" />
                         </div>
                     </div>
                 </div>
