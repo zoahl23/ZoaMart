@@ -22,17 +22,6 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/")
-    public String getHomePage(Model model) {
-        List<User> arrList = this.userService.getAllUsers();
-        System.out.println(arrList);
-        List<User> arrEmail = this.userService.getAllUsersByEmail("1@gmail.com");
-        System.out.println(arrEmail);
-
-        model.addAttribute("nameKey", "gia tri");
-        return "index";
-    }
-
     @GetMapping("/admin/user") // GET
     public String getUserPage(Model model) {
         List<User> users = this.userService.getAllUsers();
