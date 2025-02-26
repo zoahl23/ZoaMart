@@ -15104,7 +15104,7 @@ body {
 }
 
 .sidebar_left .logo {
-  padding: 10px 26px;
+  padding: 10px 60px;
 }
 
 .ekomart_dashboard {
@@ -15163,8 +15163,8 @@ body {
   gap        : 15px;
   width      : 100%;
   position   : relative;
-  height     : 46px;
-  padding    : 0 27px;
+  height     : 56px;
+  padding    : 5px 40px;
   transition : 0.3s;
 }
 

@@ -21,7 +21,7 @@
                 <li class="single-menu-item">
                     <a href="/admin/user">
                         <img src="/images/icons/05.svg" alt="icon" class="icon">
-                        <p>User</p>
+                        <p>User Manager</p>
                     </a>
                 </li>
                 <!-- signle menu item -->
@@ -29,7 +29,7 @@
                 <li class="single-menu-item">
                     <a href="/admin/category">
                         <img src="/images/icons/04.svg" alt="icon" class="icon">
-                        <p>Category</p>
+                        <p>Category Manager</p>
                     </a>
                 </li>
                 <!-- signle menu item -->
@@ -37,7 +37,7 @@
                 <li class="single-menu-item">
                     <a href="/admin/product">
                         <img src="/images/icons/02.svg" alt="icon" class="icon">
-                        <p>Product</p>
+                        <p>Product Manager</p>
                     </a>
                 </li>
                 <!-- signle menu item -->
@@ -45,7 +45,7 @@
                 <li class="single-menu-item">
                     <a href="/admin/order">
                         <img src="/images/icons/09.svg" alt="icon" class="icon">
-                        <p>Order</p>
+                        <p>Order Manager</p>
                     </a>
                 </li>
                 <!-- signle menu item -->
@@ -53,7 +53,7 @@
                 <li class="single-menu-item">
                     <a href="/admin/review">
                         <img src="/images/icons/07.svg" alt="icon" class="icon">
-                        <p>Reviews</p>
+                        <p>Review Manager</p>
                     </a>
                 </li>
                 <!-- signle menu item -->
