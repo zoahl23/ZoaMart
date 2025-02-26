@@ -18,6 +18,7 @@
                     <link rel="stylesheet preload"
                         href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css" as="style">
                     <link rel="stylesheet preload" href="/css/style.css" as="style">
+                    <link rel="stylesheet preload" href="/css/custom.css" as="style">
                 </head>
                 <!-- rts header area end -->
 
@@ -30,10 +31,1584 @@
                     <!-- rts header area end -->
 
                     <div class="right-area-body-content">
-                        <jsp:include page="../layout/header.jsp" />
+                        <header class="header-one">
+                            <div class="headerleft">
+                                <div class="collups-show-icon">
+                                    <img src="/images/icons/10.svg" alt="icon">
+                                    <i class="fa-light fa-arrow-right"></i>
+                                </div>
+                            </div>
+                            <div class="header-right">
+                                <div class="action-interactive-area__header">
+                                    <form
+                                        class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+                                        <span style="color: black; user-select: none;">Welcome, Admin</span>
+                                    </form>
+                                    <div class="single_action__haeader user_avatar__information openuptip" flow="down"
+                                        tooltip="Profile">
+                                        <div class="avatar">
+                                            <img src="/images/avatar/01.png" alt="avatar">
+                                        </div>
+                                        <div class="user_information_main_wrapper slide-down__click">
+                                            <div class="user_body_content">
+                                                <ul class="items">
+                                                    <li class="single_items">
+                                                        <a class="hader_popup_link" href="profile-setting.html">
+                                                            <i class="fa-light fa-user"></i>
+                                                            Profile Setting
+                                                        </a>
+                                                    </li>
+                                                    <li class="single_items">
+                                                        <a class="hader_popup_link" href="#">
+                                                            <i class="fa-regular fa-gear"></i>
+                                                            Settings
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="popup-footer-btn">
+                                                <a href="#" class="geex-content__header__popup__footer__link">Logout
+                                                    <i class="fa-light fa-arrow-right"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </header>
 
                         <div class="body-root-inner">
-                            <div>order</div>
+                            <div class="transection">
+                                <div class="title-right-actioin-btn-wrapper-product-list">
+                                    <h3 class="title">Order</h3>
+                                    <div class="button-wrapper">
+                                        <div class="single-select">
+                                            <div class="nice-select" tabindex="0"><span class="current">Last Week</span>
+                                                <ul class="list">
+                                                    <li data-value="Default Sorting" data-display="Last Week"
+                                                        class="option selected">Last Week</li>
+                                                    <li data-value="1" class="option">2 Week</li>
+                                                    <li data-value="2" class="option">One Month</li>
+                                                    <li data-value="4" class="option">6 month</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="vendor-list-main-wrapper product-wrapper">
+                                    <div class="card-body table-product-select">
+                                        <div class="table-responsive">
+                                            <div id="example_wrapper" class="dataTables_wrapper no-footer">
+                                                <div class="dataTables_length" id="example_length"><label>Show <select
+                                                            name="example_length" aria-controls="example" class="">
+                                                            <option value="10">10</option>
+                                                            <option value="25">25</option>
+                                                            <option value="50">50</option>
+                                                            <option value="100">100</option>
+                                                        </select> entries</label></div>
+                                                <div id="example_filter" class="dataTables_filter"><label>Search:<input
+                                                            type="search" class="" placeholder=""
+                                                            aria-controls="example"></label></div>
+                                                <table class="table table-hover" id="example" class="display"
+                                                    cellspacing="0" width="100%">
+                                                    <thead class="mb--20">
+                                                        <tr>
+                                                            <th>Order No</th>
+                                                            <th>Customer</th>
+                                                            <th>Date</th>
+                                                            <th>Amount</th>
+                                                            <th>Category</th>
+                                                            <th class="text-start">Status</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td width="25%">
+                                                                <div class="item-check-area-table-left">
+                                                                    <div class="item-name-and-check-table">
+                                                                        <div class="form-check">
+                                                                            <input class="form-check-input"
+                                                                                type="checkbox" value=""
+                                                                                id="flexCheckDefault">
+                                                                        </div>
+                                                                    </div>
+                                                                    <p style="color: var(--color-primary);">#87451</p>
+                                                                </div>
+
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    Esther Howard
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                                <div class="payment d-flex align-items-center">
+                                                                    <p style="color: #2D3B29; font-weight: 500;">
+                                                                        02/03/2022
+                                                                    </p>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    $200
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    Notebook
+                                                                </p>
+                                                            </td>
+                                                            <td class="text-end">
+                                                                <div class="between-stock-table statrusts">
+                                                                    <p>Delivered</p>
+                                                                    <img src="assets/images/grocery/`15.png" alt="">
+                                                                    <div class="action-edit-deleate">
+                                                                        <span>Edit</span>
+                                                                        <span>Delete</span>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td width="25%">
+                                                                <div class="item-check-area-table-left">
+                                                                    <div class="item-name-and-check-table">
+                                                                        <div class="form-check">
+                                                                            <input class="form-check-input"
+                                                                                type="checkbox" value=""
+                                                                                id="flexCheckDefault">
+                                                                        </div>
+                                                                    </div>
+                                                                    <p style="color: var(--color-primary);">#87451</p>
+                                                                </div>
+
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    Wade Warren
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                                <div class="payment d-flex align-items-center">
+                                                                    <p style="color: #2D3B29; font-weight: 500;">
+                                                                        02/03/2022
+                                                                    </p>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    $200
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    Notebook
+                                                                </p>
+                                                            </td>
+                                                            <td class="text-end">
+                                                                <div class="between-stock-table statrusts">
+                                                                    <p>Delivered</p>
+                                                                    <img src="assets/images/grocery/`15.png" alt="">
+                                                                    <div class="action-edit-deleate">
+                                                                        <span>Edit</span>
+                                                                        <span>Delete</span>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td width="25%">
+                                                                <div class="item-check-area-table-left">
+                                                                    <div class="item-name-and-check-table">
+                                                                        <div class="form-check">
+                                                                            <input class="form-check-input"
+                                                                                type="checkbox" value=""
+                                                                                id="flexCheckDefault">
+                                                                        </div>
+                                                                    </div>
+                                                                    <p style="color: var(--color-primary);">#87451</p>
+                                                                </div>
+
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    Jenny Wilson
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                                <div class="payment d-flex align-items-center">
+                                                                    <p style="color: #2D3B29; font-weight: 500;">
+                                                                        02/03/2022
+                                                                    </p>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    $200
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    Notebook
+                                                                </p>
+                                                            </td>
+                                                            <td class="text-end">
+                                                                <div class="between-stock-table statrusts">
+                                                                    <p>Delivered</p>
+                                                                    <img src="assets/images/grocery/`15.png" alt="">
+                                                                    <div class="action-edit-deleate">
+                                                                        <span>Edit</span>
+                                                                        <span>Delete</span>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td width="25%">
+                                                                <div class="item-check-area-table-left">
+                                                                    <div class="item-name-and-check-table">
+                                                                        <div class="form-check">
+                                                                            <input class="form-check-input"
+                                                                                type="checkbox" value=""
+                                                                                id="flexCheckDefault">
+                                                                        </div>
+                                                                    </div>
+                                                                    <p style="color: var(--color-primary);">#87451</p>
+                                                                </div>
+
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    Guy Hawkins
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                                <div class="payment d-flex align-items-center">
+                                                                    <p style="color: #2D3B29; font-weight: 500;">
+                                                                        02/03/2022
+                                                                    </p>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    $200
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    Notebook
+                                                                </p>
+                                                            </td>
+                                                            <td class="text-end">
+                                                                <div class="between-stock-table statrusts">
+                                                                    <p>Delivered</p>
+                                                                    <img src="assets/images/grocery/`15.png" alt="">
+                                                                    <div class="action-edit-deleate">
+                                                                        <span>Edit</span>
+                                                                        <span>Delete</span>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td width="25%">
+                                                                <div class="item-check-area-table-left">
+                                                                    <div class="item-name-and-check-table">
+                                                                        <div class="form-check">
+                                                                            <input class="form-check-input"
+                                                                                type="checkbox" value=""
+                                                                                id="flexCheckDefault">
+                                                                        </div>
+                                                                    </div>
+                                                                    <p style="color: var(--color-primary);">#87451</p>
+                                                                </div>
+
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    Robert Fox
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                                <div class="payment d-flex align-items-center">
+                                                                    <p style="color: #2D3B29; font-weight: 500;">
+                                                                        02/03/2022
+                                                                    </p>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    $200
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    Notebook
+                                                                </p>
+                                                            </td>
+                                                            <td class="text-end">
+                                                                <div class="between-stock-table statrusts">
+                                                                    <p>Delivered</p>
+                                                                    <img src="assets/images/grocery/`15.png" alt="">
+                                                                    <div class="action-edit-deleate">
+                                                                        <span>Edit</span>
+                                                                        <span>Delete</span>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td width="25%">
+                                                                <div class="item-check-area-table-left">
+                                                                    <div class="item-name-and-check-table">
+                                                                        <div class="form-check">
+                                                                            <input class="form-check-input"
+                                                                                type="checkbox" value=""
+                                                                                id="flexCheckDefault">
+                                                                        </div>
+                                                                    </div>
+                                                                    <p style="color: var(--color-primary);">#87451</p>
+                                                                </div>
+
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    Albert Flores
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                                <div class="payment d-flex align-items-center">
+                                                                    <p style="color: #2D3B29; font-weight: 500;">
+                                                                        02/03/2022
+                                                                    </p>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    $200
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    Notebook
+                                                                </p>
+                                                            </td>
+                                                            <td class="text-end">
+                                                                <div class="between-stock-table statrusts">
+                                                                    <p>Delivered</p>
+                                                                    <img src="assets/images/grocery/`15.png" alt="">
+                                                                    <div class="action-edit-deleate">
+                                                                        <span>Edit</span>
+                                                                        <span>Delete</span>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td width="25%">
+                                                                <div class="item-check-area-table-left">
+                                                                    <div class="item-name-and-check-table">
+                                                                        <div class="form-check">
+                                                                            <input class="form-check-input"
+                                                                                type="checkbox" value=""
+                                                                                id="flexCheckDefault">
+                                                                        </div>
+                                                                    </div>
+                                                                    <p style="color: var(--color-primary);">#87451</p>
+                                                                </div>
+
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    Floyd Miles
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                                <div class="payment d-flex align-items-center">
+                                                                    <p style="color: #2D3B29; font-weight: 500;">
+                                                                        02/03/2022
+                                                                    </p>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    $200
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    Notebook
+                                                                </p>
+                                                            </td>
+                                                            <td class="text-end">
+                                                                <div class="between-stock-table statrusts">
+                                                                    <p>Delivered</p>
+                                                                    <img src="assets/images/grocery/`15.png" alt="">
+                                                                    <div class="action-edit-deleate">
+                                                                        <span>Edit</span>
+                                                                        <span>Delete</span>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td width="25%">
+                                                                <div class="item-check-area-table-left">
+                                                                    <div class="item-name-and-check-table">
+                                                                        <div class="form-check">
+                                                                            <input class="form-check-input"
+                                                                                type="checkbox" value=""
+                                                                                id="flexCheckDefault">
+                                                                        </div>
+                                                                    </div>
+                                                                    <p style="color: var(--color-primary);">#87451</p>
+                                                                </div>
+
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    Bessie Cooper
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                                <div class="payment d-flex align-items-center">
+                                                                    <p style="color: #2D3B29; font-weight: 500;">
+                                                                        02/03/2022
+                                                                    </p>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    $200
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    Notebook
+                                                                </p>
+                                                            </td>
+                                                            <td class="text-end">
+                                                                <div class="between-stock-table statrusts">
+                                                                    <p>Delivered</p>
+                                                                    <img src="assets/images/grocery/`15.png" alt="">
+                                                                    <div class="action-edit-deleate">
+                                                                        <span>Edit</span>
+                                                                        <span>Delete</span>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td width="25%">
+                                                                <div class="item-check-area-table-left">
+                                                                    <div class="item-name-and-check-table">
+                                                                        <div class="form-check">
+                                                                            <input class="form-check-input"
+                                                                                type="checkbox" value=""
+                                                                                id="flexCheckDefault">
+                                                                        </div>
+                                                                    </div>
+                                                                    <p style="color: var(--color-primary);">#87451</p>
+                                                                </div>
+
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    Devon Lane
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                                <div class="payment d-flex align-items-center">
+                                                                    <p style="color: #2D3B29; font-weight: 500;">
+                                                                        02/03/2022
+                                                                    </p>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    $200
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    Notebook
+                                                                </p>
+                                                            </td>
+                                                            <td class="text-end">
+                                                                <div class="between-stock-table statrusts">
+                                                                    <p>Delivered</p>
+                                                                    <img src="assets/images/grocery/`15.png" alt="">
+                                                                    <div class="action-edit-deleate">
+                                                                        <span>Edit</span>
+                                                                        <span>Delete</span>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td width="25%">
+                                                                <div class="item-check-area-table-left">
+                                                                    <div class="item-name-and-check-table">
+                                                                        <div class="form-check">
+                                                                            <input class="form-check-input"
+                                                                                type="checkbox" value=""
+                                                                                id="flexCheckDefault">
+                                                                        </div>
+                                                                    </div>
+                                                                    <p style="color: var(--color-primary);">#87451</p>
+                                                                </div>
+
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    Guy Hawkins
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                                <div class="payment d-flex align-items-center">
+                                                                    <p style="color: #2D3B29; font-weight: 500;">
+                                                                        02/03/2022
+                                                                    </p>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    $200
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    Notebook
+                                                                </p>
+                                                            </td>
+                                                            <td class="text-end">
+                                                                <div class="between-stock-table statrusts">
+                                                                    <p>Delivered</p>
+                                                                    <img src="assets/images/grocery/`15.png" alt="">
+                                                                    <div class="action-edit-deleate">
+                                                                        <span>Edit</span>
+                                                                        <span>Delete</span>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td width="25%">
+                                                                <div class="item-check-area-table-left">
+                                                                    <div class="item-name-and-check-table">
+                                                                        <div class="form-check">
+                                                                            <input class="form-check-input"
+                                                                                type="checkbox" value=""
+                                                                                id="flexCheckDefault">
+                                                                        </div>
+                                                                    </div>
+                                                                    <p style="color: var(--color-primary);">#87451</p>
+                                                                </div>
+
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    Guy Hawkins
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                                <div class="payment d-flex align-items-center">
+                                                                    <p style="color: #2D3B29; font-weight: 500;">
+                                                                        02/03/2022
+                                                                    </p>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    $200
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    Notebook
+                                                                </p>
+                                                            </td>
+                                                            <td class="text-end">
+                                                                <div class="between-stock-table statrusts">
+                                                                    <p>Delivered</p>
+                                                                    <img src="assets/images/grocery/`15.png" alt="">
+                                                                    <div class="action-edit-deleate">
+                                                                        <span>Edit</span>
+                                                                        <span>Delete</span>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td width="25%">
+                                                                <div class="item-check-area-table-left">
+                                                                    <div class="item-name-and-check-table">
+                                                                        <div class="form-check">
+                                                                            <input class="form-check-input"
+                                                                                type="checkbox" value=""
+                                                                                id="flexCheckDefault">
+                                                                        </div>
+                                                                    </div>
+                                                                    <p style="color: var(--color-primary);">#87451</p>
+                                                                </div>
+
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    Robert Fox
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                                <div class="payment d-flex align-items-center">
+                                                                    <p style="color: #2D3B29; font-weight: 500;">
+                                                                        02/03/2022
+                                                                    </p>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    $200
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    Notebook
+                                                                </p>
+                                                            </td>
+                                                            <td class="text-end">
+                                                                <div class="between-stock-table statrusts">
+                                                                    <p>Delivered</p>
+                                                                    <img src="assets/images/grocery/`15.png" alt="">
+                                                                    <div class="action-edit-deleate">
+                                                                        <span>Edit</span>
+                                                                        <span>Delete</span>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td width="25%">
+                                                                <div class="item-check-area-table-left">
+                                                                    <div class="item-name-and-check-table">
+                                                                        <div class="form-check">
+                                                                            <input class="form-check-input"
+                                                                                type="checkbox" value=""
+                                                                                id="flexCheckDefault">
+                                                                        </div>
+                                                                    </div>
+                                                                    <p style="color: var(--color-primary);">#87451</p>
+                                                                </div>
+
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    Albert Flores
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                                <div class="payment d-flex align-items-center">
+                                                                    <p style="color: #2D3B29; font-weight: 500;">
+                                                                        02/03/2022
+                                                                    </p>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    $200
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    Notebook
+                                                                </p>
+                                                            </td>
+                                                            <td class="text-end">
+                                                                <div class="between-stock-table statrusts">
+                                                                    <p>Delivered</p>
+                                                                    <img src="assets/images/grocery/`15.png" alt="">
+                                                                    <div class="action-edit-deleate">
+                                                                        <span>Edit</span>
+                                                                        <span>Delete</span>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td width="25%">
+                                                                <div class="item-check-area-table-left">
+                                                                    <div class="item-name-and-check-table">
+                                                                        <div class="form-check">
+                                                                            <input class="form-check-input"
+                                                                                type="checkbox" value=""
+                                                                                id="flexCheckDefault">
+                                                                        </div>
+                                                                    </div>
+                                                                    <p style="color: var(--color-primary);">#87451</p>
+                                                                </div>
+
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    Floyd Miles
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                                <div class="payment d-flex align-items-center">
+                                                                    <p style="color: #2D3B29; font-weight: 500;">
+                                                                        02/03/2022
+                                                                    </p>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    $200
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    Notebook
+                                                                </p>
+                                                            </td>
+                                                            <td class="text-end">
+                                                                <div class="between-stock-table statrusts">
+                                                                    <p>Delivered</p>
+                                                                    <img src="assets/images/grocery/`15.png" alt="">
+                                                                    <div class="action-edit-deleate">
+                                                                        <span>Edit</span>
+                                                                        <span>Delete</span>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td width="25%">
+                                                                <div class="item-check-area-table-left">
+                                                                    <div class="item-name-and-check-table">
+                                                                        <div class="form-check">
+                                                                            <input class="form-check-input"
+                                                                                type="checkbox" value=""
+                                                                                id="flexCheckDefault">
+                                                                        </div>
+                                                                    </div>
+                                                                    <p style="color: var(--color-primary);">#87451</p>
+                                                                </div>
+
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    Bessie Cooper
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                                <div class="payment d-flex align-items-center">
+                                                                    <p style="color: #2D3B29; font-weight: 500;">
+                                                                        02/03/2022
+                                                                    </p>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    $200
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    Notebook
+                                                                </p>
+                                                            </td>
+                                                            <td class="text-end">
+                                                                <div class="between-stock-table statrusts">
+                                                                    <p>Delivered</p>
+                                                                    <img src="assets/images/grocery/`15.png" alt="">
+                                                                    <div class="action-edit-deleate">
+                                                                        <span>Edit</span>
+                                                                        <span>Delete</span>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td width="25%">
+                                                                <div class="item-check-area-table-left">
+                                                                    <div class="item-name-and-check-table">
+                                                                        <div class="form-check">
+                                                                            <input class="form-check-input"
+                                                                                type="checkbox" value=""
+                                                                                id="flexCheckDefault">
+                                                                        </div>
+                                                                    </div>
+                                                                    <p style="color: var(--color-primary);">#87451</p>
+                                                                </div>
+
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    Devon Lane
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                                <div class="payment d-flex align-items-center">
+                                                                    <p style="color: #2D3B29; font-weight: 500;">
+                                                                        02/03/2022
+                                                                    </p>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    $200
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    Notebook
+                                                                </p>
+                                                            </td>
+                                                            <td class="text-end">
+                                                                <div class="between-stock-table statrusts">
+                                                                    <p>Delivered</p>
+                                                                    <img src="assets/images/grocery/`15.png" alt="">
+                                                                    <div class="action-edit-deleate">
+                                                                        <span>Edit</span>
+                                                                        <span>Delete</span>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td width="25%">
+                                                                <div class="item-check-area-table-left">
+                                                                    <div class="item-name-and-check-table">
+                                                                        <div class="form-check">
+                                                                            <input class="form-check-input"
+                                                                                type="checkbox" value=""
+                                                                                id="flexCheckDefault">
+                                                                        </div>
+                                                                    </div>
+                                                                    <p style="color: var(--color-primary);">#87451</p>
+                                                                </div>
+
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    Guy Hawkins
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                                <div class="payment d-flex align-items-center">
+                                                                    <p style="color: #2D3B29; font-weight: 500;">
+                                                                        02/03/2022
+                                                                    </p>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    $200
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    Notebook
+                                                                </p>
+                                                            </td>
+                                                            <td class="text-end">
+                                                                <div class="between-stock-table statrusts">
+                                                                    <p>Delivered</p>
+                                                                    <img src="assets/images/grocery/`15.png" alt="">
+                                                                    <div class="action-edit-deleate">
+                                                                        <span>Edit</span>
+                                                                        <span>Delete</span>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td width="25%">
+                                                                <div class="item-check-area-table-left">
+                                                                    <div class="item-name-and-check-table">
+                                                                        <div class="form-check">
+                                                                            <input class="form-check-input"
+                                                                                type="checkbox" value=""
+                                                                                id="flexCheckDefault">
+                                                                        </div>
+                                                                    </div>
+                                                                    <p style="color: var(--color-primary);">#87451</p>
+                                                                </div>
+
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    Guy Hawkins
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                                <div class="payment d-flex align-items-center">
+                                                                    <p style="color: #2D3B29; font-weight: 500;">
+                                                                        02/03/2022
+                                                                    </p>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    $200
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    Notebook
+                                                                </p>
+                                                            </td>
+                                                            <td class="text-end">
+                                                                <div class="between-stock-table statrusts">
+                                                                    <p>Delivered</p>
+                                                                    <img src="assets/images/grocery/`15.png" alt="">
+                                                                    <div class="action-edit-deleate">
+                                                                        <span>Edit</span>
+                                                                        <span>Delete</span>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td width="25%">
+                                                                <div class="item-check-area-table-left">
+                                                                    <div class="item-name-and-check-table">
+                                                                        <div class="form-check">
+                                                                            <input class="form-check-input"
+                                                                                type="checkbox" value=""
+                                                                                id="flexCheckDefault">
+                                                                        </div>
+                                                                    </div>
+                                                                    <p style="color: var(--color-primary);">#87451</p>
+                                                                </div>
+
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    Robert Fox
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                                <div class="payment d-flex align-items-center">
+                                                                    <p style="color: #2D3B29; font-weight: 500;">
+                                                                        02/03/2022
+                                                                    </p>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    $200
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    Notebook
+                                                                </p>
+                                                            </td>
+                                                            <td class="text-end">
+                                                                <div class="between-stock-table statrusts">
+                                                                    <p>Delivered</p>
+                                                                    <img src="assets/images/grocery/`15.png" alt="">
+                                                                    <div class="action-edit-deleate">
+                                                                        <span>Edit</span>
+                                                                        <span>Delete</span>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td width="25%">
+                                                                <div class="item-check-area-table-left">
+                                                                    <div class="item-name-and-check-table">
+                                                                        <div class="form-check">
+                                                                            <input class="form-check-input"
+                                                                                type="checkbox" value=""
+                                                                                id="flexCheckDefault">
+                                                                        </div>
+                                                                    </div>
+                                                                    <p style="color: var(--color-primary);">#87451</p>
+                                                                </div>
+
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    Albert Flores
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                                <div class="payment d-flex align-items-center">
+                                                                    <p style="color: #2D3B29; font-weight: 500;">
+                                                                        02/03/2022
+                                                                    </p>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    $200
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    Notebook
+                                                                </p>
+                                                            </td>
+                                                            <td class="text-end">
+                                                                <div class="between-stock-table statrusts">
+                                                                    <p>Delivered</p>
+                                                                    <img src="assets/images/grocery/`15.png" alt="">
+                                                                    <div class="action-edit-deleate">
+                                                                        <span>Edit</span>
+                                                                        <span>Delete</span>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td width="25%">
+                                                                <div class="item-check-area-table-left">
+                                                                    <div class="item-name-and-check-table">
+                                                                        <div class="form-check">
+                                                                            <input class="form-check-input"
+                                                                                type="checkbox" value=""
+                                                                                id="flexCheckDefault">
+                                                                        </div>
+                                                                    </div>
+                                                                    <p style="color: var(--color-primary);">#87451</p>
+                                                                </div>
+
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    Floyd Miles
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                                <div class="payment d-flex align-items-center">
+                                                                    <p style="color: #2D3B29; font-weight: 500;">
+                                                                        02/03/2022
+                                                                    </p>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    $200
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    Notebook
+                                                                </p>
+                                                            </td>
+                                                            <td class="text-end">
+                                                                <div class="between-stock-table statrusts">
+                                                                    <p>Delivered</p>
+                                                                    <img src="assets/images/grocery/`15.png" alt="">
+                                                                    <div class="action-edit-deleate">
+                                                                        <span>Edit</span>
+                                                                        <span>Delete</span>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td width="25%">
+                                                                <div class="item-check-area-table-left">
+                                                                    <div class="item-name-and-check-table">
+                                                                        <div class="form-check">
+                                                                            <input class="form-check-input"
+                                                                                type="checkbox" value=""
+                                                                                id="flexCheckDefault">
+                                                                        </div>
+                                                                    </div>
+                                                                    <p style="color: var(--color-primary);">#87451</p>
+                                                                </div>
+
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    Bessie Cooper
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                                <div class="payment d-flex align-items-center">
+                                                                    <p style="color: #2D3B29; font-weight: 500;">
+                                                                        02/03/2022
+                                                                    </p>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    $200
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    Notebook
+                                                                </p>
+                                                            </td>
+                                                            <td class="text-end">
+                                                                <div class="between-stock-table statrusts">
+                                                                    <p>Delivered</p>
+                                                                    <img src="assets/images/grocery/`15.png" alt="">
+                                                                    <div class="action-edit-deleate">
+                                                                        <span>Edit</span>
+                                                                        <span>Delete</span>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td width="25%">
+                                                                <div class="item-check-area-table-left">
+                                                                    <div class="item-name-and-check-table">
+                                                                        <div class="form-check">
+                                                                            <input class="form-check-input"
+                                                                                type="checkbox" value=""
+                                                                                id="flexCheckDefault">
+                                                                        </div>
+                                                                    </div>
+                                                                    <p style="color: var(--color-primary);">#87451</p>
+                                                                </div>
+
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    Devon Lane
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                                <div class="payment d-flex align-items-center">
+                                                                    <p style="color: #2D3B29; font-weight: 500;">
+                                                                        02/03/2022
+                                                                    </p>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    $200
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    Notebook
+                                                                </p>
+                                                            </td>
+                                                            <td class="text-end">
+                                                                <div class="between-stock-table statrusts">
+                                                                    <p>Delivered</p>
+                                                                    <img src="assets/images/grocery/`15.png" alt="">
+                                                                    <div class="action-edit-deleate">
+                                                                        <span>Edit</span>
+                                                                        <span>Delete</span>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td width="25%">
+                                                                <div class="item-check-area-table-left">
+                                                                    <div class="item-name-and-check-table">
+                                                                        <div class="form-check">
+                                                                            <input class="form-check-input"
+                                                                                type="checkbox" value=""
+                                                                                id="flexCheckDefault">
+                                                                        </div>
+                                                                    </div>
+                                                                    <p style="color: var(--color-primary);">#87451</p>
+                                                                </div>
+
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    Guy Hawkins
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                                <div class="payment d-flex align-items-center">
+                                                                    <p style="color: #2D3B29; font-weight: 500;">
+                                                                        02/03/2022
+                                                                    </p>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    $200
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    Notebook
+                                                                </p>
+                                                            </td>
+                                                            <td class="text-end">
+                                                                <div class="between-stock-table statrusts">
+                                                                    <p>Delivered</p>
+                                                                    <img src="assets/images/grocery/`15.png" alt="">
+                                                                    <div class="action-edit-deleate">
+                                                                        <span>Edit</span>
+                                                                        <span>Delete</span>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td width="25%">
+                                                                <div class="item-check-area-table-left">
+                                                                    <div class="item-name-and-check-table">
+                                                                        <div class="form-check">
+                                                                            <input class="form-check-input"
+                                                                                type="checkbox" value=""
+                                                                                id="flexCheckDefault">
+                                                                        </div>
+                                                                    </div>
+                                                                    <p style="color: var(--color-primary);">#87451</p>
+                                                                </div>
+
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    Guy Hawkins
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                                <div class="payment d-flex align-items-center">
+                                                                    <p style="color: #2D3B29; font-weight: 500;">
+                                                                        02/03/2022
+                                                                    </p>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    $200
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    Notebook
+                                                                </p>
+                                                            </td>
+                                                            <td class="text-end">
+                                                                <div class="between-stock-table statrusts">
+                                                                    <p>Delivered</p>
+                                                                    <img src="assets/images/grocery/`15.png" alt="">
+                                                                    <div class="action-edit-deleate">
+                                                                        <span>Edit</span>
+                                                                        <span>Delete</span>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td width="25%">
+                                                                <div class="item-check-area-table-left">
+                                                                    <div class="item-name-and-check-table">
+                                                                        <div class="form-check">
+                                                                            <input class="form-check-input"
+                                                                                type="checkbox" value=""
+                                                                                id="flexCheckDefault">
+                                                                        </div>
+                                                                    </div>
+                                                                    <p style="color: var(--color-primary);">#87451</p>
+                                                                </div>
+
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    Robert Fox
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                                <div class="payment d-flex align-items-center">
+                                                                    <p style="color: #2D3B29; font-weight: 500;">
+                                                                        02/03/2022
+                                                                    </p>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    $200
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    Notebook
+                                                                </p>
+                                                            </td>
+                                                            <td class="text-end">
+                                                                <div class="between-stock-table statrusts">
+                                                                    <p>Delivered</p>
+                                                                    <img src="assets/images/grocery/`15.png" alt="">
+                                                                    <div class="action-edit-deleate">
+                                                                        <span>Edit</span>
+                                                                        <span>Delete</span>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td width="25%">
+                                                                <div class="item-check-area-table-left">
+                                                                    <div class="item-name-and-check-table">
+                                                                        <div class="form-check">
+                                                                            <input class="form-check-input"
+                                                                                type="checkbox" value=""
+                                                                                id="flexCheckDefault">
+                                                                        </div>
+                                                                    </div>
+                                                                    <p style="color: var(--color-primary);">#87451</p>
+                                                                </div>
+
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    Albert Flores
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                                <div class="payment d-flex align-items-center">
+                                                                    <p style="color: #2D3B29; font-weight: 500;">
+                                                                        02/03/2022
+                                                                    </p>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    $200
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    Notebook
+                                                                </p>
+                                                            </td>
+                                                            <td class="text-end">
+                                                                <div class="between-stock-table statrusts">
+                                                                    <p>Delivered</p>
+                                                                    <img src="assets/images/grocery/`15.png" alt="">
+                                                                    <div class="action-edit-deleate">
+                                                                        <span>Edit</span>
+                                                                        <span>Delete</span>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td width="25%">
+                                                                <div class="item-check-area-table-left">
+                                                                    <div class="item-name-and-check-table">
+                                                                        <div class="form-check">
+                                                                            <input class="form-check-input"
+                                                                                type="checkbox" value=""
+                                                                                id="flexCheckDefault">
+                                                                        </div>
+                                                                    </div>
+                                                                    <p style="color: var(--color-primary);">#87451</p>
+                                                                </div>
+
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    Floyd Miles
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                                <div class="payment d-flex align-items-center">
+                                                                    <p style="color: #2D3B29; font-weight: 500;">
+                                                                        02/03/2022
+                                                                    </p>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    $200
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    Notebook
+                                                                </p>
+                                                            </td>
+                                                            <td class="text-end">
+                                                                <div class="between-stock-table statrusts">
+                                                                    <p>Delivered</p>
+                                                                    <img src="assets/images/grocery/`15.png" alt="">
+                                                                    <div class="action-edit-deleate">
+                                                                        <span>Edit</span>
+                                                                        <span>Delete</span>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td width="25%">
+                                                                <div class="item-check-area-table-left">
+                                                                    <div class="item-name-and-check-table">
+                                                                        <div class="form-check">
+                                                                            <input class="form-check-input"
+                                                                                type="checkbox" value=""
+                                                                                id="flexCheckDefault">
+                                                                        </div>
+                                                                    </div>
+                                                                    <p style="color: var(--color-primary);">#87451</p>
+                                                                </div>
+
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    Bessie Cooper
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                                <div class="payment d-flex align-items-center">
+                                                                    <p style="color: #2D3B29; font-weight: 500;">
+                                                                        02/03/2022
+                                                                    </p>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    $200
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    Notebook
+                                                                </p>
+                                                            </td>
+                                                            <td class="text-end">
+                                                                <div class="between-stock-table statrusts">
+                                                                    <p>Delivered</p>
+                                                                    <img src="assets/images/grocery/`15.png" alt="">
+                                                                    <div class="action-edit-deleate">
+                                                                        <span>Edit</span>
+                                                                        <span>Delete</span>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td width="25%">
+                                                                <div class="item-check-area-table-left">
+                                                                    <div class="item-name-and-check-table">
+                                                                        <div class="form-check">
+                                                                            <input class="form-check-input"
+                                                                                type="checkbox" value=""
+                                                                                id="flexCheckDefault">
+                                                                        </div>
+                                                                    </div>
+                                                                    <p style="color: var(--color-primary);">#87451</p>
+                                                                </div>
+
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    Devon Lane
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                                <div class="payment d-flex align-items-center">
+                                                                    <p style="color: #2D3B29; font-weight: 500;">
+                                                                        02/03/2022
+                                                                    </p>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    $200
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    Notebook
+                                                                </p>
+                                                            </td>
+                                                            <td class="text-end">
+                                                                <div class="between-stock-table statrusts">
+                                                                    <p>Delivered</p>
+                                                                    <img src="assets/images/grocery/`15.png" alt="">
+                                                                    <div class="action-edit-deleate">
+                                                                        <span>Edit</span>
+                                                                        <span>Delete</span>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td width="25%">
+                                                                <div class="item-check-area-table-left">
+                                                                    <div class="item-name-and-check-table">
+                                                                        <div class="form-check">
+                                                                            <input class="form-check-input"
+                                                                                type="checkbox" value=""
+                                                                                id="flexCheckDefault">
+                                                                        </div>
+                                                                    </div>
+                                                                    <p style="color: var(--color-primary);">#87451</p>
+                                                                </div>
+
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    Guy Hawkins
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                                <div class="payment d-flex align-items-center">
+                                                                    <p style="color: #2D3B29; font-weight: 500;">
+                                                                        02/03/2022
+                                                                    </p>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    $200
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                                <p style="color: #2D3B29; font-weight: 500;">
+                                                                    Notebook
+                                                                </p>
+                                                            </td>
+                                                            <td class="text-end">
+                                                                <div class="between-stock-table statrusts">
+                                                                    <p>Delivered</p>
+                                                                    <img src="assets/images/grocery/`15.png" alt="">
+                                                                    <div class="action-edit-deleate">
+                                                                        <span>Edit</span>
+                                                                        <span>Delete</span>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <div class="dataTables_info" id="example_info" role="status"
+                                                    aria-live="polite">Showing 1 to 10 of 31 entries</div>
+                                                <div class="dataTables_paginate paging_full_numbers"
+                                                    id="example_paginate"><a class="paginate_button first disabled"
+                                                        aria-controls="example" data-dt-idx="0" tabindex="0"
+                                                        id="example_first">First</a><a
+                                                        class="paginate_button previous disabled"
+                                                        aria-controls="example" data-dt-idx="1" tabindex="0"
+                                                        id="example_previous">Previous</a><span><a
+                                                            class="paginate_button current" aria-controls="example"
+                                                            data-dt-idx="2" tabindex="0">1</a><a
+                                                            class="paginate_button " aria-controls="example"
+                                                            data-dt-idx="3" tabindex="0">2</a><a
+                                                            class="paginate_button " aria-controls="example"
+                                                            data-dt-idx="4" tabindex="0">3</a><a
+                                                            class="paginate_button " aria-controls="example"
+                                                            data-dt-idx="5" tabindex="0">4</a></span><a
+                                                        class="paginate_button next" aria-controls="example"
+                                                        data-dt-idx="6" tabindex="0" id="example_next">Next</a><a
+                                                        class="paginate_button last" aria-controls="example"
+                                                        data-dt-idx="7" tabindex="0" id="example_last">Last</a></div>
+                                            </div>
+
+                                            <!-- table-responsive.// -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

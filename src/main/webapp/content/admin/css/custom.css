@@ -1,0 +1,7 @@
+.header-one {
+    position: fixed;
+    top: 0;
+    left: 273px;
+    width: calc(100vw - 273px);
+    z-index: 1;
+}

@@ -16286,6 +16286,7 @@ form.change-pass-form input,
 }
 
 .body-root-inner {
+  margin-top: 40px;
   padding: 40px 30px;
 }
 
@@ -16414,7 +16415,7 @@ form.change-pass-form input,
   border-radius: 10px;
   background   : #fff;
   border       : 1px solid #E2E2E2;
-  margin-top   : 20px;
+  margin-top   : 10px;
 }
 
 @media only screen and (max-width: 1199px) {
