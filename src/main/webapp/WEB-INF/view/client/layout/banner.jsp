@@ -1,45 +1,46 @@
-<!-- Hero Start -->
-<div class="container-fluid py-5 mb-5 hero-header">
-    <div class="container py-5">
-        <div class="row g-5 align-items-center">
-            <div class="col-md-12 col-lg-7">
-                <h4 class="mb-3 text-secondary">100% Organic Foods</h4>
-                <h1 class="mb-5 display-3 text-primary">Organic Veggies & Fruits Foods</h1>
-                <div class="position-relative mx-auto">
-                    <input class="form-control border-2 border-secondary w-75 py-3 px-4 rounded-pill" type="number"
-                        placeholder="Search">
-                    <button type="submit"
-                        class="btn btn-primary border-2 border-secondary py-3 px-4 position-absolute rounded-pill text-white h-100"
-                        style="top: 0; right: 25%;">Submit Now</button>
-                </div>
-            </div>
-            <div class="col-md-12 col-lg-5">
-                <div id="carouselId" class="carousel slide position-relative" data-bs-ride="carousel">
-                    <div class="carousel-inner" role="listbox">
-                        <div class="carousel-item active rounded">
-                            <img src="/client/img/hero-img-1.png" class="img-fluid w-100 h-100 bg-secondary rounded"
-                                alt="First slide">
-                            <a href="#" class="btn px-4 py-2 text-white rounded">Fruites</a>
+<%@page contentType="text/html" pageEncoding="UTF-8" %>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+        <div class="rts-banner-area-two mt--150">
+            <div class="container-2">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <!-- banner area start -->
+                        <div class="banner-area-two-start">
+                            <div class="banner-bg-iamge-area bg_banner-2 bg_image">
+                                <div class="content">
+                                    <span class="pre-title">Get up to 30% off on your first $150 purchase</span>
+                                    <h1 class="title">Feed Your Family at the <br>
+                                        Best Price</h1>
+                                    <p class="disc">
+                                        We have prepared special discounts for you on grocery products. Don't <br>
+                                        miss
+                                        these opportunities...
+                                    </p>
+                                    <div class="rts-btn-banner-area">
+                                        <a href="#" class="rts-btn btn-primary radious-sm with-icon">
+                                            <div class="btn-text">
+                                                Shop Now
+                                            </div>
+                                            <div class="arrow-icon">
+                                                <i class="fa-light fa-arrow-right"></i>
+                                            </div>
+                                            <div class="arrow-icon">
+                                                <i class="fa-light fa-arrow-right"></i>
+                                            </div>
+                                        </a>
+                                        <div class="price-area">
+                                            <span>
+                                                from
+                                            </span>
+                                            <h3 class="title">$80.99</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="carousel-item rounded">
-                            <img src="/client/img/hero-img-2.jpg" class="img-fluid w-100 h-100 rounded"
-                                alt="Second slide">
-                            <a href="#" class="btn px-4 py-2 text-white rounded">Vesitables</a>
-                        </div>
+                        <!-- banner area end -->
                     </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselId"
-                        data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselId"
-                        data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-<!-- Hero End -->

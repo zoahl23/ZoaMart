@@ -96,31 +96,31 @@
                                                 <form:form method="post" action="/admin/user/create"
                                                     modelAttribute="newUser">
                                                     <div class="single-input">
-                                                        <label>Full Name</label>
-                                                        <form:input type="text" path="fullName" />
+                                                        <label style="color: #2d3b29;">Full Name</label>
+                                                        <form:input type=" text" path="fullName" />
                                                     </div>
                                                     <div class="single-input">
-                                                        <label>Email</label>
+                                                        <label style="color: #2d3b29;">Email</label>
                                                         <form:input type="email" path="email" />
                                                     </div>
                                                     <div class="single-input">
-                                                        <label>Address</label>
+                                                        <label style="color: #2d3b29;">Address</label>
                                                         <form:input type="text" path="address" />
                                                     </div>
                                                     <div class="single-input">
-                                                        <label>Phone</label>
+                                                        <label style="color: #2d3b29;">Phone</label>
                                                         <form:input type="text" path="phone" />
                                                     </div>
                                                     <div class="single-input">
-                                                        <label>Role</label>
+                                                        <label style="color: #2d3b29;">Role</label>
                                                         <input type="text" />
                                                     </div>
                                                     <div class="single-input">
-                                                        <label>Password</label>
+                                                        <label style="color: #2d3b29;">Password</label>
                                                         <input type="password" />
                                                     </div>
                                                     <div class="single-input mb--30">
-                                                        <label>Re-enter password</label>
+                                                        <label style="color: #2d3b29;">Re-enter password</label>
                                                         <form:input type="password" path="password" />
                                                     </div>
                                                     <div class="button-area-botton-wrapper-p-list">

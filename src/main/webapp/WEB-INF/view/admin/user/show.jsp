@@ -107,29 +107,29 @@
                                                     <c:forEach var="user" items="${users}">
                                                         <tr>
                                                             <td>
-                                                                <p>${user.id}</p>
+                                                                <p style="color: #2d3b29;">${user.id}</p>
                                                             </td>
                                                             <td>
-                                                                <p>${user.email}</p>
+                                                                <p style="color: #2d3b29;">${user.email}</p>
                                                             </td>
                                                             <td>
                                                                 <div class="payment d-flex align-items-center">
-                                                                    <p>
+                                                                    <p style="color: #2d3b29;">
                                                                         ${user.fullName}
                                                                     </p>
                                                                 </div>
                                                             </td>
                                                             <td>
-                                                                <p>${user.phone}</p>
+                                                                <p style="color: #2d3b29;">${user.phone}</p>
                                                             </td>
                                                             <td>
-                                                                <p>USER</p>
+                                                                <p style="color: #2d3b29;">USER</p>
                                                             </td>
                                                             <td>
-                                                                <p>${user.createdAt}</p>
+                                                                <p style="color: #2d3b29;">${user.createdAt}</p>
                                                             </td>
                                                             <td>
-                                                                <p>${user.updatedAt}</p>
+                                                                <p style="color: #2d3b29;">${user.updatedAt}</p>
                                                             </td>
                                                             <td class="text-end">
                                                                 <div class="between-stock-table action">

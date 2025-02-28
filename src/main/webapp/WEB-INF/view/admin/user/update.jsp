@@ -97,27 +97,27 @@
                                                 <form:form method="post" action="/admin/user/update"
                                                     modelAttribute="newUser">
                                                     <div class="single-input" style="display: none;">
-                                                        <label>ID</label>
+                                                        <label style="color: #2d3b29;">ID</label>
                                                         <form:input type="text" path="id" />
                                                     </div>
                                                     <div class="single-input">
-                                                        <label>Email</label>
+                                                        <label style="color: #2d3b29;">Email</label>
                                                         <form:input type="email" path="email" disabled="true" />
                                                     </div>
                                                     <div class="single-input">
-                                                        <label>Full Name</label>
+                                                        <label style="color: #2d3b29;">Full Name</label>
                                                         <form:input type="text" path="fullName" />
                                                     </div>
                                                     <div class="single-input">
-                                                        <label>Address</label>
+                                                        <label style="color: #2d3b29;">Address</label>
                                                         <form:input type="text" path="address" />
                                                     </div>
                                                     <div class="single-input">
-                                                        <label>Phone</label>
+                                                        <label style="color: #2d3b29;">Phone</label>
                                                         <form:input type="text" path="phone" />
                                                     </div>
                                                     <div class="single-input mb--30">
-                                                        <label>Role</label>
+                                                        <label style="color: #2d3b29;">Role</label>
                                                         <input type="text" />
                                                     </div>
                                                     <div class="button-area-botton-wrapper-p-list">
