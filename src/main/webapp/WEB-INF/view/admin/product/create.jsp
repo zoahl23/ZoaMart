@@ -88,63 +88,67 @@
                                                 <p>Add information and add new product</p>
                                             </div>
                                             <div class="input-main-wrapper">
-                                                <div class="single-input">
-                                                    <label for="one">Product Name</label>
-                                                    <input type="text" id="one"
-                                                        placeholder="Quaker Oats Healthy Meal...">
-                                                </div>
-                                                <div class="single-input">
-                                                    <label for="Two">Regular Price</label>
-                                                    <input type="text" id="Two" placeholder="240">
-                                                </div>
-                                                <div class="single-input">
-                                                    <label for="sale">Sale Price</label>
-                                                    <input type="text" id="sale" placeholder="$250">
-                                                </div>
-                                                <div class="single-input">
-                                                    <label for="Stock">Stock</label>
-                                                    <input type="text" id="Stock" placeholder="530">
-                                                </div>
-                                                <div class="single-input">
-                                                    <label for="sku">SKU</label>
-                                                    <input type="text" id="sku" placeholder="3245">
-                                                </div>
-                                                <div class="single-input">
-                                                    <label for="cate">Category</label>
-                                                    <input type="text" id="cate" placeholder="Notebook">
-                                                </div>
-                                                <div class="single-input">
-                                                    <label for="Tag">Tag</label>
-                                                    <input type="text" id="Tag" placeholder="Iphone, Mobile">
-                                                </div>
-                                                <div class="single-input">
-                                                    <label for="text">Description</label>
-                                                    <textarea name="text" id="text"
-                                                        placeholder="Type something"></textarea>
-                                                </div>
-                                                <div class="single-input">
-                                                    <div class="file-upload-add-product">
-                                                        <div class="profile-left">
-                                                            <div class="profile-image mb--30">
-                                                                <img id="rts_image" src="assets/images/grocery/16.png"
-                                                                    alt="Profile-NFT">
-                                                                <span>Drag and drop Image</span>
-                                                            </div>
-                                                            <div class="button-area">
-                                                                <div class="brows-file-wrapper">
-                                                                    <!-- actual upload which is hidden -->
-                                                                    <input name="rts_images1" id="rts_images1"
-                                                                        type="file">
-                                                                    <!-- our custom upload button -->
+                                                <form:form method="post" action="/admin/product/create"
+                                                    modelAttribute="newProduct" class="row">
+                                                    <div class="single-input col-12 col-md-6">
+                                                        <label for="one">Product Name</label>
+                                                        <input type="text" id="one"
+                                                            placeholder="Quaker Oats Healthy Meal...">
+                                                    </div>
+                                                    <div class="single-input col-12 col-md-6">
+                                                        <label for="cate">Category</label>
+                                                        <input type="text" id="cate" placeholder="Notebook">
+                                                    </div>
+                                                    <div class="single-input col-12 col-md-6">
+                                                        <label for="Two">Price</label>
+                                                        <input type="text" id="Two" placeholder="240">
+                                                    </div>
+                                                    <div class="single-input col-12 col-md-6">
+                                                        <label for="sale">Discount Percent</label>
+                                                        <input type="text" id="sale" placeholder="$250">
+                                                    </div>
+                                                    <div class="single-input col-12 col-md-6">
+                                                        <label for="Stock">Quantity</label>
+                                                        <input type="text" id="Stock" placeholder="530">
+                                                    </div>
+                                                    <div class="single-input col-12 col-md-6">
+                                                        <label for="sku">Sold</label>
+                                                        <input type="text" id="sku" placeholder="3245">
+                                                    </div>
+                                                    <div class="single-input">
+                                                        <label for="Tag">Description Short</label>
+                                                        <input type="text" id="Tag" placeholder="Iphone, Mobile">
+                                                    </div>
+                                                    <div class="single-input">
+                                                        <label for="text">Description Detail</label>
+                                                        <textarea name="text" id="text"
+                                                            placeholder="Type something"></textarea>
+                                                    </div>
+                                                    <div class="single-input">
+                                                        <div class="file-upload-add-product">
+                                                            <div class="profile-left">
+                                                                <div class="profile-image mb--30">
+                                                                    <img id="rts_image" src="/images/grocery/16.png"
+                                                                        alt="Profile-NFT">
+                                                                    <span>Drag and drop Image</span>
+                                                                </div>
+                                                                <div class="button-area">
+                                                                    <div class="brows-file-wrapper">
+                                                                        <!-- actual upload which is hidden -->
+                                                                        <input name="rts_images1" id="rts_images1"
+                                                                            type="file" accept=".png, .jpg, .jpeg">
+                                                                        <!-- our custom upload button -->
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="button-area-botton-wrapper-p-list">
-                                                    <button class="rts-btn btn-primary">Save</button>
-                                                    <button class="rts-btn btn-primary bg-transparent">Cancel</button>
-                                                </div>
+                                                    <div class="button-area-botton-wrapper-p-list">
+                                                        <button class="rts-btn btn-primary">Save</button>
+                                                        <button
+                                                            class="rts-btn btn-primary bg-transparent">Cancel</button>
+                                                    </div>
+                                                </form:form>
                                             </div>
                                         </div>
 
@@ -155,11 +159,11 @@
                     </div>
                 </div>
                 <!-- all plugins js here -->
-                <script src="js/plugins.js"></script>
+                <script src="/js/plugins.js"></script>
                 <script src="https://cdn.jsdelivr.net/npm/apexcharts@3.27.0/dist/apexcharts.min.js"></script>
                 <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
                 <!-- main js Custom -->
-                <script src="js/main.js"></script>
+                <script src="/js/main.js"></script>
                 <!-- rts header area end -->
             </body>
 

@@ -30,6 +30,22 @@ public class Review {
     @JoinColumn(name = "product_id")
     private Product product;
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
     public long getId() {
         return id;
     }
@@ -64,7 +80,8 @@ public class Review {
 
     @Override
     public String toString() {
-        return "Review [id=" + id + ", rating=" + rating + ", comment=" + comment + ", createdAt=" + createdAt + "]";
+        return "Review [id=" + id + ", rating=" + rating + ", comment=" + comment + ", createdAt=" + createdAt
+                + ", user=" + user + ", product=" + product + "]";
     }
 
 }

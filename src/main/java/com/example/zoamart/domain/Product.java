@@ -25,6 +25,7 @@ public class Product {
     private String desShort;
     private int quantity;
     private int sold;
+    private String imageUrl;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
@@ -39,8 +40,37 @@ public class Product {
     @OneToMany(mappedBy = "product")
     private List<Review> reviews;
 
-    @OneToMany(mappedBy = "product")
-    private List<ProductImage> productImages;
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public List<OrderDetail> getOrderDetails() {
+        return orderDetails;
+    }
+
+    public void setOrderDetails(List<OrderDetail> orderDetails) {
+        this.orderDetails = orderDetails;
+    }
+
+    public List<Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(List<Review> reviews) {
+        this.reviews = reviews;
+    }
 
     public long getId() {
         return id;
@@ -126,7 +156,8 @@ public class Product {
     public String toString() {
         return "Product [id=" + id + ", name=" + name + ", price=" + price + ", discountPercent=" + discountPercent
                 + ", desDetail=" + desDetail + ", desShort=" + desShort + ", quantity=" + quantity + ", sold=" + sold
-                + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + "]";
+                + ", imageUrl=" + imageUrl + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + ", category="
+                + category + ", orderDetails=" + orderDetails + ", reviews=" + reviews + "]";
     }
 
 }

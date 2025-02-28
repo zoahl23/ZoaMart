@@ -123,7 +123,7 @@
                                                                 <p style="color: #2d3b29;">${user.phone}</p>
                                                             </td>
                                                             <td>
-                                                                <p style="color: #2d3b29;">USER</p>
+                                                                <p style="color: #2d3b29;">${user.role.name}</p>
                                                             </td>
                                                             <td>
                                                                 <p style="color: #2d3b29;">${user.createdAt}</p>

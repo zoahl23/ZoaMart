@@ -94,39 +94,40 @@
                                             </div>
                                             <div class="input-main-wrapper">
                                                 <form:form method="post" action="/admin/user/create"
-                                                    modelAttribute="newUser">
-                                                    <div class="single-input">
+                                                    modelAttribute="newUser" class="row">
+                                                    <div class="single-input col-12 col-md-6">
+                                                        <label style="color: #2d3b29;">Email</label>
+                                                        <form:input type="email" path="email" />
+                                                    </div>
+                                                    <div class="single-input col-12 col-md-6">
                                                         <label style="color: #2d3b29;">Full Name</label>
                                                         <form:input type=" text" path="fullName" />
                                                     </div>
-                                                    <div class="single-input">
-                                                        <label style="color: #2d3b29;">Email</label>
-                                                        <form:input type="email" path="email" />
+                                                    <div class="single-input col-12 col-md-6">
+                                                        <label style="color: #2d3b29;">Phone</label>
+                                                        <form:input type="text" path="phone" />
+                                                    </div>
+                                                    <div class="single-input col-12 col-md-6">
+                                                        <label style="color: #2d3b29;">Password</label>
+                                                        <form:input type="password" path="password" />
                                                     </div>
                                                     <div class="single-input">
                                                         <label style="color: #2d3b29;">Address</label>
                                                         <form:input type="text" path="address" />
                                                     </div>
-                                                    <div class="single-input">
-                                                        <label style="color: #2d3b29;">Phone</label>
-                                                        <form:input type="text" path="phone" />
-                                                    </div>
-                                                    <div class="single-input">
-                                                        <label style="color: #2d3b29;">Role</label>
-                                                        <input type="text" />
-                                                    </div>
-                                                    <div class="single-input">
-                                                        <label style="color: #2d3b29;">Password</label>
-                                                        <input type="password" />
-                                                    </div>
                                                     <div class="single-input mb--30">
-                                                        <label style="color: #2d3b29;">Re-enter password</label>
-                                                        <form:input type="password" path="password" />
+                                                        <label style="color: #2d3b29;">Role</label>
+                                                        <form:select
+                                                            style="height: 62px; border: 1px solid #E8E9EB; border-radius: 4px; padding: 0 10px"
+                                                            path="role.name">
+                                                            <form:option value="USER">USER</form:option>
+                                                            <form:option value="ADMIN">ADMIN</form:option>
+                                                        </form:select>
                                                     </div>
-                                                    <div class="button-area-botton-wrapper-p-list">
+                                                    <div class="button-area-botton-wrapper-p-list justify-content-end">
                                                         <button type="submit" class="rts-btn btn-primary">Save</button>
-                                                        <button
-                                                            class="rts-btn btn-primary bg-transparent">Cancel</button>
+                                                        <button type="reset"
+                                                            class="rts-btn btn-primary bg-transparent">Clear</button>
                                                     </div>
                                                 </form:form>
                                             </div>

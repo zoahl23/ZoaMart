@@ -82,7 +82,7 @@
                                 <div class="title-right-actioin-btn-wrapper-product-list">
                                     <h3 class="title">Product</h3>
                                     <div class="button-wrapper">
-                                        <button class="rts-btn btn-primary menu-btn">+ Add</button>
+                                        <a href="/admin/product/create" class="rts-btn btn-primary menu-btn">+ Add</a>
                                     </div>
                                 </div>
                                 <div class="vendor-list-main-wrapper product-wrapper">
