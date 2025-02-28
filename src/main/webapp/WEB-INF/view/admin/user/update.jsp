@@ -25,6 +25,7 @@
 
                     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
                     <link rel="stylesheet preload" href="/css/style.css" as="style">
+                    <link rel="stylesheet preload" href="/css/custom.css" as="style">
                 </head>
                 <!-- rts header area end -->
 
@@ -37,56 +38,109 @@
                     <!-- rts header area end -->
 
                     <div class="right-area-body-content">
-                        <jsp:include page="../layout/header.jsp" />
+                        <header class="header-one">
+                            <div class="headerleft">
+                                <div class="collups-show-icon">
+                                    <img src="/images/icons/10.svg" alt="icon">
+                                    <i class="fa-light fa-arrow-right"></i>
+                                </div>
+                            </div>
+                            <div class="header-right">
+                                <div class="action-interactive-area__header">
+                                    <form
+                                        class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+                                        <span style="color: black; user-select: none;">Welcome, Admin</span>
+                                    </form>
+                                    <div class="single_action__haeader user_avatar__information openuptip" flow="down"
+                                        tooltip="Profile">
+                                        <div class="avatar">
+                                            <img src="/images/avatar/01.png" alt="avatar">
+                                        </div>
+                                        <div class="user_information_main_wrapper slide-down__click">
+                                            <div class="user_body_content">
+                                                <ul class="items">
+                                                    <li class="single_items">
+                                                        <a class="hader_popup_link" href="profile-setting.html">
+                                                            <i class="fa-light fa-user"></i>
+                                                            Profile Setting
+                                                        </a>
+                                                    </li>
+                                                    <li class="single_items">
+                                                        <a class="hader_popup_link" href="#">
+                                                            <i class="fa-regular fa-gear"></i>
+                                                            Settings
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="popup-footer-btn">
+                                                <a href="#" class="geex-content__header__popup__footer__link">Logout
+                                                    <i class="fa-light fa-arrow-right"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </header>
 
                         <div class="body-root-inner">
-                            <div class="container mt-5">
-                                <div class="row">
-                                    <div class="col-md-6 col-12 mx-auto">
-                                        <h3>Update a user</h3>
-                                        <hr />
-                                        <form:form method="post" action="/admin/user/update" modelAttribute="newUser">
-
-                                            <div class="mb-3" style="display: none;">
-                                                <label class="form-label">Id:</label>
-                                                <form:input type="text" class="form-control" path="id" />
+                            <div class="transection">
+                                <div class="vendor-list-main-wrapper product-wrapper add-product-page">
+                                    <div class="card-body table-product-select">
+                                        <div class=" header-two show right-collups-add-product">
+                                            <!-- inner menu area desktop start -->
+                                            <div class="right-collups-area-top">
+                                                <h6 class="title" style="font-size: 32px;">Update User</h6>
                                             </div>
-
-                                            <div class="mb-3">
-                                                <label class="form-label">Email:</label>
-                                                <form:input type="email" class="form-control" path="email"
-                                                    disabled="true" />
+                                            <div class="input-main-wrapper">
+                                                <form:form method="post" action="/admin/user/update"
+                                                    modelAttribute="newUser">
+                                                    <div class="single-input" style="display: none;">
+                                                        <label>ID</label>
+                                                        <form:input type="text" path="id" />
+                                                    </div>
+                                                    <div class="single-input">
+                                                        <label>Email</label>
+                                                        <form:input type="email" path="email" disabled="true" />
+                                                    </div>
+                                                    <div class="single-input">
+                                                        <label>Full Name</label>
+                                                        <form:input type="text" path="fullName" />
+                                                    </div>
+                                                    <div class="single-input">
+                                                        <label>Address</label>
+                                                        <form:input type="text" path="address" />
+                                                    </div>
+                                                    <div class="single-input">
+                                                        <label>Phone</label>
+                                                        <form:input type="text" path="phone" />
+                                                    </div>
+                                                    <div class="single-input mb--30">
+                                                        <label>Role</label>
+                                                        <input type="text" />
+                                                    </div>
+                                                    <div class="button-area-botton-wrapper-p-list">
+                                                        <button type="submit"
+                                                            class="rts-btn btn-primary">Update</button>
+                                                        <button
+                                                            class="rts-btn btn-primary bg-transparent">Cancel</button>
+                                                    </div>
+                                                </form:form>
                                             </div>
-
-                                            <div class="mb-3">
-                                                <label class="form-label">Phone number:</label>
-                                                <form:input type="text" class="form-control" path="phone" />
-                                            </div>
-                                            <div class="mb-3">
-                                                <label class="form-label">Full Name:</label>
-                                                <form:input type="text" class="form-control" path="fullName" />
-                                            </div>
-                                            <div class="mb-3">
-                                                <label class="form-label">Address:</label>
-                                                <form:input type="text" class="form-control" path="address" />
-                                            </div>
-
-                                            <button type="submit" class="btn btn-warning">Update</button>
-                                        </form:form>
+                                        </div>
                                     </div>
-
                                 </div>
-
                             </div>
                         </div>
                     </div>
                 </div>
                 <!-- all plugins js here -->
-                <script src="js/plugins.js"></script>
+                <script src="/js/plugins.js"></script>
                 <script src="https://cdn.jsdelivr.net/npm/apexcharts@3.27.0/dist/apexcharts.min.js"></script>
                 <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
                 <!-- main js Custom -->
-                <script src="js/main.js"></script>
+                <script src="/js/main.js"></script>
                 <!-- rts header area end -->
             </body>
 

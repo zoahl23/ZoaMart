@@ -16286,7 +16286,7 @@ form.change-pass-form input,
 }
 
 .body-root-inner {
-  margin-top: 40px;
+  margin-top: 50px;
   padding: 40px 30px;
 }
 
@@ -16415,7 +16415,7 @@ form.change-pass-form input,
   border-radius: 10px;
   background   : #fff;
   border       : 1px solid #E2E2E2;
-  margin-top   : 10px;
+  margin-top   : 20px;
 }
 
 @media only screen and (max-width: 1199px) {
@@ -19405,7 +19405,6 @@ edit .quantity-edit button {
   padding       : 0 30px;
   padding-bottom: 30px;
   border-bottom : 1px solid #E2E2E2;
-  margin-bottom : 30px;
 }
 
 .billing-address-area-4:last-child {
@@ -19413,25 +19412,22 @@ edit .quantity-edit button {
 }
 
 .billing-address-area-4 .main-billing-address-wrapper {
-  display    : flex;
-  align-items: flex-start;
-  flex-wrap  : wrap;
-  gap        : 15px;
+  
 }
 
 .billing-address-area-4 .main-billing-address-wrapper .single-billing-address {
-  flex-basis: 25%;
+  flex-basis: 100%;
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .billing-address-area-4 .main-billing-address-wrapper .single-billing-address {
-    flex-basis: 45%;
+    flex-basis: 100%;
   }
 }
 
 @media only screen and (max-width: 767px) {
   .billing-address-area-4 .main-billing-address-wrapper .single-billing-address {
-    flex-basis: 45%;
+    flex-basis: 100%;
   }
 }
 

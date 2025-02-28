@@ -25,6 +25,7 @@
 
                     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
                     <link rel="stylesheet preload" href="/css/style.css" as="style">
+                    <link rel="stylesheet preload" href="/css/custom.css" as="style">
                 </head>
                 <!-- rts header area end -->
 
@@ -37,35 +38,101 @@
                     <!-- rts header area end -->
 
                     <div class="right-area-body-content">
-                        <jsp:include page="../layout/header.jsp" />
+                        <header class="header-one">
+                            <div class="headerleft">
+                                <div class="collups-show-icon">
+                                    <img src="/images/icons/10.svg" alt="icon">
+                                    <i class="fa-light fa-arrow-right"></i>
+                                </div>
+                            </div>
+                            <div class="header-right">
+                                <div class="action-interactive-area__header">
+                                    <form
+                                        class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+                                        <span style="color: black; user-select: none;">Welcome, Admin</span>
+                                    </form>
+                                    <div class="single_action__haeader user_avatar__information openuptip" flow="down"
+                                        tooltip="Profile">
+                                        <div class="avatar">
+                                            <img src="/images/avatar/01.png" alt="avatar">
+                                        </div>
+                                        <div class="user_information_main_wrapper slide-down__click">
+                                            <div class="user_body_content">
+                                                <ul class="items">
+                                                    <li class="single_items">
+                                                        <a class="hader_popup_link" href="profile-setting.html">
+                                                            <i class="fa-light fa-user"></i>
+                                                            Profile Setting
+                                                        </a>
+                                                    </li>
+                                                    <li class="single_items">
+                                                        <a class="hader_popup_link" href="#">
+                                                            <i class="fa-regular fa-gear"></i>
+                                                            Settings
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="popup-footer-btn">
+                                                <a href="#" class="geex-content__header__popup__footer__link">Logout
+                                                    <i class="fa-light fa-arrow-right"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </header>
 
                         <div class="body-root-inner">
-                            <div class="container mt-5">
-                                <div class="row">
-                                    <div class="col-12 mx-auto">
-                                        <div class="d-flex justify-content-between">
-                                            <h3>User detail</h3>
-                                        </div>
-
-                                        <hr />
-
-                                        <div class="card" style="width: 60%">
-                                            <div class="card-header">
-                                                User information
+                            <div class="transection">
+                                <div class="vendor-list-main-wrapper product-wrapper">
+                                    <!-- customers  details main wrapper -->
+                                    <div class="customers-details-wrapper-one-dashboard">
+                                        <h4 class="title">User Details</h4>
+                                        <div class="main-customers-details-top">
+                                            <div class="left">
+                                                <div class="information-area">
+                                                    <b>Role User</b>
+                                                </div>
                                             </div>
-                                            <ul class="list-group list-group-flush">
-                                                <li class="list-group-item">ID: ${user.id}</li>
-                                                <li class="list-group-item">Email: ${user.email}</li>
-                                                <li class="list-group-item">FullName: ${user.fullName}</li>
-                                                <li class="list-group-item">Address: ${user.address}</li>
-                                            </ul>
+                                            <div class="right-area">
+                                                <div class="short-contact-info">
+                                                    <p class="name">ID</p>
+                                                    <a href="#">${user.id}</a>
+                                                </div>
+                                                <div class="short-contact-info">
+                                                    <p class="name">Full Name</p>
+                                                    <a href="#">${user.fullName}</a>
+                                                </div>
+                                                <div class="short-contact-info">
+                                                    <p class="name">Email</p>
+                                                    <a href="#">${user.email}</a>
+                                                </div>
+                                                <div class="short-contact-info">
+                                                    <p class="name">Phone</p>
+                                                    <a href="#">${user.phone}</a>
+                                                </div>
+                                                <div class="short-contact-info">
+                                                    <p class="name">Created At</p>
+                                                    <a href="#">${user.createdAt}</a>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <a href="/admin/user" class="btn btn-success mt-3">Back</a>
-
                                     </div>
+                                    <!-- customers  details main wrapper end -->
 
+                                    <div class="billing-address-area-4">
+                                        <h4 class="title">Address</h4>
+                                        <div class="main-billing-address-wrapper">
+                                            <div class="single-billing-address">
+                                                <p><span>Full Name :</span> ${user.fullName}</p>
+                                                <p><span>Phone :</span> ${user.phone}</p>
+                                                <p><span>Address :</span> ${user.address}</p>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
