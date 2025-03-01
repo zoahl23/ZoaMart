@@ -26,3 +26,22 @@
 .table-user th:nth-child(6), .table-user td:nth-child(6) { width: 15%; }
 .table-user th:nth-child(7), .table-user td:nth-child(7) { width: 15%; }
 .table-user th:nth-child(8), .table-user td:nth-child(8) { width: 7%; }
+
+.table-category {
+    table-layout: fixed;
+    width: 100%;
+}
+
+.table-category th,
+.table-category td {
+    white-space: nowrap;
+    /* overflow: hidden; */
+    text-overflow: ellipsis;
+}
+
+.table-category th:nth-child(1), .table-category td:nth-child(1) { width: 8%; }
+.table-category th:nth-child(2), .table-category td:nth-child(2) { width: 36%; }
+.table-category th:nth-child(3), .table-category td:nth-child(3) { width: 8%; }
+.table-category th:nth-child(4), .table-category td:nth-child(4) { width: 20%; }
+.table-category th:nth-child(5), .table-category td:nth-child(5) { width: 20%; }
+.table-category th:nth-child(6), .table-category td:nth-child(6) { width: 8%; }
