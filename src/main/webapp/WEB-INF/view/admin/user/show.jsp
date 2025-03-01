@@ -1,170 +1,177 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-        <span%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+        <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+            <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-            <!DOCTYPE html>
-            <html lang="en">
-            <!-- rts header area start -->
-
-            <head>
+                <!DOCTYPE html>
+                <html lang="en">
+                <!-- rts header area start -->
 
                 <head>
-                    <meta charset="UTF-8">
-                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                    <title>ZOA Mart</title>
-                    <link rel="shortcut icon" type="image/x-icon" href="images/fav.png">
-                    <!-- plugins css -->
-                    <link rel="stylesheet preload" href="/css/plugins.css" as="style">
-                    <link rel="stylesheet preload"
-                        href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css" as="style">
-                    <link rel="stylesheet preload" href="/css/style.css" as="style">
-                    <link rel="stylesheet preload" href="/css/custom.css" as="style">
-                </head>
-                <!-- rts header area end -->
 
-            <body>
-
-                <div class="ekomart_dashboard">
-
-                    <!-- rts header area start -->
-                    <jsp:include page="../layout/sidebar.jsp" />
+                    <head>
+                        <meta charset="UTF-8">
+                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                        <title>ZOA Mart</title>
+                        <link rel="shortcut icon" type="image/x-icon" href="images/fav.png">
+                        <!-- plugins css -->
+                        <link rel="stylesheet preload" href="/css/plugins.css" as="style">
+                        <link rel="stylesheet preload"
+                            href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css" as="style">
+                        <link rel="stylesheet preload" href="/css/style.css" as="style">
+                        <link rel="stylesheet preload" href="/css/custom.css" as="style">
+                    </head>
                     <!-- rts header area end -->
 
-                    <div class="right-area-body-content">
-                        <header class="header-one">
-                            <div class="headerleft">
-                                <div class="collups-show-icon">
-                                    <img src="/images/icons/10.svg" alt="icon">
-                                    <i class="fa-light fa-arrow-right"></i>
-                                </div>
-                            </div>
-                            <div class="header-right">
-                                <div class="action-interactive-area__header">
-                                    <form
-                                        class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-                                        <span style="color: black; user-select: none;">Welcome, Admin</span>
-                                    </form>
-                                    <div class="single_action__haeader user_avatar__information openuptip" flow="down"
-                                        tooltip="Profile">
-                                        <div class="avatar">
-                                            <img src="/images/avatar/01.png" alt="avatar">
-                                        </div>
-                                        <div class="user_information_main_wrapper slide-down__click">
-                                            <div class="user_body_content">
-                                                <ul class="items">
-                                                    <li class="single_items">
-                                                        <a class="hader_popup_link" href="profile-setting.html">
-                                                            <i class="fa-light fa-user"></i>
-                                                            Profile Setting
-                                                        </a>
-                                                    </li>
-                                                    <li class="single_items">
-                                                        <a class="hader_popup_link" href="#">
-                                                            <i class="fa-regular fa-gear"></i>
-                                                            Settings
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="popup-footer-btn">
-                                                <a href="#" class="geex-content__header__popup__footer__link">Logout
-                                                    <i class="fa-light fa-arrow-right"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </header>
+                <body>
 
-                        <div class="body-root-inner">
-                            <div class="transection">
-                                <div class="title-right-actioin-btn-wrapper-product-list">
-                                    <h3 class="title" style="margin-bottom: 0px;">User Table
-                                    </h3>
-                                    <div class="button-wrapper">
-                                        <a href="/admin/user/create" class="rts-btn btn-primary menu-btn">+ Add</a>
+                    <div class="ekomart_dashboard">
+
+                        <!-- rts header area start -->
+                        <jsp:include page="../layout/sidebar.jsp" />
+                        <!-- rts header area end -->
+
+                        <div class="right-area-body-content">
+                            <header class="header-one">
+                                <div class="headerleft">
+                                    <div class="collups-show-icon">
+                                        <img src="/images/icons/10.svg" alt="icon">
+                                        <i class="fa-light fa-arrow-right"></i>
                                     </div>
                                 </div>
-                                <div class="vendor-list-main-wrapper product-wrapper">
-                                    <div class="card-body table-product-select">
-                                        <div class="table-responsive">
-                                            <table class="table table-hover table-user" id="example" class="display"
-                                                cellspacing="0" width="100%">
-                                                <thead class="mb--20">
-                                                    <tr>
-                                                        <th>ID</th>
-                                                        <th>Email</th>
-                                                        <th>Full Name</th>
-                                                        <th>Phone</th>
-                                                        <th>Role</th>
-                                                        <th>Create At</th>
-                                                        <th>Update At</th>
-                                                        <th class="text-start">Action</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <c:forEach var="user" items="${users}">
+                                <div class="header-right">
+                                    <div class="action-interactive-area__header">
+                                        <form
+                                            class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+                                            <span style="color: black; user-select: none;">Welcome, Admin</span>
+                                        </form>
+                                        <div class="single_action__haeader user_avatar__information openuptip"
+                                            flow="down" tooltip="Profile">
+                                            <div class="avatar">
+                                                <img src="/images/avatar/01.png" alt="avatar">
+                                            </div>
+                                            <div class="user_information_main_wrapper slide-down__click">
+                                                <div class="user_body_content">
+                                                    <ul class="items">
+                                                        <li class="single_items">
+                                                            <a class="hader_popup_link" href="profile-setting.html">
+                                                                <i class="fa-light fa-user"></i>
+                                                                Profile Setting
+                                                            </a>
+                                                        </li>
+                                                        <li class="single_items">
+                                                            <a class="hader_popup_link" href="#">
+                                                                <i class="fa-regular fa-gear"></i>
+                                                                Settings
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="popup-footer-btn">
+                                                    <a href="#" class="geex-content__header__popup__footer__link">Logout
+                                                        <i class="fa-light fa-arrow-right"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </header>
+
+                            <div class="body-root-inner">
+                                <div class="transection">
+                                    <div class="title-right-actioin-btn-wrapper-product-list">
+                                        <h3 class="title" style="margin-bottom: 0px;">User Table
+                                        </h3>
+                                        <div class="button-wrapper">
+                                            <a href="/admin/user/create" class="rts-btn btn-primary menu-btn">+ Add</a>
+                                        </div>
+                                    </div>
+                                    <div class="vendor-list-main-wrapper product-wrapper">
+                                        <div class="card-body table-product-select">
+                                            <div class="table-responsive">
+                                                <table class="table table-hover table-user" id="example" class="display"
+                                                    cellspacing="0" width="100%">
+                                                    <thead class="mb--20">
                                                         <tr>
-                                                            <td>
-                                                                <p style="color: #2d3b29;">${user.id}</p>
-                                                            </td>
-                                                            <td>
-                                                                <p style="color: #2d3b29;">${user.email}</p>
-                                                            </td>
-                                                            <td>
-                                                                <div class="payment d-flex align-items-center">
-                                                                    <p style="color: #2d3b29;">
-                                                                        ${user.fullName}
-                                                                    </p>
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <p style="color: #2d3b29;">${user.phone}</p>
-                                                            </td>
-                                                            <td>
-                                                                <p style="color: #2d3b29;">${user.role.name}</p>
-                                                            </td>
-                                                            <td>
-                                                                <p style="color: #2d3b29;">${user.createdAt}</p>
-                                                            </td>
-                                                            <td>
-                                                                <p style="color: #2d3b29;">${user.updatedAt}</p>
-                                                            </td>
-                                                            <td class="text-end">
-                                                                <div class="between-stock-table action">
-                                                                    <p></p>
-                                                                    <img src="/images/grocery/`15.png" alt="">
-                                                                    <div class="action-edit-deleate">
-                                                                        <a href="/admin/user/${user.id}"
-                                                                            style="text-decoration: none;"><span>View</span></a>
-                                                                        <a href="/admin/user/update/${user.id}"
-                                                                            style="text-decoration: none;"><span>Update</span></a>
-                                                                        <a href="/admin/user/delete/${user.id}"
-                                                                            style="text-decoration: none;"><span>Delete</span></a>
-                                                                    </div>
-                                                                    <p></p>
-                                                                </div>
-                                                            </td>
+                                                            <th>ID</th>
+                                                            <th>Email</th>
+                                                            <th>Full Name</th>
+                                                            <th>Phone</th>
+                                                            <th>Role</th>
+                                                            <th>Create At</th>
+                                                            <th>Update At</th>
+                                                            <th class="text-start">Action</th>
                                                         </tr>
-                                                    </c:forEach>
-                                                </tbody>
-                                            </table>
-                                            <!-- table-responsive.// -->
+                                                    </thead>
+                                                    <tbody>
+                                                        <c:forEach var="user" items="${users}">
+                                                            <tr>
+                                                                <td>
+                                                                    <p style="color: #2d3b29;">${user.id}</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p style="color: #2d3b29;">${user.email}</p>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="payment d-flex align-items-center">
+                                                                        <p style="color: #2d3b29;">
+                                                                            ${user.fullName}
+                                                                        </p>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <p style="color: #2d3b29;">${user.phone}</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p style="color: #2d3b29;">${user.role.name}</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p style="color: #2d3b29;">
+                                                                        <fmt:formatDate value="${user.createdAt}"
+                                                                            pattern="yyyy-MM-dd HH:mm:ss" />
+                                                                    </p>
+                                                                </td>
+                                                                <td>
+                                                                    <p style="color: #2d3b29;">
+                                                                        <fmt:formatDate value="${user.updatedAt}"
+                                                                            pattern="yyyy-MM-dd HH:mm:ss" />
+                                                                    </p>
+                                                                </td>
+                                                                <td class="text-end">
+                                                                    <div class="between-stock-table action">
+                                                                        <p></p>
+                                                                        <img src="/images/grocery/`15.png" alt="">
+                                                                        <div class="action-edit-deleate">
+                                                                            <a href="/admin/user/${user.id}"
+                                                                                style="text-decoration: none;"><span>View</span></a>
+                                                                            <a href="/admin/user/update/${user.id}"
+                                                                                style="text-decoration: none;"><span>Update</span></a>
+                                                                            <a href="/admin/user/delete/${user.id}"
+                                                                                style="text-decoration: none;"><span>Delete</span></a>
+                                                                        </div>
+                                                                        <p></p>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        </c:forEach>
+                                                    </tbody>
+                                                </table>
+                                                <!-- table-responsive.// -->
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <!-- all plugins js here -->
-                <script src="/js/plugins.js"></script>
-                <script src="https://cdn.jsdelivr.net/npm/apexcharts@3.27.0/dist/apexcharts.min.js"></script>
-                <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
-                <!-- main js Custom -->
-                <script src="/js/main.js"></script>
-                <!-- rts header area end -->
-            </body>
+                    <!-- all plugins js here -->
+                    <script src="/js/plugins.js"></script>
+                    <script src="https://cdn.jsdelivr.net/npm/apexcharts@3.27.0/dist/apexcharts.min.js"></script>
+                    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+                    <!-- main js Custom -->
+                    <script src="/js/main.js"></script>
+                    <!-- rts header area end -->
+                </body>
 
-            </html>
+                </html>

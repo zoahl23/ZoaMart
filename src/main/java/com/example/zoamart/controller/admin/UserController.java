@@ -1,6 +1,6 @@
 package com.example.zoamart.controller.admin;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -61,7 +61,7 @@ public class UserController {
         String hashPassword = this.passwordEncoder.encode(u.getPassword());
         u.setPassword(hashPassword);
         // datetime
-        LocalDateTime ldt = LocalDateTime.now();
+        Date ldt = new Date(); // date time now
         u.setCreatedAt(ldt);
         u.setUpdatedAt(ldt);
         this.userService.handleSaveUser(u);
@@ -71,12 +71,13 @@ public class UserController {
     @PostMapping(value = "/admin/user/update")
     public String updateUserPage(Model model, @ModelAttribute("newUser") User u) {
         User user = this.userService.getUserById(u.getId());
-        LocalDateTime ldt = LocalDateTime.now();
+        Date ldt = new Date();
         if (user != null) {
             user.setFullName(u.getFullName());
             user.setPhone(u.getPhone());
             user.setAddress(u.getAddress());
             user.setUpdatedAt(ldt);
+            user.setRole(this.userService.getRoleByName(u.getRole().getName()));
             this.userService.handleSaveUser(user);
         }
         return "redirect:/admin/user";

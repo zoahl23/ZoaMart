@@ -118,9 +118,14 @@
                                                     </div>
                                                     <div class="single-input mb--30">
                                                         <label style="color: #2d3b29;">Role</label>
-                                                        <input type="text" />
+                                                        <form:select
+                                                            style="height: 62px; border: 1px solid #E8E9EB; border-radius: 4px; padding: 0 10px"
+                                                            path="role.name">
+                                                            <form:option value="USER">USER</form:option>
+                                                            <form:option value="ADMIN">ADMIN</form:option>
+                                                        </form:select>
                                                     </div>
-                                                    <div class="button-area-botton-wrapper-p-list">
+                                                    <div class="button-area-botton-wrapper-p-list justify-content-end">
                                                         <button type="submit"
                                                             class="rts-btn btn-primary">Update</button>
                                                         <button

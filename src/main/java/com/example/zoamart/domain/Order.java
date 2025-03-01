@@ -1,6 +1,6 @@
 package com.example.zoamart.domain;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 import jakarta.persistence.Entity;
@@ -21,7 +21,7 @@ public class Order {
     private double totalPrice;
     private int status;
     private int paymentMethod;
-    private LocalDateTime createdAt;
+    private Date createdAt;
 
     // userId
     // many orders to one user
@@ -80,11 +80,11 @@ public class Order {
         this.paymentMethod = paymentMethod;
     }
 
-    public LocalDateTime getCreatedAt() {
+    public Date getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(LocalDateTime createdAt) {
+    public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
     }
 

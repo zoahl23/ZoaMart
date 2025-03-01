@@ -1,6 +1,6 @@
 package com.example.zoamart.domain;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -18,7 +18,7 @@ public class Review {
     private long id;
     private int rating;
     private String comment;
-    private LocalDateTime createdAt;
+    private Date createdAt;
 
     // userId
     @ManyToOne
@@ -70,11 +70,11 @@ public class Review {
         this.comment = comment;
     }
 
-    public LocalDateTime getCreatedAt() {
+    public Date getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(LocalDateTime createdAt) {
+    public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
     }
 
