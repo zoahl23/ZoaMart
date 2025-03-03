@@ -10,4 +10,8 @@ import com.example.zoamart.domain.Category;
 @Repository
 public interface CategoryRepository extends JpaRepository<Category, Long> {
     List<Category> findAll();
+
+    List<Category> findAllByCategoryIsNull();
+
+    Category save(Category category);
 }

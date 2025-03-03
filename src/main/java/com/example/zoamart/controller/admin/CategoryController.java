@@ -1,13 +1,17 @@
 package com.example.zoamart.controller.admin;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 import com.example.zoamart.domain.Category;
 import com.example.zoamart.service.CategoryService;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @Controller
 public class CategoryController {
@@ -23,6 +27,23 @@ public class CategoryController {
         List<Category> categories = this.categoryService.getAllCategories();
         model.addAttribute("categories", categories);
         return "admin/category/show"; // show.jsp
+    }
+
+    @GetMapping("/admin/category/create")
+    public String getCreateCategoryPage(Model model) {
+        model.addAttribute("newCategory", new Category());
+        List<Category> categories = this.categoryService.getAllCategoriesIsNull();
+        model.addAttribute("categories", categories);
+        return "admin/category/create";
+    }
+
+    @PostMapping("/admin/category/create")
+    public String createCategoryPage(Model model, @ModelAttribute("newCategory") Category c) {
+        Date date = new Date();
+        c.setCreatedAt(date);
+        c.setUpdatedAt(date);
+        this.categoryService.handleSaveCategory(c);
+        return "redirect:/admin/category";
     }
 
 }

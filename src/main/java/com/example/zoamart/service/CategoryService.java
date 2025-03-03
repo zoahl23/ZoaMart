@@ -19,4 +19,12 @@ public class CategoryService {
         return this.categoryRepository.findAll();
     }
 
+    public List<Category> getAllCategoriesIsNull() {
+        return this.categoryRepository.findAllByCategoryIsNull();
+    }
+
+    public Category handleSaveCategory(Category category) {
+        return this.categoryRepository.save(category);
+    }
+
 }
