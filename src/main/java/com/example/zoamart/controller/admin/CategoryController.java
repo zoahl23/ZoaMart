@@ -7,11 +7,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.example.zoamart.domain.Category;
 import com.example.zoamart.service.CategoryService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class CategoryController {
@@ -44,6 +46,13 @@ public class CategoryController {
         c.setUpdatedAt(date);
         this.categoryService.handleSaveCategory(c);
         return "redirect:/admin/category";
+    }
+
+    @GetMapping("/admin/category/{id}")
+    public String getDetailCategoryPage(Model model, @PathVariable long id) {
+        Category category = this.categoryService.getCategoryById(id);
+        model.addAttribute("category", category);
+        return "/admin/category/detail";
     }
 
 }

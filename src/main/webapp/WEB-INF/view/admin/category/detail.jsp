@@ -91,49 +91,36 @@
                                     <div class="vendor-list-main-wrapper product-wrapper">
                                         <!-- customers  details main wrapper -->
                                         <div class="customers-details-wrapper-one-dashboard">
-                                            <h4 class="title">User Details</h4>
+                                            <h4 class="title">Category Details</h4>
                                             <div class="main-customers-details-top">
-                                                <div class="left">
-                                                    <div class="information-area">
-                                                        <b>Role ${user.role.name}</b>
-                                                    </div>
-                                                </div>
                                                 <div class="right-area">
                                                     <div class="short-contact-info">
                                                         <p class="name">ID</p>
-                                                        <a href="#">${user.id}</a>
+                                                        <a href="#">${category.id}</a>
                                                     </div>
                                                     <div class="short-contact-info">
-                                                        <p class="name">Full Name</p>
-                                                        <a href="#">${user.fullName}</a>
+                                                        <p class="name">Category Name</p>
+                                                        <a href="#">${category.name}</a>
                                                     </div>
                                                     <div class="short-contact-info">
-                                                        <p class="name">Email</p>
-                                                        <a href="#">${user.email}</a>
-                                                    </div>
-                                                    <div class="short-contact-info">
-                                                        <p class="name">Phone</p>
-                                                        <a href="#">${user.phone}</a>
+                                                        <p class="name">Parent Category</p>
+                                                        <a href="#">${category.category != null ?
+                                                            category.category.name : "-- No Parent --"}</a>
                                                     </div>
                                                     <div class="short-contact-info">
                                                         <p class="name">Created At</p>
                                                         <a href="#">
-                                                            <fmt:formatDate value="${user.createdAt}"
+                                                            <fmt:formatDate value="${category.createdAt}"
                                                                 pattern="yyyy-MM-dd HH:mm:ss" />
                                                         </a>
                                                     </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- customers  details main wrapper end -->
-
-                                        <div class="billing-address-area-4">
-                                            <h4 class="title">Address</h4>
-                                            <div class="main-billing-address-wrapper">
-                                                <div class="single-billing-address">
-                                                    <p><span>Full Name :</span> ${user.fullName}</p>
-                                                    <p><span>Phone :</span> ${user.phone}</p>
-                                                    <p><span>Address :</span> ${user.address}</p>
+                                                    <div class="short-contact-info">
+                                                        <p class="name">Updated At</p>
+                                                        <a href="#">
+                                                            <fmt:formatDate value="${category.updatedAt}"
+                                                                pattern="yyyy-MM-dd HH:mm:ss" />
+                                                        </a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
