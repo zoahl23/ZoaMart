@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import com.example.zoamart.domain.Category;
+import com.example.zoamart.domain.User;
 import com.example.zoamart.service.CategoryService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -62,6 +63,18 @@ public class CategoryController {
         List<Category> categories = this.categoryService.getAllCategoriesIsNull();
         model.addAttribute("categoriesIsNull", categories);
         return "admin/category/update";
+    }
+
+    @GetMapping("/admin/category/delete/{id}") // GET
+    public String getDeleteCatePage(Model model, @PathVariable long id) {
+        model.addAttribute("newCategory", new Category());
+        return "admin/category/delete";
+    }
+
+    @PostMapping("/admin/category/delete")
+    public String deleteCatePage(Model model, @ModelAttribute("newCategory") Category cate) {
+        this.categoryService.deleteCategoryById(cate.getId());
+        return "redirect:/admin/category";
     }
 
 }

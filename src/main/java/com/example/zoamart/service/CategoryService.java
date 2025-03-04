@@ -31,4 +31,8 @@ public class CategoryService {
         return this.categoryRepository.findById(id);
     }
 
+    public void deleteCategoryById(long id) {
+        this.categoryRepository.deleteById(id);
+    }
+
 }
