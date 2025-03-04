@@ -55,4 +55,13 @@ public class CategoryController {
         return "/admin/category/detail";
     }
 
+    @GetMapping("/admin/category/update/{id}")
+    public String getUpdateCategoryPage(Model model, @PathVariable long id) {
+        Category category = this.categoryService.getCategoryById(id);
+        model.addAttribute("updateCategory", category);
+        List<Category> categories = this.categoryService.getAllCategoriesIsNull();
+        model.addAttribute("categoriesIsNull", categories);
+        return "admin/category/update";
+    }
+
 }
