@@ -85,44 +85,48 @@
                                             <!-- inner menu area desktop start -->
                                             <div class="right-collups-area-top">
                                                 <h6 class="title" style="font-size: 32px;">Add New Product</h6>
-                                                <p>Add information and add new product</p>
                                             </div>
                                             <div class="input-main-wrapper">
                                                 <form:form method="post" action="/admin/product/create"
-                                                    modelAttribute="newProduct" class="row">
+                                                    modelAttribute="newProduct" class="row"
+                                                    enctype="multipart/form-data">
                                                     <div class="single-input col-12 col-md-6">
-                                                        <label for="one">Product Name</label>
-                                                        <input type="text" id="one"
-                                                            placeholder="Quaker Oats Healthy Meal...">
+                                                        <label style="color: #2d3b29;">Product Name</label>
+                                                        <form:input type="text" path="name" />
                                                     </div>
                                                     <div class="single-input col-12 col-md-6">
-                                                        <label for="cate">Category</label>
-                                                        <input type="text" id="cate" placeholder="Notebook">
+                                                        <label style="color: #2d3b29;">Category</label>
+                                                        <form:select path="category"
+                                                            style="height: 62px; border: 1px solid #E8E9EB; border-radius: 4px; padding: 0 10px">
+                                                            <form:option value="">-- Select Parent Category --
+                                                            </form:option>
+                                                            <form:options items="${cateIsNotNull}" itemValue="id"
+                                                                itemLabel="name" />
+                                                        </form:select>
                                                     </div>
                                                     <div class="single-input col-12 col-md-6">
-                                                        <label for="Two">Price</label>
-                                                        <input type="text" id="Two" placeholder="240">
+                                                        <label style="color: #2d3b29;">Price</label>
+                                                        <form:input type="number" path="price" />
                                                     </div>
                                                     <div class="single-input col-12 col-md-6">
-                                                        <label for="sale">Discount Percent</label>
-                                                        <input type="text" id="sale" placeholder="$250">
+                                                        <label style="color: #2d3b29;">Discount Percent</label>
+                                                        <form:input type="number" path="discountPercent" />
                                                     </div>
                                                     <div class="single-input col-12 col-md-6">
-                                                        <label for="Stock">Quantity</label>
-                                                        <input type="text" id="Stock" placeholder="530">
+                                                        <label style="color: #2d3b29;">Quantity</label>
+                                                        <form:input type="number" path="quantity" />
                                                     </div>
                                                     <div class="single-input col-12 col-md-6">
-                                                        <label for="sku">Sold</label>
-                                                        <input type="text" id="sku" placeholder="3245">
+                                                        <label style="color: #2d3b29;">Sold</label>
+                                                        <form:input type="number" path="sold" />
                                                     </div>
                                                     <div class="single-input">
-                                                        <label for="Tag">Description Short</label>
-                                                        <input type="text" id="Tag" placeholder="Iphone, Mobile">
+                                                        <label style="color: #2d3b29;">Description Short</label>
+                                                        <form:input type="text" path="desShort" />
                                                     </div>
                                                     <div class="single-input">
-                                                        <label for="text">Description Detail</label>
-                                                        <textarea name="text" id="text"
-                                                            placeholder="Type something"></textarea>
+                                                        <label style="color: #2d3b29;">Description Detail</label>
+                                                        <form:textarea name="text" path="desDetail" />
                                                     </div>
                                                     <div class="single-input">
                                                         <div class="file-upload-add-product">
@@ -135,8 +139,8 @@
                                                                 <div class="button-area">
                                                                     <div class="brows-file-wrapper">
                                                                         <!-- actual upload which is hidden -->
-                                                                        <input name="rts_images1" id="rts_images1"
-                                                                            type="file" accept=".png, .jpg, .jpeg">
+                                                                        <input name="proImg" id="rts_images1"
+                                                                            type="file" accept=".png, .jpg, .jpeg" />
                                                                         <!-- our custom upload button -->
                                                                     </div>
                                                                 </div>

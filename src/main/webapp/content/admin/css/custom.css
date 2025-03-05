@@ -45,3 +45,23 @@
 .table-category th:nth-child(4), .table-category td:nth-child(4) { width: 20%; }
 .table-category th:nth-child(5), .table-category td:nth-child(5) { width: 20%; }
 .table-category th:nth-child(6), .table-category td:nth-child(6) { width: 8%; }
+
+.table-product {
+    table-layout: fixed;
+    width: 100%;
+}
+
+.table-product th,
+.table-product td {
+    white-space: nowrap;
+    /* overflow: hidden; */
+    text-overflow: ellipsis;
+}
+
+.table-product th:nth-child(1), .table-product td:nth-child(1) { width: 6%; }
+.table-product th:nth-child(2), .table-product td:nth-child(2) { width: 30%; }
+.table-product th:nth-child(3), .table-product td:nth-child(3) { width: 28%; }
+.table-product th:nth-child(4), .table-product td:nth-child(4) { width: 6%; }
+.table-product th:nth-child(5), .table-product td:nth-child(5) { width: 6%; }
+.table-product th:nth-child(6), .table-product td:nth-child(6) { width: 18%; }
+.table-product th:nth-child(7), .table-product td:nth-child(7) { width: 6%; }

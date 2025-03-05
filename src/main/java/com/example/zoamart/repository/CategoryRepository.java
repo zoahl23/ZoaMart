@@ -13,6 +13,8 @@ public interface CategoryRepository extends JpaRepository<Category, Long> {
 
     List<Category> findAllByCategoryIsNull();
 
+    List<Category> findAllByCategoryIsNotNull();
+
     Category save(Category category);
 
     Category findById(long id);

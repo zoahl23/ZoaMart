@@ -23,6 +23,10 @@ public class CategoryService {
         return this.categoryRepository.findAllByCategoryIsNull();
     }
 
+    public List<Category> getAllCategoriesIsNotNull() {
+        return this.categoryRepository.findAllByCategoryIsNotNull();
+    }
+
     public Category handleSaveCategory(Category category) {
         return this.categoryRepository.save(category);
     }
