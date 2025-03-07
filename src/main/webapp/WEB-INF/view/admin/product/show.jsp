@@ -144,11 +144,11 @@
                                                                         <p></p>
                                                                         <img src="/images/grocery/`15.png" alt="">
                                                                         <div class="action-edit-deleate">
-                                                                            <a href="/admin/product/${product.id}"
+                                                                            <a href="/admin/product/${pro.id}"
                                                                                 style="text-decoration: none;"><span>View</span></a>
-                                                                            <a href="/admin/product/update/${product.id}"
+                                                                            <a href="/admin/product/update/${pro.id}"
                                                                                 style="text-decoration: none;"><span>Update</span></a>
-                                                                            <a href="/admin/product/delete/${product.id}"
+                                                                            <a href="/admin/product/delete/${pro.id}"
                                                                                 style="text-decoration: none;"><span>Delete</span></a>
                                                                         </div>
                                                                         <p></p>
