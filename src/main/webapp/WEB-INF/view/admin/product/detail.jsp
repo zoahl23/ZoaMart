@@ -151,7 +151,9 @@
                                                     <p>${product.desDetail}</p>
                                                     <p><span>Image :</span></p>
                                                     <p><img src="/img/products/${product.imageUrl}"
-                                                            class="rounded mx-auto d-block"></p>
+                                                            class="rounded mx-auto d-block"
+                                                            style="width: 400px; height: 400px; object-fit: contain; background-color: #f0f0f0;">>
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>

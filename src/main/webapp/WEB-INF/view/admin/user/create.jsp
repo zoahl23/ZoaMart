@@ -96,24 +96,51 @@
                                                 <form:form method="post" action="/admin/user/create"
                                                     modelAttribute="newUser" class="row">
                                                     <div class="single-input col-12 col-md-6">
+                                                        <c:set var="errorEmail">
+                                                            <form:errors path="email" cssClass="invalid-feedback" />
+                                                        </c:set>
                                                         <label style="color: #2d3b29;">Email</label>
-                                                        <form:input type="email" path="email" />
+                                                        <form:input type="email"
+                                                            class="${not empty errorEmail? 'is-invalid':''}"
+                                                            path="email" />
+                                                        ${errorEmail}
                                                     </div>
                                                     <div class="single-input col-12 col-md-6">
+                                                        <c:set var="errorFullName">
+                                                            <form:errors path="fullName" cssClass="invalid-feedback" />
+                                                        </c:set>
                                                         <label style="color: #2d3b29;">Full Name</label>
-                                                        <form:input type=" text" path="fullName" />
+                                                        <form:input type="text"
+                                                            class="${not empty errorFullName? 'is-invalid':''}"
+                                                            path="fullName" />
+                                                        ${errorFullName}
                                                     </div>
                                                     <div class="single-input col-12 col-md-6">
+                                                        <c:set var="errorPhone">
+                                                            <form:errors path="phone" cssClass="invalid-feedback" />
+                                                        </c:set>
                                                         <label style="color: #2d3b29;">Phone</label>
-                                                        <form:input type="text" path="phone" />
+                                                        <form:input type="text" path="phone"
+                                                            class="${not empty errorPhone? 'is-invalid':''}" />
+                                                        ${errorPhone}
                                                     </div>
                                                     <div class="single-input col-12 col-md-6">
+                                                        <c:set var="errorPassword">
+                                                            <form:errors path="phone" cssClass="invalid-feedback" />
+                                                        </c:set>
                                                         <label style="color: #2d3b29;">Password</label>
-                                                        <form:input type="password" path="password" />
+                                                        <form:input type="password" path="password"
+                                                            class="${not empty errorPassword? 'is-invalid':''}" />
+                                                        ${errorPassword}
                                                     </div>
                                                     <div class="single-input">
+                                                        <c:set var="errorAddress">
+                                                            <form:errors path="phone" cssClass="invalid-feedback" />
+                                                        </c:set>
                                                         <label style="color: #2d3b29;">Address</label>
-                                                        <form:input type="text" path="address" />
+                                                        <form:input type="text" path="address"
+                                                            class="${not empty errorAddress? 'is-invalid':''}" />
+                                                        ${errorAddress}
                                                     </div>
                                                     <div class="single-input mb--30">
                                                         <label style="color: #2d3b29;">Role</label>
