@@ -105,16 +105,31 @@
                                                         <form:input type="email" path="email" disabled="true" />
                                                     </div>
                                                     <div class="single-input">
+                                                        <c:set var="errorFullName">
+                                                            <form:errors path="fullName" cssClass="invalid-feedback" />
+                                                        </c:set>
                                                         <label style="color: #2d3b29;">Full Name</label>
-                                                        <form:input type="text" path="fullName" />
+                                                        <form:input type="text" path="fullName"
+                                                            class="${not empty errorFullName? 'is-invalid':''}" />
+                                                        ${errorFullName}
                                                     </div>
                                                     <div class="single-input">
+                                                        <c:set var="errorAddress">
+                                                            <form:errors path="address" cssClass="invalid-feedback" />
+                                                        </c:set>
                                                         <label style="color: #2d3b29;">Address</label>
-                                                        <form:input type="text" path="address" />
+                                                        <form:input type="text" path="address"
+                                                            class="${not empty errorAddress? 'is-invalid':''}" />
+                                                        ${errorAddress}
                                                     </div>
                                                     <div class="single-input">
+                                                        <c:set var="errorPhone">
+                                                            <form:errors path="phone" cssClass="invalid-feedback" />
+                                                        </c:set>
                                                         <label style="color: #2d3b29;">Phone</label>
-                                                        <form:input type="text" path="phone" />
+                                                        <form:input type="text" path="phone"
+                                                            class="${not empty errorPhone? 'is-invalid':''}" />
+                                                        ${errorPhone}
                                                     </div>
                                                     <div class="single-input mb--30">
                                                         <label style="color: #2d3b29;">Role</label>

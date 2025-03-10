@@ -126,7 +126,7 @@
                                                     </div>
                                                     <div class="single-input col-12 col-md-6">
                                                         <c:set var="errorPassword">
-                                                            <form:errors path="phone" cssClass="invalid-feedback" />
+                                                            <form:errors path="password" cssClass="invalid-feedback" />
                                                         </c:set>
                                                         <label style="color: #2d3b29;">Password</label>
                                                         <form:input type="password" path="password"
@@ -135,7 +135,7 @@
                                                     </div>
                                                     <div class="single-input">
                                                         <c:set var="errorAddress">
-                                                            <form:errors path="phone" cssClass="invalid-feedback" />
+                                                            <form:errors path="address" cssClass="invalid-feedback" />
                                                         </c:set>
                                                         <label style="color: #2d3b29;">Address</label>
                                                         <form:input type="text" path="address"
