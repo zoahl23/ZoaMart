@@ -96,8 +96,13 @@
                                                 <form:form method="post" action="/admin/category/create"
                                                     modelAttribute="newCategory" class="row">
                                                     <div class="single-input col-12 col-md-6">
+                                                        <c:set var="errorCategoryName">
+                                                            <form:errors path="name" cssClass="invalid-feedback" />
+                                                        </c:set>
                                                         <label style="color: #2d3b29;">Category Name</label>
-                                                        <form:input type=" text" path="name" />
+                                                        <form:input type=" text" path="name"
+                                                            class="${not empty errorCategoryName? 'is-invalid':''}" />
+                                                        ${errorCategoryName}
                                                     </div>
                                                     <div class="single-input col-12 col-md-6 mb--30">
                                                         <label style="color: #2d3b29;">Category Parent</label>

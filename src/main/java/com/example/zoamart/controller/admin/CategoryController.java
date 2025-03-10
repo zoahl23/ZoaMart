@@ -5,12 +5,17 @@ import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import com.example.zoamart.domain.Category;
 import com.example.zoamart.service.CategoryService;
+
+import jakarta.validation.Valid;
+
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -38,7 +43,22 @@ public class CategoryController {
     }
 
     @PostMapping("/admin/category/create")
-    public String createCategoryPage(Model model, @ModelAttribute("newCategory") Category c) {
+    public String createCategoryPage(Model model, @ModelAttribute("newCategory") @Valid Category c,
+            BindingResult newCategoryBindingResult) {
+
+        // validate start
+
+        List<FieldError> errors = newCategoryBindingResult.getFieldErrors();
+        for (FieldError error : errors) {
+            System.out.println(">>>>" + error.getField() + " - " + error.getDefaultMessage());
+        }
+
+        if (newCategoryBindingResult.hasErrors()) {
+            return "admin/category/create";
+        }
+
+        // validate end
+
         Date date = new Date();
         c.setCreatedAt(date);
         c.setUpdatedAt(date);
