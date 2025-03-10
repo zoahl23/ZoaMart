@@ -1,13 +1,12 @@
 package com.example.zoamart.controller.admin;
 
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
 import java.util.Date;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,7 +20,7 @@ import com.example.zoamart.service.CategoryService;
 import com.example.zoamart.service.ProductService;
 import com.example.zoamart.service.UploadService;
 
-import jakarta.servlet.ServletContext;
+import jakarta.validation.Valid;
 
 @Controller
 public class ProductController {
@@ -53,8 +52,22 @@ public class ProductController {
     }
 
     @PostMapping("/admin/product/create")
-    public String createProductPage(Model model, @ModelAttribute("newProduct") Product p,
+    public String createProductPage(Model model, @ModelAttribute("newProduct") @Valid Product p,
+            BindingResult newProductBindingResult,
             @RequestParam("proImg") MultipartFile file) {
+
+        // validate start
+
+        List<FieldError> errors = newProductBindingResult.getFieldErrors();
+        for (FieldError error : errors) {
+            System.out.println(">>>>" + error.getField() + " - " + error.getDefaultMessage());
+        }
+
+        if (newProductBindingResult.hasErrors()) {
+            return "admin/product/create";
+        }
+
+        // validate end
 
         Date date = new Date();
         p.setCreatedAt(date);

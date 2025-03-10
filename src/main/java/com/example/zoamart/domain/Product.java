@@ -11,6 +11,11 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "products")
@@ -18,12 +23,34 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
+    @NotNull
+    @NotEmpty(message = "Product Name cannot be empty")
     private String name;
+
+    @NotNull
+    @Min(value = 0, message = "Price must be greater than or equal to 0")
     private double price;
+
+    @NotNull
+    @Min(value = 0, message = "Discount percent must be at least 0")
+    @Max(value = 100, message = "Discount percent cannot exceed 100")
     private double discountPercent;
+
+    @NotNull
+    @NotEmpty(message = "Description Detail cannot be empty")
     private String desDetail;
+
+    @NotNull
+    @NotEmpty(message = "Description Short cannot be empty")
     private String desShort;
+
+    @NotNull
+    @Min(value = 0, message = "Quantity must be at least 0")
     private int quantity;
+
+    @NotNull
+    @Min(value = 0, message = "Sold must be at least 0")
     private int sold;
     private String imageUrl;
     private Date createdAt;

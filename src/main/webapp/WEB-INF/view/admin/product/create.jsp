@@ -91,8 +91,13 @@
                                                     modelAttribute="newProduct" class="row"
                                                     enctype="multipart/form-data">
                                                     <div class="single-input col-12 col-md-6">
+                                                        <c:set var="errorName">
+                                                            <form:errors path="name" cssClass="invalid-feedback" />
+                                                        </c:set>
                                                         <label style="color: #2d3b29;">Product Name</label>
-                                                        <form:input type="text" path="name" />
+                                                        <form:input type="text" path="name"
+                                                            class="${not empty errorName? 'is-invalid':''}" />
+                                                        ${errorName}
                                                     </div>
                                                     <div class="single-input col-12 col-md-6">
                                                         <label style="color: #2d3b29;">Category</label>
@@ -105,28 +110,59 @@
                                                         </form:select>
                                                     </div>
                                                     <div class="single-input col-12 col-md-6">
+                                                        <c:set var="errorPrice">
+                                                            <form:errors path="price" cssClass="invalid-feedback" />
+                                                        </c:set>
                                                         <label style="color: #2d3b29;">Price</label>
-                                                        <form:input type="number" path="price" />
+                                                        <form:input type="number" path="price"
+                                                            class="${not empty errorPrice? 'is-invalid':''}" />
+                                                        ${errorPrice}
                                                     </div>
                                                     <div class="single-input col-12 col-md-6">
+                                                        <c:set var="errorDiscountPercent">
+                                                            <form:errors path="discountPercent"
+                                                                cssClass="invalid-feedback" />
+                                                        </c:set>
                                                         <label style="color: #2d3b29;">Discount Percent</label>
-                                                        <form:input type="number" path="discountPercent" />
+                                                        <form:input type="number" path="discountPercent"
+                                                            class="${not empty errorDiscountPercent? 'is-invalid':''}" />
+                                                        ${errorDiscountPercent}
                                                     </div>
                                                     <div class="single-input col-12 col-md-6">
+                                                        <c:set var="errorQuantity">
+                                                            <form:errors path="quantity" cssClass="invalid-feedback" />
+                                                        </c:set>
                                                         <label style="color: #2d3b29;">Quantity</label>
-                                                        <form:input type="number" path="quantity" />
+                                                        <form:input type="number" path="quantity"
+                                                            class="${not empty errorQuantity? 'is-invalid':''}" />
+                                                        ${errorQuantity}
                                                     </div>
                                                     <div class="single-input col-12 col-md-6">
+                                                        <c:set var="errorSold">
+                                                            <form:errors path="sold" cssClass="invalid-feedback" />
+                                                        </c:set>
                                                         <label style="color: #2d3b29;">Sold</label>
-                                                        <form:input type="number" path="sold" />
+                                                        <form:input type="number" path="sold"
+                                                            class="${not empty errorSold? 'is-invalid':''}" />
+                                                        ${errorSold}
                                                     </div>
                                                     <div class="single-input">
+                                                        <c:set var="errorDesShort">
+                                                            <form:errors path="desShort" cssClass="invalid-feedback" />
+                                                        </c:set>
                                                         <label style="color: #2d3b29;">Description Short</label>
-                                                        <form:input type="text" path="desShort" />
+                                                        <form:input type="text" path="desShort"
+                                                            class="${not empty errorDesShort? 'is-invalid':''}" />
+                                                        ${errorDesShort}
                                                     </div>
                                                     <div class="single-input">
+                                                        <c:set var="errorDesDetail">
+                                                            <form:errors path="desDetail" cssClass="invalid-feedback" />
+                                                        </c:set>
                                                         <label style="color: #2d3b29;">Description Detail</label>
-                                                        <form:textarea name="text" path="desDetail" />
+                                                        <form:textarea name="text" path="desDetail"
+                                                            class="${not empty errorDesDetail? 'is-invalid':''}" />
+                                                        ${errorDesDetail}
                                                     </div>
                                                     <div class="single-input">
                                                         <div class="file-upload-add-product">
