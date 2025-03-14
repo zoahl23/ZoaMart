@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import com.example.zoamart.domain.Category;
+import com.example.zoamart.dto.CategoryDTO;
 import com.example.zoamart.service.CategoryService;
 
 import jakarta.validation.Valid;
@@ -37,7 +38,7 @@ public class CategoryController {
     @GetMapping("/admin/category/create")
     public String getCreateCategoryPage(Model model) {
         model.addAttribute("newCategory", new Category());
-        List<Category> categories = this.categoryService.getAllCategoriesIsNull();
+        List<CategoryDTO> categories = this.categoryService.getAllCategoriesIsNull();
         model.addAttribute("categories", categories);
         return "admin/category/create";
     }
@@ -68,16 +69,16 @@ public class CategoryController {
 
     @GetMapping("/admin/category/{id}")
     public String getDetailCategoryPage(Model model, @PathVariable long id) {
-        Category category = this.categoryService.getCategoryById(id);
+        CategoryDTO category = this.categoryService.getCategoryById(id);
         model.addAttribute("category", category);
         return "/admin/category/detail";
     }
 
     @GetMapping("/admin/category/update/{id}")
     public String getUpdateCategoryPage(Model model, @PathVariable long id) {
-        Category category = this.categoryService.getCategoryById(id);
+        CategoryDTO category = this.categoryService.getCategoryById(id);
         model.addAttribute("updateCategory", category);
-        List<Category> categories = this.categoryService.getAllCategoriesIsNull();
+        List<CategoryDTO> categories = this.categoryService.getAllCategoriesIsNull();
         model.addAttribute("categoriesIsNull", categories);
         return "admin/category/update";
     }
