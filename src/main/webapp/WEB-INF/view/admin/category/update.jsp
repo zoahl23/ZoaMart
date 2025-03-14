@@ -95,6 +95,10 @@
                                             <div class="input-main-wrapper">
                                                 <form:form method="post" action="/admin/category/update"
                                                     modelAttribute="updateCategory" class="row">
+                                                    <div class="single-input" style="display: none;">
+                                                        <label style="color: #2d3b29;">ID</label>
+                                                        <form:input type="text" path="id" />
+                                                    </div>
                                                     <div class="single-input col-12 col-md-6">
                                                         <label style="color: #2d3b29;">Category Name</label>
                                                         <form:input type=" text" path="name" />

@@ -89,6 +89,37 @@ public class CategoryController {
         return "admin/category/update";
     }
 
+    @PostMapping("/admin/category/update")
+    public String updateCategoryPage(Model model,
+            @ModelAttribute("newCategory") @Valid CategoryDTO c,
+            BindingResult newCategoryBindingResult) {
+
+        // validate start
+
+        List<FieldError> errors = newCategoryBindingResult.getFieldErrors();
+        for (FieldError error : errors) {
+            System.out.println(">>>>" + error.getField() + " - " +
+                    error.getDefaultMessage());
+        }
+
+        if (newCategoryBindingResult.hasErrors()) {
+            return "admin/category/update";
+        }
+
+        // validate end
+
+        CategoryDTO category = this.categoryService.getCategoryById(c.getId());
+        Date date = new Date();
+        if (category != null) {
+            category.setName(c.getName());
+            category.setParentId(c.getParentId());
+            category.setUpdatedAt(date);
+            Category cate = categoryMapper.apply(category);
+            this.categoryService.handleSaveCategory(cate);
+        }
+        return "redirect:/admin/category";
+    }
+
     @GetMapping("/admin/category/delete/{id}") // GET
     public String getDeleteCatePage(Model model, @PathVariable long id) {
         model.addAttribute("newCategory", new Category());
