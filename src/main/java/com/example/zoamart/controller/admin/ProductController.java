@@ -2,6 +2,7 @@ package com.example.zoamart.controller.admin;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.example.zoamart.domain.Category;
 import com.example.zoamart.domain.Product;
+import com.example.zoamart.domain.User;
 import com.example.zoamart.service.CategoryService;
 import com.example.zoamart.service.ProductService;
 import com.example.zoamart.service.UploadService;
@@ -82,9 +84,62 @@ public class ProductController {
 
     @GetMapping("/admin/product/{id}")
     public String getDetailProductPage(Model model, @PathVariable long id) {
-        Product product = this.productService.getAProductById(id);
+        Product product = this.productService.getAProductById(id).get();
         model.addAttribute("product", product);
         return "/admin/product/detail";
     }
+
+    @GetMapping("/admin/product/delete/{id}") // GET
+    public String getDeleteProductPage(Model model, @PathVariable long id) {
+        model.addAttribute("newProduct", new Product());
+        return "admin/product/delete";
+    }
+
+    @PostMapping("/admin/product/delete")
+    public String deleteProductPage(Model model, @ModelAttribute("newProduct") Product product) {
+        this.productService.deleteAProduct(product.getId());
+        return "redirect:/admin/product";
+    }
+
+    @GetMapping("/admin/product/update/{id}") // GET
+    public String getUpdateProductPage(Model model, @PathVariable long id) {
+        Optional<Product> product = this.productService.getAProductById(id);
+        model.addAttribute("newProduct", product.get());
+        List<Category> cates = this.categoryService.getAllCategoriesIsNotNull();
+        model.addAttribute("cateIsNotNull", cates);
+        return "admin/product/update";
+    }
+
+    // @PostMapping("/admin/product/update")
+    // public String updateProductPage(Model model,
+    // @ModelAttribute("newProduct") @Valid Product p,
+    // BindingResult newUserBindingResult) {
+
+    // // validate start
+
+    // List<FieldError> errors = newUserBindingResult.getFieldErrors();
+    // for (FieldError error : errors) {
+    // System.out.println(">>>>" + error.getField() + " - " +
+    // error.getDefaultMessage());
+    // }
+
+    // if (newUserBindingResult.hasErrors()) {
+    // return "admin/user/update";
+    // }
+
+    // // validate end
+
+    // User user = this.userService.getUserById(u.getId());
+    // Date ldt = new Date();
+    // if (user != null) {
+    // user.setFullName(u.getFullName());
+    // user.setPhone(u.getPhone());
+    // user.setAddress(u.getAddress());
+    // user.setUpdatedAt(ldt);
+    // user.setRole(this.userService.getRoleByName(u.getRole().getName()));
+    // this.userService.handleSaveUser(user);
+    // }
+    // return "redirect:/admin/user";
+    // }
 
 }

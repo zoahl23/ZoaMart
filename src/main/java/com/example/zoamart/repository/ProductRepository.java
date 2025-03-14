@@ -1,6 +1,7 @@
 package com.example.zoamart.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -13,5 +14,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
     List<Product> findAll();
 
-    Product findById(long id);
+    Optional<Product> findById(long id);
+
+    void deleteById(long id);
 }
