@@ -98,11 +98,11 @@
                                                     modelAttribute="newUser">
                                                     <div class="single-input" style="display: none;">
                                                         <label style="color: #2d3b29;">ID</label>
-                                                        <form:input type="text" path="id" />
+                                                        <form:input type="text" path="id" readonly="true" />
                                                     </div>
                                                     <div class="single-input">
                                                         <label style="color: #2d3b29;">Email</label>
-                                                        <form:input type="email" path="email" disabled="true" />
+                                                        <form:input type="email" path="email" readonly="true" />
                                                     </div>
                                                     <div class="single-input">
                                                         <c:set var="errorFullName">

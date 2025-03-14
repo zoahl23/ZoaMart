@@ -17,7 +17,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.example.zoamart.domain.Category;
 import com.example.zoamart.domain.Product;
-import com.example.zoamart.domain.User;
 import com.example.zoamart.service.CategoryService;
 import com.example.zoamart.service.ProductService;
 import com.example.zoamart.service.UploadService;

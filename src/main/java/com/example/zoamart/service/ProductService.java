@@ -4,19 +4,16 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
-import com.example.zoamart.controller.admin.CategoryController;
 import com.example.zoamart.domain.Product;
 import com.example.zoamart.repository.ProductRepository;
 
 @Service
 public class ProductService {
 
-    private final CategoryController categoryController;
     private final ProductRepository productRepository;
 
-    public ProductService(ProductRepository productRepository, CategoryController categoryController) {
+    public ProductService(ProductRepository productRepository) {
         this.productRepository = productRepository;
-        this.categoryController = categoryController;
     }
 
     public Product handleSaveProduct(Product product) {
