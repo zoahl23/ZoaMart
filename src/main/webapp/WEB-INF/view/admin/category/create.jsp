@@ -106,7 +106,7 @@
                                                     </div>
                                                     <div class="single-input col-12 col-md-6 mb--30">
                                                         <label style="color: #2d3b29;">Category Parent</label>
-                                                        <form:select path="category"
+                                                        <form:select path="parentId"
                                                             style="height: 62px; border: 1px solid #E8E9EB; border-radius: 4px; padding: 0 10px">
                                                             <form:option value="">-- Select Parent Category --
                                                             </form:option>

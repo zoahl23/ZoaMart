@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.example.zoamart.domain.Category;
 import com.example.zoamart.dto.CategoryDTO;
+import com.example.zoamart.dto.CategoryMapper;
 import com.example.zoamart.service.CategoryService;
 
 import jakarta.validation.Valid;
@@ -23,35 +24,38 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class CategoryController {
 
     private final CategoryService categoryService;
+    private final CategoryMapper categoryMapper;
 
-    public CategoryController(CategoryService categoryService) {
+    public CategoryController(CategoryService categoryService, CategoryMapper categoryMapper) {
         this.categoryService = categoryService;
+        this.categoryMapper = categoryMapper;
     }
 
     @GetMapping("/admin/category")
     public String getDashboard(Model model) {
-        List<Category> categories = this.categoryService.getAllCategories();
+        List<CategoryDTO> categories = this.categoryService.getAllCategories();
         model.addAttribute("categories", categories);
         return "admin/category/show"; // show.jsp
     }
 
     @GetMapping("/admin/category/create")
     public String getCreateCategoryPage(Model model) {
-        model.addAttribute("newCategory", new Category());
+        model.addAttribute("newCategory", new CategoryDTO());
         List<CategoryDTO> categories = this.categoryService.getAllCategoriesIsNull();
         model.addAttribute("categories", categories);
         return "admin/category/create";
     }
 
     @PostMapping("/admin/category/create")
-    public String createCategoryPage(Model model, @ModelAttribute("newCategory") @Valid Category c,
+    public String createCategoryPage(Model model, @ModelAttribute("newCategory") @Valid CategoryDTO c,
             BindingResult newCategoryBindingResult) {
 
         // validate start
 
         List<FieldError> errors = newCategoryBindingResult.getFieldErrors();
         for (FieldError error : errors) {
-            System.out.println(">>>>" + error.getField() + " - " + error.getDefaultMessage());
+            System.out.println(">>>>" + error.getField() + " - " +
+                    error.getDefaultMessage());
         }
 
         if (newCategoryBindingResult.hasErrors()) {
@@ -63,7 +67,9 @@ public class CategoryController {
         Date date = new Date();
         c.setCreatedAt(date);
         c.setUpdatedAt(date);
-        this.categoryService.handleSaveCategory(c);
+
+        Category category = categoryMapper.apply(c);
+        this.categoryService.handleSaveCategory(category);
         return "redirect:/admin/category";
     }
 

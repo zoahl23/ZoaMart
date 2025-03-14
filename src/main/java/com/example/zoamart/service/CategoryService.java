@@ -20,8 +20,11 @@ public class CategoryService {
         this.categoryDTOMapper = categoryDTOMapper;
     }
 
-    public List<Category> getAllCategories() {
-        return this.categoryRepository.findAll();
+    public List<CategoryDTO> getAllCategories() {
+        return this.categoryRepository.findAll()
+                .stream()
+                .map(categoryDTOMapper)
+                .collect(Collectors.toList());
     }
 
     public List<CategoryDTO> getAllCategoriesIsNull() {

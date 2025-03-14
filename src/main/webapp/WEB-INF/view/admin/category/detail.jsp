@@ -104,8 +104,8 @@
                                                     </div>
                                                     <div class="short-contact-info">
                                                         <p class="name">Parent Category</p>
-                                                        <a href="#">${category.category != null ?
-                                                            category.category.name : "-- No Parent --"}</a>
+                                                        <a href="#">${category.parentId != null ?
+                                                            category.parentId : "-- No Parent --"}</a>
                                                     </div>
                                                     <div class="short-contact-info">
                                                         <p class="name">Created At</p>

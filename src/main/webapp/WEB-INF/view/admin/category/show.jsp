@@ -116,7 +116,7 @@
                                                                 <td>
                                                                     <div class="payment d-flex align-items-center">
                                                                         <p style="color: #2d3b29;">
-                                                                            ${category.category.id}
+                                                                            ${category.parentId}
                                                                         </p>
                                                                     </div>
                                                                 </td>
