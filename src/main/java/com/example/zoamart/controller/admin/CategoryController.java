@@ -13,23 +13,19 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.example.zoamart.domain.Category;
 import com.example.zoamart.dto.CategoryDTO;
-import com.example.zoamart.dto.CategoryMapper;
+import com.example.zoamart.mapper.CategoryMapper;
 import com.example.zoamart.service.CategoryService;
 
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
+@RequiredArgsConstructor
 public class CategoryController {
 
     private final CategoryService categoryService;
-    private final CategoryMapper categoryMapper;
-
-    public CategoryController(CategoryService categoryService, CategoryMapper categoryMapper) {
-        this.categoryService = categoryService;
-        this.categoryMapper = categoryMapper;
-    }
 
     @GetMapping("/admin/category")
     public String getDashboard(Model model) {
@@ -68,8 +64,7 @@ public class CategoryController {
         c.setCreatedAt(date);
         c.setUpdatedAt(date);
 
-        Category category = categoryMapper.apply(c);
-        this.categoryService.handleSaveCategory(category);
+        this.categoryService.handleSaveCategory(c);
         return "redirect:/admin/category";
     }
 
@@ -108,13 +103,11 @@ public class CategoryController {
 
         // validate end
 
-        CategoryDTO category = this.categoryService.getCategoryById(c.getId());
-        Date date = new Date();
-        if (category != null) {
-            category.setName(c.getName());
-            category.setParentId(c.getParentId());
-            category.setUpdatedAt(date);
-            Category cate = categoryMapper.apply(category);
+        CategoryDTO cate = this.categoryService.getCategoryById(c.getId());
+        if (cate != null) {
+            cate.setName(c.getName());
+            cate.setParentId(c.getParentId());
+            cate.setUpdatedAt(new Date());
             this.categoryService.handleSaveCategory(cate);
         }
         return "redirect:/admin/category";

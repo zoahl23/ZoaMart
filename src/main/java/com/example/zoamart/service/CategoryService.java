@@ -7,48 +7,50 @@ import org.springframework.stereotype.Service;
 
 import com.example.zoamart.domain.Category;
 import com.example.zoamart.dto.CategoryDTO;
-import com.example.zoamart.dto.CategoryDTOMapper;
+import com.example.zoamart.mapper.CategoryMapper;
 import com.example.zoamart.repository.CategoryRepository;
 
+import lombok.RequiredArgsConstructor;
+
 @Service
+@RequiredArgsConstructor
 public class CategoryService {
     private final CategoryRepository categoryRepository;
-    private final CategoryDTOMapper categoryDTOMapper;
-
-    public CategoryService(CategoryRepository categoryRepository, CategoryDTOMapper categoryDTOMapper) {
-        this.categoryRepository = categoryRepository;
-        this.categoryDTOMapper = categoryDTOMapper;
-    }
 
     public List<CategoryDTO> getAllCategories() {
-        return this.categoryRepository.findAll()
-                .stream()
-                .map(categoryDTOMapper)
+        List<Category> categories = categoryRepository.findAll();
+        return categories.stream()
+                .map(CategoryMapper.CATEGORY_INSTANCE::toDTO)
                 .collect(Collectors.toList());
     }
 
     public List<CategoryDTO> getAllCategoriesIsNull() {
-        return this.categoryRepository.findAllByCategoryIsNull()
-                .stream()
-                .map(categoryDTOMapper)
+        List<Category> categories = categoryRepository.findAllByCategoryIsNull();
+        return categories.stream()
+                .map(CategoryMapper.CATEGORY_INSTANCE::toDTO)
                 .collect(Collectors.toList());
     }
 
-    public List<Category> getAllCategoriesIsNotNull() {
-        return this.categoryRepository.findAllByCategoryIsNotNull();
+    public List<CategoryDTO> getAllCategoriesIsNotNull() {
+        List<Category> categories = categoryRepository.findAllByCategoryIsNotNull();
+        return categories.stream()
+                .map(CategoryMapper.CATEGORY_INSTANCE::toDTO)
+                .collect(Collectors.toList());
     }
 
-    public Category handleSaveCategory(Category category) {
-        return this.categoryRepository.save(category);
+    public CategoryDTO handleSaveCategory(CategoryDTO categoryDTO) {
+        Category category = CategoryMapper.CATEGORY_INSTANCE.toEntity(categoryDTO);
+        Category savedCategory = categoryRepository.save(category);
+        return CategoryMapper.CATEGORY_INSTANCE.toDTO(savedCategory);
     }
 
-    public CategoryDTO getCategoryById(long id) {
-        return this.categoryRepository.findById(id)
-                .map(categoryDTOMapper)
-                .orElseThrow(() -> new RuntimeException("Category not found with id: " + id));
+    public CategoryDTO getCategoryById(Long id) {
+        Category category = categoryRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Category not found"));
+        return CategoryMapper.CATEGORY_INSTANCE.toDTO(category);
     }
 
-    public void deleteCategoryById(long id) {
+    public void deleteCategoryById(Long id) {
         this.categoryRepository.deleteById(id);
     }
 
