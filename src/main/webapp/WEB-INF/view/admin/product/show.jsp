@@ -104,38 +104,38 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <c:forEach var="pro" items="${products}">
+                                                        <c:forEach var="product" items="${products}">
                                                             <tr>
                                                                 <td>
                                                                     <p style="color: #2d3b29;">
-                                                                        ${pro.id}
+                                                                        ${product.id}
                                                                     </p>
                                                                 </td>
                                                                 <td>
                                                                     <p style="color: #2d3b29;">
-                                                                        ${pro.name}
+                                                                        ${product.name}
                                                                     </p>
                                                                 </td>
                                                                 <td>
                                                                     <div class="payment d-flex align-items-center">
                                                                         <p style="color: #2d3b29;">
-                                                                            ${pro.category.name}
+                                                                            ${product.categoryName}
                                                                         </p>
                                                                     </div>
                                                                 </td>
                                                                 <td>
                                                                     <p style="color: #2d3b29;">
-                                                                        ${pro.price}
+                                                                        ${product.price}
                                                                     </p>
                                                                 </td>
                                                                 <td>
                                                                     <p style="color: #2d3b29;">
-                                                                        ${pro.quantity}
+                                                                        ${product.quantity}
                                                                     </p>
                                                                 </td>
                                                                 <td>
                                                                     <p style="color: #2d3b29;">
-                                                                        <fmt:formatDate value="${pro.updatedAt}"
+                                                                        <fmt:formatDate value="${product.updatedAt}"
                                                                             pattern="yyyy-MM-dd HH:mm:ss" />
                                                                     </p>
                                                                 </td>
@@ -144,11 +144,11 @@
                                                                         <p></p>
                                                                         <img src="/images/grocery/`15.png" alt="">
                                                                         <div class="action-edit-deleate">
-                                                                            <a href="/admin/product/${pro.id}"
+                                                                            <a href="/admin/product/${product.id}"
                                                                                 style="text-decoration: none;"><span>View</span></a>
-                                                                            <a href="/admin/product/update/${pro.id}"
+                                                                            <a href="/admin/product/update/${product.id}"
                                                                                 style="text-decoration: none;"><span>Update</span></a>
-                                                                            <a href="/admin/product/delete/${pro.id}"
+                                                                            <a href="/admin/product/delete/${product.id}"
                                                                                 style="text-decoration: none;"><span>Delete</span></a>
                                                                         </div>
                                                                         <p></p>

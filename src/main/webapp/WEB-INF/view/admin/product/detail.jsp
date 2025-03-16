@@ -95,7 +95,7 @@
                                             <div class="main-customers-details-top">
                                                 <div class="left">
                                                     <div class="information-area">
-                                                        <b>${product.category.name}</b>
+                                                        <b>${product.categoryName}</b>
                                                     </div>
                                                 </div>
                                                 <div class="right-area">

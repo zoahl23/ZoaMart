@@ -3,11 +3,13 @@ package com.example.zoamart.domain;
 import java.util.Date;
 import java.util.List;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -38,6 +40,8 @@ public class Product {
 
     @NotNull
     @NotEmpty(message = "Description Detail cannot be empty")
+    @Lob
+    @Column(columnDefinition = "TEXT")
     private String desDetail;
 
     @NotNull
@@ -57,7 +61,7 @@ public class Product {
 
     // categoryId
     @ManyToOne
-    @JoinColumn(name = "product_id")
+    @JoinColumn(name = "category_id")
     private Category category;
 
     @OneToMany(mappedBy = "product")

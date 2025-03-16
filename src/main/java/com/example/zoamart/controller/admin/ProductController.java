@@ -17,43 +17,40 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.example.zoamart.domain.Category;
 import com.example.zoamart.domain.Product;
+import com.example.zoamart.dto.CategoryDTO;
+import com.example.zoamart.dto.ProductDTO;
 import com.example.zoamart.service.CategoryService;
 import com.example.zoamart.service.ProductService;
 import com.example.zoamart.service.UploadService;
 
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 
 @Controller
+@RequiredArgsConstructor
 public class ProductController {
 
     private final ProductService productService;
     private final CategoryService categoryService;
     private final UploadService uploadService;
 
-    public ProductController(ProductService productService, CategoryService categoryService,
-            UploadService uploadService) {
-        this.productService = productService;
-        this.categoryService = categoryService;
-        this.uploadService = uploadService;
-    }
-
     @GetMapping("/admin/product")
     public String getProduct(Model model) {
-        List<Product> products = this.productService.getAllProducts();
+        List<ProductDTO> products = this.productService.getAllProducts();
         model.addAttribute("products", products);
         return "admin/product/show"; // show.jsp
     }
 
     @GetMapping("/admin/product/create")
     public String getCreateProductPage(Model model) {
-        model.addAttribute("newProduct", new Product());
-        List<Category> categories = this.categoryService.getAllCategoriesIsNotNull();
+        model.addAttribute("newProduct", new ProductDTO());
+        List<CategoryDTO> categories = this.categoryService.getAllCategoriesIsNotNull();
         model.addAttribute("cateIsNotNull", categories);
         return "admin/product/create";
     }
 
     @PostMapping("/admin/product/create")
-    public String createProductPage(Model model, @ModelAttribute("newProduct") @Valid Product p,
+    public String createProductPage(Model model, @ModelAttribute("newProduct") @Valid ProductDTO p,
             BindingResult newProductBindingResult,
             @RequestParam("proImg") MultipartFile file) {
 
@@ -65,6 +62,8 @@ public class ProductController {
         }
 
         if (newProductBindingResult.hasErrors()) {
+            List<CategoryDTO> categories = this.categoryService.getAllCategoriesIsNotNull();
+            model.addAttribute("cateIsNotNull", categories);
             return "admin/product/create";
         }
 
@@ -77,13 +76,15 @@ public class ProductController {
         String imgName = this.uploadService.handleSaveUploadFile(file, "products");
 
         p.setImageUrl(imgName);
+        CategoryDTO category = this.categoryService.getCategoryById(p.getCategoryId());
+        p.setCategoryName(category.getName());
         this.productService.handleSaveProduct(p);
         return "redirect:/admin/product";
     }
 
     @GetMapping("/admin/product/{id}")
     public String getDetailProductPage(Model model, @PathVariable long id) {
-        Product product = this.productService.getAProductById(id).get();
+        ProductDTO product = this.productService.getAProductById(id);
         model.addAttribute("product", product);
         return "/admin/product/detail";
     }
@@ -102,9 +103,9 @@ public class ProductController {
 
     @GetMapping("/admin/product/update/{id}") // GET
     public String getUpdateProductPage(Model model, @PathVariable long id) {
-        Optional<Product> product = this.productService.getAProductById(id);
-        model.addAttribute("newProduct", product.get());
-        List<Category> cates = this.categoryService.getAllCategoriesIsNotNull();
+        ProductDTO product = this.productService.getAProductById(id);
+        model.addAttribute("newProduct", product);
+        List<CategoryDTO> cates = this.categoryService.getAllCategoriesIsNotNull();
         model.addAttribute("cateIsNotNull", cates);
         return "admin/product/update";
     }
