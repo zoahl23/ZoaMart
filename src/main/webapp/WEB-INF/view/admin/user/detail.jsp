@@ -95,7 +95,7 @@
                                             <div class="main-customers-details-top">
                                                 <div class="left">
                                                     <div class="information-area">
-                                                        <b>Role ${user.role.name}</b>
+                                                        <b>Role ${user.roleName}</b>
                                                     </div>
                                                 </div>
                                                 <div class="right-area">

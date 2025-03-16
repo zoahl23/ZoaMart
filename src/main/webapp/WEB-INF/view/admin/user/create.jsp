@@ -146,7 +146,7 @@
                                                         <label style="color: #2d3b29;">Role</label>
                                                         <form:select
                                                             style="height: 62px; border: 1px solid #E8E9EB; border-radius: 4px; padding: 0 10px"
-                                                            path="role.name">
+                                                            path="roleName">
                                                             <form:option value="USER">USER</form:option>
                                                             <form:option value="ADMIN">ADMIN</form:option>
                                                         </form:select>

@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.example.zoamart.domain.Category;
 import com.example.zoamart.dto.CategoryDTO;
-import com.example.zoamart.mapper.CategoryMapper;
 import com.example.zoamart.service.CategoryService;
 
 import jakarta.validation.Valid;
@@ -55,6 +54,8 @@ public class CategoryController {
         }
 
         if (newCategoryBindingResult.hasErrors()) {
+            List<CategoryDTO> categories = this.categoryService.getAllCategoriesIsNull();
+            model.addAttribute("categories", categories);
             return "admin/category/create";
         }
 
@@ -98,6 +99,8 @@ public class CategoryController {
         }
 
         if (newCategoryBindingResult.hasErrors()) {
+            List<CategoryDTO> categories = this.categoryService.getAllCategoriesIsNull();
+            model.addAttribute("categoriesIsNull", categories);
             return "admin/category/update";
         }
 

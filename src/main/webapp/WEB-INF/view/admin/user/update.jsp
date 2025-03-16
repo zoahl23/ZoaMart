@@ -100,6 +100,10 @@
                                                         <label style="color: #2d3b29;">ID</label>
                                                         <form:input type="text" path="id" readonly="true" />
                                                     </div>
+                                                    <div class="single-input" style="display: none;">
+                                                        <label style="color: #2d3b29;">Password</label>
+                                                        <form:input type="text" path="password" readonly="true" />
+                                                    </div>
                                                     <div class="single-input">
                                                         <label style="color: #2d3b29;">Email</label>
                                                         <form:input type="email" path="email" readonly="true" />
@@ -135,7 +139,7 @@
                                                         <label style="color: #2d3b29;">Role</label>
                                                         <form:select
                                                             style="height: 62px; border: 1px solid #E8E9EB; border-radius: 4px; padding: 0 10px"
-                                                            path="role.name">
+                                                            path="roleName">
                                                             <form:option value="USER">USER</form:option>
                                                             <form:option value="ADMIN">ADMIN</form:option>
                                                         </form:select>

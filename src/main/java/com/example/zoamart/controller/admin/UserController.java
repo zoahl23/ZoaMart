@@ -13,52 +13,51 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.example.zoamart.domain.Role;
 import com.example.zoamart.domain.User;
+import com.example.zoamart.dto.UserDTO;
 import com.example.zoamart.service.UserService;
 
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 
 @Controller
+@RequiredArgsConstructor
 public class UserController {
 
     private final UserService userService;
     private final PasswordEncoder passwordEncoder;
 
-    public UserController(UserService userService, PasswordEncoder passwordEncoder) {
-        this.userService = userService;
-        this.passwordEncoder = passwordEncoder;
-    }
-
     @GetMapping("/admin/user") // GET
     public String getUserPage(Model model) {
-        List<User> users = this.userService.getAllUsers();
+        List<UserDTO> users = this.userService.getAllUsers();
         model.addAttribute("users", users);
         return "admin/user/show";
     }
 
     @GetMapping("/admin/user/{id}") // GET
     public String getUserDetailPage(Model model, @PathVariable long id) {
-        User user = this.userService.getUserById(id);
+        UserDTO user = this.userService.getUserById(id);
         model.addAttribute("user", user);
         return "admin/user/detail";
     }
 
     @GetMapping("/admin/user/create") // GET
     public String getCreateUserPage(Model model) {
-        model.addAttribute("newUser", new User());
+        model.addAttribute("newUser", new UserDTO());
         return "admin/user/create";
     }
 
     @GetMapping("/admin/user/update/{id}") // GET
     public String getUpdateUserPage(Model model, @PathVariable long id) {
-        User user = this.userService.getUserById(id);
+        UserDTO user = this.userService.getUserById(id);
         model.addAttribute("newUser", user);
         return "admin/user/update";
     }
 
     @PostMapping(value = "/admin/user/create")
     public String createUserPage(Model model,
-            @ModelAttribute("newUser") @Valid User u,
+            @ModelAttribute("newUser") @Valid UserDTO u,
             BindingResult newUserBindingResult) {
 
         // validate start
@@ -75,7 +74,9 @@ public class UserController {
         // validate end
 
         // role
-        u.setRole(this.userService.getRoleByName(u.getRole().getName()));
+        u.setRoleName(u.getRoleName());
+        Role role = this.userService.getRoleByName(u.getRoleName());
+        u.setRoleId(role.getId());
         // password
         String hashPassword = this.passwordEncoder.encode(u.getPassword());
         u.setPassword(hashPassword);
@@ -89,7 +90,7 @@ public class UserController {
 
     @PostMapping(value = "/admin/user/update")
     public String updateUserPage(Model model,
-            @ModelAttribute("newUser") @Valid User u,
+            @ModelAttribute("newUser") @Valid UserDTO u,
             BindingResult newUserBindingResult) {
 
         // validate start
@@ -105,14 +106,16 @@ public class UserController {
 
         // validate end
 
-        User user = this.userService.getUserById(u.getId());
+        UserDTO user = this.userService.getUserById(u.getId());
         Date ldt = new Date();
         if (user != null) {
             user.setFullName(u.getFullName());
             user.setPhone(u.getPhone());
             user.setAddress(u.getAddress());
             user.setUpdatedAt(ldt);
-            user.setRole(this.userService.getRoleByName(u.getRole().getName()));
+            user.setRoleName(u.getRoleName());
+            Role role = this.userService.getRoleByName(u.getRoleName());
+            user.setRoleId(role.getId());
             this.userService.handleSaveUser(user);
         }
         return "redirect:/admin/user";
