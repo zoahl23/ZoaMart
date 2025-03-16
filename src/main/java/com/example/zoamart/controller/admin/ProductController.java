@@ -2,7 +2,6 @@ package com.example.zoamart.controller.admin;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,7 +14,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.example.zoamart.domain.Category;
 import com.example.zoamart.domain.Product;
 import com.example.zoamart.dto.CategoryDTO;
 import com.example.zoamart.dto.ProductDTO;
