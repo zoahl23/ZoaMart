@@ -17,11 +17,11 @@ public class ProductDTO {
     private String name;
 
     @Min(value = 0, message = "Price must be greater than or equal to 0")
-    private double price;
+    private int price;
 
     @Min(value = 0, message = "Discount percent must be at least 0")
     @Max(value = 100, message = "Discount percent cannot exceed 100")
-    private double discountPercent;
+    private int discountPercent;
 
     @NotNull
     @NotEmpty(message = "Description Detail cannot be empty")
