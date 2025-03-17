@@ -87,9 +87,13 @@
                                                 <h6 class="title" style="font-size: 32px;">Update Product</h6>
                                             </div>
                                             <div class="input-main-wrapper">
-                                                <form:form method="post" action="/admin/product/create"
+                                                <form:form method="post" action="/admin/product/update"
                                                     modelAttribute="newProduct" class="row"
                                                     enctype="multipart/form-data">
+                                                    <div class="single-input" style="display: none;">
+                                                        <label style="color: #2d3b29;">ID</label>
+                                                        <form:input type="text" path="id" />
+                                                    </div>
                                                     <div class="single-input col-12 col-md-6">
                                                         <c:set var="errorName">
                                                             <form:errors path="name" cssClass="invalid-feedback" />
@@ -101,7 +105,7 @@
                                                     </div>
                                                     <div class="single-input col-12 col-md-6">
                                                         <label style="color: #2d3b29;">Category</label>
-                                                        <form:select path="category"
+                                                        <form:select path="categoryId"
                                                             style="height: 62px; border: 1px solid #E8E9EB; border-radius: 4px; padding: 0 10px">
                                                             <form:option value="">-- Select Parent Category --
                                                             </form:option>
@@ -168,8 +172,18 @@
                                                         <div class="file-upload-add-product">
                                                             <div class="profile-left">
                                                                 <div class="profile-image mb--30">
-                                                                    <img id="rts_image" src="/images/grocery/16.png"
-                                                                        alt="Profile-NFT">
+                                                                    <c:choose>
+                                                                        <c:when test="${not empty newProduct.imageUrl}">
+                                                                            <img id="rts_image"
+                                                                                src="/img/products/${newProduct.imageUrl}"
+                                                                                alt="Profile-NFT">
+                                                                        </c:when>
+                                                                        <c:otherwise>
+                                                                            <img id="rts_image"
+                                                                                src="/images/grocery/16.png"
+                                                                                alt="Profile-NFT">
+                                                                        </c:otherwise>
+                                                                    </c:choose>
                                                                     <span>Drag and drop Image</span>
                                                                 </div>
                                                                 <div class="button-area">
@@ -184,9 +198,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="button-area-botton-wrapper-p-list">
-                                                        <button class="rts-btn btn-primary">Save</button>
-                                                        <button
-                                                            class="rts-btn btn-primary bg-transparent">Cancel</button>
+                                                        <button class="rts-btn btn-primary">Update</button>
                                                     </div>
                                                 </form:form>
                                             </div>

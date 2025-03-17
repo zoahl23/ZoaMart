@@ -95,7 +95,9 @@ public class ProductController {
 
     @PostMapping("/admin/product/delete")
     public String deleteProductPage(Model model, @ModelAttribute("newProduct") Product product) {
-        this.productService.deleteAProduct(product.getId());
+        ProductDTO p = productService.getAProductById(product.getId());
+        this.uploadService.deleteFile(p.getImageUrl(), "products");
+        this.productService.deleteAProduct(p.getId());
         return "redirect:/admin/product";
     }
 
@@ -108,36 +110,51 @@ public class ProductController {
         return "admin/product/update";
     }
 
-    // @PostMapping("/admin/product/update")
-    // public String updateProductPage(Model model,
-    // @ModelAttribute("newProduct") @Valid Product p,
-    // BindingResult newUserBindingResult) {
+    @PostMapping("/admin/product/update")
+    public String updateProductPage(Model model, @ModelAttribute("newProduct") @Valid ProductDTO p,
+            BindingResult newProductBindingResult,
+            @RequestParam("proImg") MultipartFile file) {
 
-    // // validate start
+        // validate start
 
-    // List<FieldError> errors = newUserBindingResult.getFieldErrors();
-    // for (FieldError error : errors) {
-    // System.out.println(">>>>" + error.getField() + " - " +
-    // error.getDefaultMessage());
-    // }
+        List<FieldError> errors = newProductBindingResult.getFieldErrors();
+        for (FieldError error : errors) {
+            System.out.println(">>>>" + error.getField() + " - " + error.getDefaultMessage());
+        }
 
-    // if (newUserBindingResult.hasErrors()) {
-    // return "admin/user/update";
-    // }
+        if (newProductBindingResult.hasErrors()) {
+            List<CategoryDTO> categories = this.categoryService.getAllCategoriesIsNotNull();
+            model.addAttribute("cateIsNotNull", categories);
+            return "admin/product/update";
+        }
 
-    // // validate end
+        // validate end
 
-    // User user = this.userService.getUserById(u.getId());
-    // Date ldt = new Date();
-    // if (user != null) {
-    // user.setFullName(u.getFullName());
-    // user.setPhone(u.getPhone());
-    // user.setAddress(u.getAddress());
-    // user.setUpdatedAt(ldt);
-    // user.setRole(this.userService.getRoleByName(u.getRole().getName()));
-    // this.userService.handleSaveUser(user);
-    // }
-    // return "redirect:/admin/user";
-    // }
+        ProductDTO product = this.productService.getAProductById(p.getId());
+        Date date = new Date();
+        if (product != null) {
+            product.setName(p.getName());
+            product.setPrice(p.getPrice());
+            product.setDiscountPercent(p.getDiscountPercent());
+            product.setDesDetail(p.getDesDetail());
+            product.setDesShort(p.getDesShort());
+            product.setQuantity(p.getQuantity());
+            product.setSold(p.getSold());
+            product.setUpdatedAt(date);
+
+            product.setCategoryId(p.getCategoryId());
+            CategoryDTO category = this.categoryService.getCategoryById(p.getCategoryId());
+            product.setCategoryName(category.getName());
+
+            String imgName = this.uploadService.handleSaveUploadFile(file, "products");
+            if (p.getImageUrl() != null || imgName != "") {
+                this.uploadService.deleteFile(product.getImageUrl(), "products");
+                product.setImageUrl(imgName);
+            }
+
+            this.productService.handleSaveProduct(product);
+        }
+        return "redirect:/admin/product";
+    }
 
 }

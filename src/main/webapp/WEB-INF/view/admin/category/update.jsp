@@ -100,8 +100,13 @@
                                                         <form:input type="text" path="id" />
                                                     </div>
                                                     <div class="single-input col-12 col-md-6">
+                                                        <c:set var="errorName">
+                                                            <form:errors path="name" cssClass="invalid-feedback" />
+                                                        </c:set>
                                                         <label style="color: #2d3b29;">Category Name</label>
-                                                        <form:input type=" text" path="name" />
+                                                        <form:input type="text" path="name"
+                                                            class="${not empty errorName? 'is-invalid':''}" />
+                                                        ${errorName}
                                                     </div>
                                                     <div class="single-input col-12 col-md-6 mb--30">
                                                         <label style="color: #2d3b29;">Category Parent</label>
@@ -116,8 +121,6 @@
                                                     <div class="button-area-botton-wrapper-p-list justify-content-end">
                                                         <button type="submit"
                                                             class="rts-btn btn-primary">Update</button>
-                                                        <button
-                                                            class="rts-btn btn-primary bg-transparent">Cancel</button>
                                                     </div>
                                                 </form:form>
                                             </div>

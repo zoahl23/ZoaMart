@@ -153,8 +153,6 @@
                                                     </div>
                                                     <div class="button-area-botton-wrapper-p-list justify-content-end">
                                                         <button type="submit" class="rts-btn btn-primary">Save</button>
-                                                        <button
-                                                            class="rts-btn btn-primary bg-transparent">Cancel</button>
                                                     </div>
                                                 </form:form>
                                             </div>
