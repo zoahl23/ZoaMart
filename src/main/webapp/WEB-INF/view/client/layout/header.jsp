@@ -7,7 +7,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="logo-search-category-wrapper">
-                                <a href="#" class="logo-area">
+                                <a href="/" class="logo-area">
                                     <img src="/images2/logo/logo-02.svg" alt="logo-main" class="logo">
                                 </a>
                                 <div class="category-search-wrapper">

@@ -44,7 +44,7 @@
                                     <div class="single-shopping-card-one">
                                         <!-- iamge and sction area start -->
                                         <div class="image-and-action-area-wrapper">
-                                            <a href="shop-details.html" class="thumbnail-preview">
+                                            <a href="/product/${product.id}" class="thumbnail-preview">
                                                 <div class="badge">
                                                     <span>${product.discountPercent}%<br> OFF
                                                     </span>
@@ -56,7 +56,7 @@
                                         </div>
                                         <!-- iamge and sction area start -->
                                         <div class="body-content">
-                                            <a href="shop-details.html">
+                                            <a href="/product/${product.id}">
                                                 <h4 class="title"
                                                     style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; display: block;">
                                                     ${product.name}</h4>
@@ -129,7 +129,7 @@
                                             <span>Bán chạy</span>
                                         </div>
                                         <div class="image-and-action-area-wrapper">
-                                            <a href="shop-details.html" class="thumbnail-preview">
+                                            <a href="/product/${product.id}" class="thumbnail-preview">
                                                 <img src="/img/products/${product.imageUrl}" alt="${product.name}"
                                                     style="width: 225px; height: 195px; object-fit: contain;">
                                             </a>
@@ -143,7 +143,7 @@
                                                 <i class="fa-solid fa-star"></i>
                                                 <i class="fa-solid fa-star"></i>
                                             </div>
-                                            <a href="shop-details.html">
+                                            <a href="/product/${product.id}">
                                                 <h4 class="title"
                                                     style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; display: block;">
                                                     ${product.name}</h4>
@@ -238,7 +238,7 @@
                                                             <span>${product.discountPercent}% OFF</span>
                                                         </div>
                                                         <div class="image-and-action-area-wrapper">
-                                                            <a href="shop-details-2.html" class="thumbnail-preview">
+                                                            <a href="/product/${product.id}" class="thumbnail-preview">
                                                                 <img src="/img/products/${product.imageUrl}"
                                                                     alt="${product.name}"
                                                                     style="width: 212px; height: 184px; object-fit: contain;">
@@ -252,7 +252,7 @@
                                                                 <i class="fa-solid fa-star"></i>
                                                                 <i class="fa-solid fa-star"></i>
                                                             </div>
-                                                            <a href="shop-details-2.html">
+                                                            <a href="/product/${product.id}">
                                                                 <h4 class="title"
                                                                     style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; display: block;">
                                                                     ${product.name}</h4>
@@ -302,7 +302,7 @@
                                                             <span>${product.discountPercent}% OFF</span>
                                                         </div>
                                                         <div class="image-and-action-area-wrapper">
-                                                            <a href="shop-details-2.html" class="thumbnail-preview">
+                                                            <a href="/product/${product.id}" class="thumbnail-preview">
                                                                 <img src="/img/products/${product.imageUrl}"
                                                                     alt="${product.name}"
                                                                     style="width: 212px; height: 184px; object-fit: contain;">
@@ -316,7 +316,7 @@
                                                                 <i class="fa-solid fa-star"></i>
                                                                 <i class="fa-solid fa-star"></i>
                                                             </div>
-                                                            <a href="shop-details-2.html">
+                                                            <a href="/product/${product.id}">
                                                                 <h4 class="title"
                                                                     style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; display: block;">
                                                                     ${product.name}</h4>
@@ -365,7 +365,7 @@
                                                             <span>${product.discountPercent}% OFF</span>
                                                         </div>
                                                         <div class="image-and-action-area-wrapper">
-                                                            <a href="shop-details-2.html" class="thumbnail-preview">
+                                                            <a href="/product/${product.id}" class="thumbnail-preview">
                                                                 <img src="/img/products/${product.imageUrl}"
                                                                     alt="${product.name}"
                                                                     style="width: 212px; height: 184px; object-fit: contain;">
@@ -379,7 +379,7 @@
                                                                 <i class="fa-solid fa-star"></i>
                                                                 <i class="fa-solid fa-star"></i>
                                                             </div>
-                                                            <a href="shop-details-2.html">
+                                                            <a href="/product/${product.id}">
                                                                 <h4 class="title"
                                                                     style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; display: block;">
                                                                     ${product.name}</h4>
@@ -428,7 +428,7 @@
                                                             <span>${product.discountPercent}% OFF</span>
                                                         </div>
                                                         <div class="image-and-action-area-wrapper">
-                                                            <a href="shop-details-2.html" class="thumbnail-preview">
+                                                            <a href="/product/${product.id}" class="thumbnail-preview">
                                                                 <img src="/img/products/${product.imageUrl}"
                                                                     alt="${product.name}"
                                                                     style="width: 212px; height: 184px; object-fit: contain;">
@@ -442,7 +442,7 @@
                                                                 <i class="fa-solid fa-star"></i>
                                                                 <i class="fa-solid fa-star"></i>
                                                             </div>
-                                                            <a href="shop-details-2.html">
+                                                            <a href="/product/${product.id}">
                                                                 <h4 class="title"
                                                                     style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; display: block;">
                                                                     ${product.name}</h4>
@@ -494,14 +494,6 @@
                 <!-- rts copyright area end -->
                 <!-- rts footer area end -->
 
-                <!-- Notification successfully add in wishlist -->
-                <div class="successfully-addedin-wishlist">
-                    <div class="d-flex" style="align-items: center; gap: 15px;">
-                        <i class="fa-regular fa-check"></i>
-                        <p>Món hàng của bạn đã được thêm vào danh sách yêu thích thành công</p>
-                    </div>
-                </div>
-                <!-- Notification successfully add in wishlist end -->
 
 
                 <!-- Spinner Start -->

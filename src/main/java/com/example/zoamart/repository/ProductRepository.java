@@ -27,6 +27,9 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
             "ORDER BY discount_percent DESC LIMIT 10", nativeQuery = true)
     List<Product> findTop10ProductsByParentCategory(@Param("parentId") Long parentId);
 
+    @Query(value = "SELECT * FROM products WHERE id != :productId ORDER BY discount_percent DESC LIMIT 7", nativeQuery = true)
+    List<Product> findProductsDiscountPrice(@Param("productId") Long productId);
+
     Optional<Product> findById(long id);
 
     void deleteById(long id);

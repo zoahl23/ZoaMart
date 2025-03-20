@@ -63,4 +63,11 @@ public class ProductService {
                 .collect(Collectors.toList());
     }
 
+    public List<ProductDTO> getProductForDetail(Long productId) {
+        return productRepository.findProductsDiscountPrice(productId)
+                .stream()
+                .map(ProductMapper.PRODUCT_INSTANCE::toDTO)
+                .collect(Collectors.toList());
+    }
+
 }
