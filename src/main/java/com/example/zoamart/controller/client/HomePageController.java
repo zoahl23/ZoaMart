@@ -45,4 +45,14 @@ public class HomePageController {
         model.addAttribute("products4", products4);
         return "client/home/show";
     }
+
+    @GetMapping("/register")
+    public String getRegisterPage(Model model) {
+        return "client/auth/register";
+    }
+
+    @GetMapping("/login")
+    public String getLoginPage(Model model) {
+        return "client/auth/login";
+    }
 }
