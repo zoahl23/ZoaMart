@@ -9,7 +9,7 @@
                 <head>
                     <meta charset="UTF-8">
                     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                    <title>ZOA Mart</title>
+                    <title>Đăng Ký</title>
                     <link rel="shortcut icon" type="image/x-icon" href="/images2/fav.png">
                     <link rel="stylesheet preload" href="/css2/plugins.css" as="style">
                     <link rel="stylesheet preload" href="/css2/style.css" as="style">
@@ -34,24 +34,49 @@
                                         <form:form method="post" action="/register" modelAttribute="registerUser"
                                             class="registration-form">
                                             <div class="input-wrapper">
+                                                <c:set var="errorFullName">
+                                                    <form:errors path="fullName" cssClass="invalid-feedback" />
+                                                </c:set>
                                                 <label for="name">Tên người dùng <font color="red">*</font></label>
-                                                <form:input type="text" id="name" path="fullName" />
+                                                <form:input type=" text" path="fullName"
+                                                    class="${not empty errorFullName? 'is-invalid':''}" />
+                                                ${errorFullName}
                                             </div>
                                             <div class="input-wrapper">
+                                                <c:set var="errorEmail">
+                                                    <form:errors path="email" cssClass="invalid-feedback" />
+                                                </c:set>
                                                 <label for="email">Email <font color="red">*</font></label>
-                                                <form:input type="email" id="email" path="email" />
+                                                <form:input type="email" path="email"
+                                                    class="${not empty errorEmail? 'is-invalid':''}" />
+                                                ${errorEmail}
                                             </div>
                                             <div class="input-wrapper">
+                                                <c:set var="errorPhone">
+                                                    <form:errors path="phone" cssClass="invalid-feedback" />
+                                                </c:set>
                                                 <label for="phone">Số điện thoại <font color="red">*</font></label>
-                                                <form:input type="text" id="phone" path="phone" />
+                                                <form:input type="text" path="phone"
+                                                    class="${not empty errorPhone? 'is-invalid':''}" />
+                                                ${errorPhone}
                                             </div>
                                             <div class="input-wrapper">
+                                                <c:set var="errorAddress">
+                                                    <form:errors path="address" cssClass="invalid-feedback" />
+                                                </c:set>
                                                 <label for="address">Địa chỉ <font color="red">*</font></label>
-                                                <form:input type="text" id="address" path="address" />
+                                                <form:input type="text" path="address"
+                                                    class="${not empty errorAddress? 'is-invalid':''}" />
+                                                ${errorAddress}
                                             </div>
                                             <div class="input-wrapper">
+                                                <c:set var="errorPassword">
+                                                    <form:errors path="password" cssClass="invalid-feedback" />
+                                                </c:set>
                                                 <label for="password">Mật khẩu <font color="red">*</font></label>
-                                                <form:input type="password" id="password" path="password" />
+                                                <form:input type="password" path="password"
+                                                    class="${not empty errorPassword? 'is-invalid':''}" />
+                                                ${errorPassword}
                                             </div>
                                             <button type="submit" class="rts-btn btn-primary">Đăng Ký</button>
                                             <div class="another-way-to-registration">

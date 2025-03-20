@@ -71,6 +71,11 @@ public class UserController {
             return "admin/user/create";
         }
 
+        if (this.userService.checkEmailExists(u.getEmail())) {
+            newUserBindingResult.rejectValue("email", "error.user", "Email đã tồn tại");
+            return "client/auth/register";
+        }
+
         // validate end
 
         // role

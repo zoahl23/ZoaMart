@@ -51,4 +51,8 @@ public class UserService {
     public Role getRoleByName(String name) {
         return this.roleRepository.findByName(name);
     }
+
+    public boolean checkEmailExists(String email) {
+        return this.userRepository.existsByEmail(email);
+    }
 }
