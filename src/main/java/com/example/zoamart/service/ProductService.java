@@ -3,6 +3,8 @@ package com.example.zoamart.service;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import com.example.zoamart.domain.Product;
 import com.example.zoamart.dto.ProductDTO;
@@ -38,6 +40,27 @@ public class ProductService {
 
     public void deleteAProduct(long id) {
         this.productRepository.deleteById(id);
+    }
+
+    public List<ProductDTO> getLatestProducts() {
+        List<Product> products = productRepository.findLatestProducts();
+        return products.stream()
+                .map(ProductMapper.PRODUCT_INSTANCE::toDTO)
+                .collect(Collectors.toList());
+    }
+
+    public List<ProductDTO> getSoldOutProducts() {
+        List<Product> products = productRepository.findSoldOutProducts();
+        return products.stream()
+                .map(ProductMapper.PRODUCT_INSTANCE::toDTO)
+                .collect(Collectors.toList());
+    }
+
+    public List<ProductDTO> getTop10ProductsByParentCategory(Long parentId) {
+        return productRepository.findTop10ProductsByParentCategory(parentId)
+                .stream()
+                .map(ProductMapper.PRODUCT_INSTANCE::toDTO)
+                .collect(Collectors.toList());
     }
 
 }

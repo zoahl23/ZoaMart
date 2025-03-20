@@ -17220,11 +17220,11 @@ li.with-megamenu:hover .rts-megamenu {
 }
 
 .bg_one-banner {
-  background-image: url(../images/banner/01.webp);
+  background-image: url(/img/banner/05.jpg);
 }
 
 .bg_one-banner {
-  background-image: url(../images/banner/01.webp);
+  background-image: url(/img/banner/05.jpg);
 }
 
 .bg_one-banner.two {
@@ -17262,7 +17262,7 @@ li.with-megamenu:hover .rts-megamenu {
 }
 
 .bg_banner-2 {
-  background-image: url(../images/banner/02.jpg);
+  background-image: url(../../images/banner/05.jpg);
   height: 520px;
   border-radius: 6px;
 }
@@ -18650,7 +18650,7 @@ li.with-megamenu:hover .rts-megamenu {
   font-size: 12px;
   font-weight: 500;
   color: #fff;
-  background: var(--color-primary);
+  background: #EABC5E;
   border-radius: 6px 0 6px 0;
   z-index: 10;
   left: 0;
@@ -27320,7 +27320,7 @@ header.header-three .sub-dropdown .submenu.third-lvl.base {
     margin-top: 100px;
     padding: 20px;
     width: 92%;
-    height: 90vh;
+    height: 70vh;
     overflow-y: scroll;
   }
 }

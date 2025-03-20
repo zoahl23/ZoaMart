@@ -5,7 +5,7 @@
             <div class="container-2">
                 <div class="row">
                     <div class="col-lg-12">
-                        <div class="offer-area-main-wrapper">
+                        <div class="offer-area-main-wrapper" style="background: #2B4226;">
                             <span>Giảm giá cuối tuần</span>
                             <h3 class="title">Thực phẩm tốt cho sức khỏe mà bạn nên sử dụng</h3>
                             <p class="disc">
