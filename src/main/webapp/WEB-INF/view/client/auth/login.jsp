@@ -1,60 +1,61 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-        <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+        <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+            <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-            <!DOCTYPE html>
-            <html lang="en">
+                <!DOCTYPE html>
+                <html lang="en">
 
-            <head>
-                <meta charset="UTF-8">
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <title>ZOA Mart</title>
-                <link rel="shortcut icon" type="image/x-icon" href="/images2/fav.png">
-                <link rel="stylesheet preload" href="/css2/plugins.css" as="style">
-                <link rel="stylesheet preload" href="/css2/style.css" as="style">
-                <link rel="stylesheet preload" href="/css2/custom.css" as="style">
-            </head>
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>ZOA Mart</title>
+                    <link rel="shortcut icon" type="image/x-icon" href="/images2/fav.png">
+                    <link rel="stylesheet preload" href="/css2/plugins.css" as="style">
+                    <link rel="stylesheet preload" href="/css2/style.css" as="style">
+                    <link rel="stylesheet preload" href="/css2/custom.css" as="style">
+                </head>
 
-            <body>
-
-
+                <body>
 
 
-                <!-- rts login area start -->
-                <div class="rts-register-area rts-section-gap bg_light-1">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="registration-wrapper-1">
-                                    <div class="logo-area mb--0">
-                                        <img class="mb--10" src="/images2/logo/fav.png" alt="logo">
+
+
+                    <!-- rts login area start -->
+                    <div class="rts-register-area rts-section-gap bg_light-1">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="registration-wrapper-1">
+                                        <div class="logo-area mb--0">
+                                            <img class="mb--10" src="/images2/logo/fav.png" alt="logo">
+                                        </div>
+                                        <h3 class="title">Đăng Nhập</h3>
+                                        <form action="#" class="registration-form">
+                                            <div class="input-wrapper">
+                                                <label for="email">Email <font color="red">*</font></label>
+                                                <input type="email" id="email">
+                                            </div>
+                                            <div class="input-wrapper">
+                                                <label for="password">Mật khẩu <font color="red">*</font></label>
+                                                <input type="password" id="password">
+                                            </div>
+                                            <button class="rts-btn btn-primary">Đăng Nhập</button>
+                                            <div class="another-way-to-registration">
+                                                <p>Bạn chưa có tài khoản? <a href="/register">Đăng Ký</a></p>
+                                            </div>
+                                        </form>
                                     </div>
-                                    <h3 class="title">Đăng Nhập</h3>
-                                    <form action="#" class="registration-form">
-                                        <div class="input-wrapper">
-                                            <label for="email">Email <font color="red">*</font></label>
-                                            <input type="email" id="email">
-                                        </div>
-                                        <div class="input-wrapper">
-                                            <label for="password">Mật khẩu <font color="red">*</font></label>
-                                            <input type="password" id="password">
-                                        </div>
-                                        <button class="rts-btn btn-primary">Đăng Nhập</button>
-                                        <div class="another-way-to-registration">
-                                            <p>Bạn chưa có tài khoản? <a href="/register">Đăng Ký</a></p>
-                                        </div>
-                                    </form>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <!-- rts login area end -->
+                    <!-- rts login area end -->
 
 
 
-                <!-- Spinner Start -->
-                <!-- <div id="weiboo-load">
+                    <!-- Spinner Start -->
+                    <!-- <div id="weiboo-load">
             <div class="preloader-new">
                 <svg class="cart_preloader" role="img" aria-label="Shopping cart_preloader line animation"
                     viewBox="0 0 128 128" width="128px" height="128px" xmlns="http://www.w3.org/2000/svg">
@@ -80,42 +81,42 @@
                 </svg>
             </div>
         </div> -->
-                <!-- Spinner End -->
+                    <!-- Spinner End -->
 
-                <!-- chưa rõ start -->
-                <div class="search-input-area">
-                    <div class="container">
-                        <div class="search-input-inner">
-                            <div class="input-div">
-                                <input id="searchInput1" class="search-input" type="text"
-                                    placeholder="Search by keyword or #">
-                                <button><i class="far fa-search"></i></button>
+                    <!-- chưa rõ start -->
+                    <div class="search-input-area">
+                        <div class="container">
+                            <div class="search-input-inner">
+                                <div class="input-div">
+                                    <input id="searchInput1" class="search-input" type="text"
+                                        placeholder="Search by keyword or #">
+                                    <button><i class="far fa-search"></i></button>
+                                </div>
                             </div>
                         </div>
+                        <div id="close" class="search-close-icon"><i class="far fa-times"></i></div>
                     </div>
-                    <div id="close" class="search-close-icon"><i class="far fa-times"></i></div>
-                </div>
-                <div id="anywhere-home" class="anywere"></div>
-                <!-- progress area start -->
-                <div class="progress-wrap">
-                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
-                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"
-                            style="transition: stroke-dashoffset 10ms linear 0s; stroke-dasharray: 307.919, 307.919; stroke-dashoffset: 307.919;">
-                        </path>
-                    </svg>
-                </div>
-                <!-- progress area end -->
-                <!-- chưa rõ end -->
+                    <div id="anywhere-home" class="anywere"></div>
+                    <!-- progress area start -->
+                    <div class="progress-wrap">
+                        <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"
+                                style="transition: stroke-dashoffset 10ms linear 0s; stroke-dasharray: 307.919, 307.919; stroke-dashoffset: 307.919;">
+                            </path>
+                        </svg>
+                    </div>
+                    <!-- progress area end -->
+                    <!-- chưa rõ end -->
 
 
-                <!-- plugins js -->
-                <script defer src="/js2/plugins.js"></script>
+                    <!-- plugins js -->
+                    <script defer src="/js2/plugins.js"></script>
 
-                <!-- custom js -->
-                <script defer src="/js2/main.js"></script>
-                <!-- header style two End -->
+                    <!-- custom js -->
+                    <script defer src="/js2/main.js"></script>
+                    <!-- header style two End -->
 
 
-            </body>
+                </body>
 
-            </html>
+                </html>

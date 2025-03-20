@@ -1,20 +1,20 @@
 package com.example.zoamart.controller.client;
 
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 import com.example.zoamart.dto.CategoryDTO;
 import com.example.zoamart.dto.ProductDTO;
+import com.example.zoamart.dto.UserDTO;
 import com.example.zoamart.service.CategoryService;
 import com.example.zoamart.service.ProductService;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 @RequiredArgsConstructor
@@ -48,6 +48,14 @@ public class HomePageController {
 
     @GetMapping("/register")
     public String getRegisterPage(Model model) {
+        model.addAttribute("registerUser", new UserDTO());
+        return "client/auth/register";
+    }
+
+    @PostMapping("/register")
+    public String registerPage(@ModelAttribute("registerUser") UserDTO u) {
+        // TODO: process POST request
+
         return "client/auth/register";
     }
 

@@ -5,6 +5,7 @@ import java.util.Date;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 
@@ -13,23 +14,24 @@ public class UserDTO {
     private long id;
 
     @NotNull
-    @Email(message = "Email is not valid", regexp = ".+[@].+[\\.].+")
+    @Email(message = "Email không hợp lệ", regexp = ".+[@].+[\\.].+")
     private String email;
 
     @NotNull
-    @Size(min = 6, message = "Password must be at least 6 characters")
+    @Size(min = 6, message = "Mật khẩu cần tối thiểu 6 ký tự")
     private String password;
 
     @NotNull
-    @NotEmpty(message = "Full Name cannot be empty")
+    @NotEmpty(message = "Tên không được để trống")
     private String fullName;
 
     @NotNull
-    @NotEmpty(message = "Address cannot be empty")
+    @NotEmpty(message = "Địa chỉ không được để trống")
     private String address;
 
     @NotNull
-    @Size(min = 10, message = "Phone number must be at least 10 characters")
+    @Size(min = 10, max = 10, message = "Số điện thoại phải có 10 chữ số")
+    @Pattern(regexp = "\\d+", message = "Số điện thoại chỉ được chứa chữ số")
     private String phone;
     private Date createdAt;
     private Date updatedAt;

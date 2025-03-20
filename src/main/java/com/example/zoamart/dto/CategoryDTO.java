@@ -11,7 +11,7 @@ public class CategoryDTO {
     private long id;
 
     @NotNull
-    @NotEmpty(message = "Category Name cannot be empty")
+    @NotEmpty(message = "Tên danh mục không được để trống")
     private String name;
     private Date createdAt;
     private Date updatedAt;

@@ -13,28 +13,28 @@ public class ProductDTO {
     private long id;
 
     @NotNull
-    @NotEmpty(message = "Product Name cannot be empty")
+    @NotEmpty(message = "Tên sản phẩm không được để trống")
     private String name;
 
-    @Min(value = 0, message = "Price must be greater than or equal to 0")
+    @Min(value = 0, message = "Giá sản phẩm phải lớn hơn hoặc bằng 0")
     private int price;
 
-    @Min(value = 0, message = "Discount percent must be at least 0")
-    @Max(value = 100, message = "Discount percent cannot exceed 100")
+    @Min(value = 0, message = "Phần trăm giảm giá thấp nhất là 0")
+    @Max(value = 100, message = "Phần trăm giảm giá cao nhất là 100")
     private int discountPercent;
 
     @NotNull
-    @NotEmpty(message = "Description Detail cannot be empty")
+    @NotEmpty(message = "Mô tả chi tiết không được để trống")
     private String desDetail;
 
     @NotNull
-    @NotEmpty(message = "Description Short cannot be empty")
+    @NotEmpty(message = "Mô tả ngắn gọn không được để trống")
     private String desShort;
 
-    @Min(value = 0, message = "Quantity must be at least 0")
+    @Min(value = 0, message = "Số lượng kho thấp nhất là 0")
     private int quantity;
 
-    @Min(value = 0, message = "Sold must be at least 0")
+    @Min(value = 0, message = "Số lượng bán thấp nhất là 0")
     private int sold;
     private String imageUrl;
     private Date createdAt;
