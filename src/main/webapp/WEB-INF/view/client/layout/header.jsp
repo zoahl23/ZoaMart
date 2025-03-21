@@ -54,9 +54,7 @@
                                         <c:if test="${not empty pageContext.request.userPrincipal}">
                                             <a href="/customer" class="btn-border-only account">
                                                 <i class="fa-light fa-user"></i>
-                                                <c:set var="email" value="${pageContext.request.userPrincipal.name}" />
-                                                <c:set var="username" value="${fn:split(email, '@')[0]}" />
-                                                <c:out value="${username}" />
+                                                <c:out value="${sessionScope.fullName}" />
                                             </a>
                                             <div class="btn-border-only cart category-hover-header">
                                                 <i class="fa-sharp fa-regular fa-cart-shopping"></i>
