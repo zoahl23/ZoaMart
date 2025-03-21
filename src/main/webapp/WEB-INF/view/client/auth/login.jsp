@@ -31,14 +31,22 @@
                                             <img class="mb--10" src="/images2/logo/fav.png" alt="logo">
                                         </div>
                                         <h3 class="title">Đăng Nhập</h3>
-                                        <form action="#" class="registration-form">
+                                        <form method="post" action="/login" class="registration-form">
+                                            <c:if test="${param.error != null}">
+                                                <div class="my-2" style="color: red;">Email hoặc mật khẩu không hợp
+                                                    lệ.</div>
+                                            </c:if>
                                             <div class="input-wrapper">
                                                 <label for="email">Email <font color="red">*</font></label>
-                                                <input type="email" id="email">
+                                                <input type="email" id="email" name="username">
                                             </div>
                                             <div class="input-wrapper">
                                                 <label for="password">Mật khẩu <font color="red">*</font></label>
-                                                <input type="password" id="password">
+                                                <input type="password" id="password" name="password">
+                                            </div>
+                                            <div>
+                                                <input type="hidden" name="${_csrf.parameterName}"
+                                                    value="${_csrf.token}" />
                                             </div>
                                             <button class="rts-btn btn-primary">Đăng Nhập</button>
                                             <div class="another-way-to-registration">

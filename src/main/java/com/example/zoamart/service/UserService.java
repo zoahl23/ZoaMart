@@ -33,11 +33,6 @@ public class UserService {
                 .collect(Collectors.toList());
     }
 
-    // do ko có findByEmail nên phải tự định nghĩa bằng keyword bên REPOSITORY
-    public List<User> getAllUsersByEmail(String email) {
-        return this.userRepository.findByEmail(email);
-    }
-
     public UserDTO handleSaveUser(UserDTO userDTO) {
         User user = UserMapper.USER_INSTANCE.toEntity(userDTO);
         User savedUser = userRepository.save(user);
@@ -54,5 +49,10 @@ public class UserService {
 
     public boolean checkEmailExists(String email) {
         return this.userRepository.existsByEmail(email);
+    }
+
+    public UserDTO getUserByEmail(String email) {
+        User user = userRepository.findByEmail(email).orElseThrow(() -> new RuntimeException("User not found"));
+        return UserMapper.USER_INSTANCE.toDTO(user);
     }
 }

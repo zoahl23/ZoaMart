@@ -12,8 +12,6 @@ import com.example.zoamart.domain.User;
 public interface UserRepository extends JpaRepository<User, Long> {
     User save(User user);
 
-    List<User> findByEmail(String email);
-
     List<User> findAll();
 
     Optional<User> findById(long id);
@@ -21,4 +19,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
     void deleteById(long id);
 
     boolean existsByEmail(String email);
+
+    Optional<User> findByEmail(String email);
 }
