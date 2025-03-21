@@ -22,7 +22,7 @@
                 <!-- header style two end -->
                 <!-- rts header area end -->
 
-                <jsp:include page="../layout/detail-header.jsp" />
+                <jsp:include page="breadcrumb.jsp" />
 
                 <div class="rts-chop-details-area rts-section-gap bg_light-1">
                     <div class="container">
@@ -323,7 +323,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <jsp:include page="../layout/detail-right.jsp" />
+                                <jsp:include page="sidebar-right.jsp" />
                             </div>
                         </div>
                     </div>

@@ -36,6 +36,9 @@
                                                 <div class="my-2" style="color: red;">Email hoặc mật khẩu không hợp
                                                     lệ.</div>
                                             </c:if>
+                                            <c:if test="${param.logout != null}">
+                                                <div class="my-2" style="color: green;">Đăng xuất thành công.</div>
+                                            </c:if>
                                             <div class="input-wrapper">
                                                 <label for="email">Email <font color="red">*</font></label>
                                                 <input type="email" id="email" name="username">

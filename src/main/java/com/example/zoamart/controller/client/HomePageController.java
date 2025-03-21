@@ -100,4 +100,9 @@ public class HomePageController {
     public String getLoginPage(Model model) {
         return "client/auth/login";
     }
+
+    @GetMapping("/customer")
+    public String getAccountPage(Model model) {
+        return "client/customer/show";
+    }
 }
