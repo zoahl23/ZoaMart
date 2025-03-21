@@ -101,8 +101,8 @@ public class HomePageController {
         return "client/auth/login";
     }
 
-    @GetMapping("/customer")
-    public String getAccountPage(Model model) {
-        return "client/customer/show";
+    @GetMapping("/access-deny")
+    public String getDenyPage(Model model) {
+        return "client/auth/error";
     }
 }
