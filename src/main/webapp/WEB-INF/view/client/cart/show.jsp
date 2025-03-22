@@ -82,17 +82,19 @@
                                                         <div class="quantity">
                                                             <div class="quantity-edit">
                                                                 <input type="text" class="input"
-                                                                    value="${cartDetail.quantity}">
+                                                                    value="${cartDetail.quantity}"
+                                                                    data-cart-detail-id="${cartDetail.id}"
+                                                                    data-cart-detail-price="${cartDetail.price}">
                                                                 <div class="button-wrapper-action">
-                                                                    <button type="button" class="button"><i
+                                                                    <button class="button"><i
                                                                             class="fa-regular fa-chevron-down"></i></button>
-                                                                    <button type="button" class="button plus">+<i
+                                                                    <button class="button plus">+<i
                                                                             class="fa-regular fa-chevron-up"></i></button>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="subtotal">
-                                                            <p>
+                                                            <p data-cart-detail-id="${cartDetail.id}">
                                                                 <fmt:formatNumber
                                                                     value="${cartDetail.price * cartDetail.quantity}"
                                                                     type="number" groupingUsed="true" /> đ
@@ -111,7 +113,10 @@
                                                 <h5 class="title">Tổng giỏ hàng</h5>
                                                 <div class="subtotal">
                                                     <span>Tạm tính</span>
-                                                    <h6 class="price">110.000đ</h6>
+                                                    <p class="price" data-cart-total-price="${totalPrice}">
+                                                        <fmt:formatNumber value="${totalPrice}" type="number"
+                                                            groupingUsed="true" /> đ
+                                                    </p>
                                                 </div>
                                                 <div class="shipping">
                                                     <span>Vận chuyển</span>
@@ -136,7 +141,10 @@
                                                 <div class="bottom">
                                                     <div class="wrapper">
                                                         <span>Thành tiền</span>
-                                                        <h6 class="price">110.000đ</h6>
+                                                        <p class="price" data-cart-total-price="${totalPrice}">
+                                                            <fmt:formatNumber value="${totalPrice}" type="number"
+                                                                groupingUsed="true" /> đ
+                                                        </p>
                                                     </div>
                                                     <div class="button-area">
                                                         <button class="rts-btn btn-primary">Tiến hành thanh
