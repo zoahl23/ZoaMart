@@ -20,7 +20,7 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private double totalPrice;
+    private int totalPrice;
     private int status;
     private int paymentMethod;
     private Date createdAt;

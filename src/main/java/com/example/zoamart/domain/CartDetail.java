@@ -11,21 +11,22 @@ import lombok.Data;
 
 @Entity
 @Data
-@Table(name = "order_details")
-public class OrderDetail {
+@Table(name = "cart_details")
+public class CartDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private int quantity;
-    private int unitPrice;
+    private int price;
 
-    // orderId
+    // cartId
     @ManyToOne
-    @JoinColumn(name = "order_id")
-    private Order order;
+    @JoinColumn(name = "cart_id")
+    private Cart cart;
 
     // productId
     @ManyToOne
     @JoinColumn(name = "product_id")
     private Product product;
+
 }
