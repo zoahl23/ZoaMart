@@ -10,7 +10,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import com.example.zoamart.dto.ProductDTO;
 import com.example.zoamart.service.ProductService;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @Controller
 @RequiredArgsConstructor
@@ -28,4 +32,17 @@ public class ItemController {
         model.addAttribute("products", products);
         return "client/product/detail";
     }
+
+    @PostMapping("/add-product-to-cart/{id}")
+    public String addProductToCart(@PathVariable long id, HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        String email = (String) session.getAttribute("email");
+
+        long productId = id;
+
+        this.productService.handleAddProductToCart(email, productId);
+
+        return "redirect:/";
+    }
+
 }

@@ -4,10 +4,18 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
+
+import com.example.zoamart.domain.Cart;
+import com.example.zoamart.domain.CartDetail;
 import com.example.zoamart.domain.Product;
+import com.example.zoamart.domain.User;
 import com.example.zoamart.dto.ProductDTO;
+import com.example.zoamart.dto.UserDTO;
 import com.example.zoamart.mapper.ProductMapper;
+import com.example.zoamart.repository.CartDetailRepository;
+import com.example.zoamart.repository.CartRepository;
 import com.example.zoamart.repository.ProductRepository;
+import com.example.zoamart.repository.UserRepository;
 
 import lombok.RequiredArgsConstructor;
 
@@ -16,6 +24,9 @@ import lombok.RequiredArgsConstructor;
 public class ProductService {
 
     private final ProductRepository productRepository;
+    private final CartRepository cartRepository;
+    private final CartDetailRepository cartDetailRepository;
+    private final UserRepository userRepository;
 
     public ProductDTO handleSaveProduct(ProductDTO productDTO) {
         Product product = ProductMapper.PRODUCT_INSTANCE.toEntity(productDTO);
@@ -66,6 +77,34 @@ public class ProductService {
                 .stream()
                 .map(ProductMapper.PRODUCT_INSTANCE::toDTO)
                 .collect(Collectors.toList());
+    }
+
+    public void handleAddProductToCart(String email, long productId) {
+        User user = this.userRepository.findByEmail(email).get();
+
+        if (user != null) {
+            Cart cart = this.cartRepository.findByUser(user); // xem có cart chưa
+
+            if (cart == null) {
+                Cart c = new Cart();
+                c.setUser(user);
+                c.setSum(1);
+
+                cart = this.cartRepository.save(c);
+            }
+
+            Product product = this.productRepository.findById(productId).get();
+            if (product != null) {
+                CartDetail cartDetail = new CartDetail();
+                cartDetail.setCart(cart);
+                cartDetail.setProduct(product);
+                cartDetail.setPrice(product.getPrice());
+                cartDetail.setQuantity(1);
+
+                this.cartDetailRepository.save(cartDetail);
+            }
+
+        }
     }
 
 }
