@@ -63,6 +63,8 @@ public class CustomSuccessHandler implements AuthenticationSuccessHandler {
             session.setAttribute("password", user.getPassword());
             session.setAttribute("address", user.getAddress());
             session.setAttribute("id", user.getId());
+
+            session.setAttribute("sum", user.getCartSum());
         }
     }
 

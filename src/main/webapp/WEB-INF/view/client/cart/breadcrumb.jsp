@@ -8,9 +8,7 @@
                         <div class="navigator-breadcrumb-wrapper">
                             <a href="/">Trang chủ</a>
                             <i class="fa-regular fa-chevron-right"></i>
-                            <a class="#" href="index.html">${product.categoryName}</a>
-                            <i class="fa-regular fa-chevron-right"></i>
-                            <a class="current" href="index.html">${product.name}</a>
+                            <a class="current" href="/cart">Giỏ hàng</a>
                         </div>
                     </div>
                 </div>

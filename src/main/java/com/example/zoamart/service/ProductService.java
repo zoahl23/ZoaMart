@@ -10,13 +10,13 @@ import com.example.zoamart.domain.CartDetail;
 import com.example.zoamart.domain.Product;
 import com.example.zoamart.domain.User;
 import com.example.zoamart.dto.ProductDTO;
-import com.example.zoamart.dto.UserDTO;
 import com.example.zoamart.mapper.ProductMapper;
 import com.example.zoamart.repository.CartDetailRepository;
 import com.example.zoamart.repository.CartRepository;
 import com.example.zoamart.repository.ProductRepository;
 import com.example.zoamart.repository.UserRepository;
 
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -79,7 +79,7 @@ public class ProductService {
                 .collect(Collectors.toList());
     }
 
-    public void handleAddProductToCart(String email, long productId) {
+    public void handleAddProductToCart(String email, long productId, HttpSession session) {
         User user = this.userRepository.findByEmail(email).get();
 
         if (user != null) {
@@ -88,20 +88,32 @@ public class ProductService {
             if (cart == null) {
                 Cart c = new Cart();
                 c.setUser(user);
-                c.setSum(1);
+                c.setSum(0);
 
                 cart = this.cartRepository.save(c);
             }
 
             Product product = this.productRepository.findById(productId).get();
             if (product != null) {
-                CartDetail cartDetail = new CartDetail();
-                cartDetail.setCart(cart);
-                cartDetail.setProduct(product);
-                cartDetail.setPrice(product.getPrice());
-                cartDetail.setQuantity(1);
+                CartDetail oldDetail = this.cartDetailRepository.findByCartAndProduct(cart, product);
 
-                this.cartDetailRepository.save(cartDetail);
+                if (oldDetail == null) { // nếu sản phẩm chưa có trong giỏ hàng
+                    CartDetail cartDetail = new CartDetail();
+                    cartDetail.setCart(cart);
+                    cartDetail.setProduct(product);
+                    cartDetail.setPrice(product.getPrice());
+                    cartDetail.setQuantity(1);
+                    this.cartDetailRepository.save(cartDetail);
+
+                    int sum = cart.getSum() + 1;
+                    cart.setSum(sum);
+                    this.cartRepository.save(cart);
+                    session.setAttribute("sum", sum);
+                } else {
+                    oldDetail.setQuantity(oldDetail.getQuantity() + 1);
+                    this.cartDetailRepository.save(oldDetail);
+                }
+
             }
 
         }

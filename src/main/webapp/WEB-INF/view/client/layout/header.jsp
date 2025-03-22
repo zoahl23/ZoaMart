@@ -59,7 +59,7 @@
                                             <div class="btn-border-only cart category-hover-header">
                                                 <i class="fa-sharp fa-regular fa-cart-shopping"></i>
                                                 <span class="text">Giỏ hàng</span>
-                                                <span class="number">2</span>
+                                                <span class="number">${sessionScope.sum}</span>
                                                 <div class="category-sub-menu card-number-show">
                                                     <h5 class="shopping-cart-number">Giỏ hàng của bạn (03)</h5>
                                                     <div class="cart-item-1 border-top">
@@ -147,7 +147,7 @@
                                                         </div>
                                                         <div
                                                             class="button-wrapper d-flex align-items-center justify-content-between">
-                                                            <a href="cart.html" class="rts-btn btn-primary ">Xem chi
+                                                            <a href="/cart" class="rts-btn btn-primary ">Xem chi
                                                                 tiết</a>
                                                             <a href="checkout.html"
                                                                 class="rts-btn btn-primary border-only">Thanh
@@ -155,7 +155,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <a href="cart.html" class="over_link"></a>
+                                                <a href="/cart" class="over_link"></a>
                                             </div>
                                         </c:if>
                                         <c:if test="${empty pageContext.request.userPrincipal}">
