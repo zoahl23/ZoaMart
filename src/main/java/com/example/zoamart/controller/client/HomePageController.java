@@ -85,6 +85,8 @@ public class HomePageController {
         u.setRoleName("USER");
         Role role = this.userService.getRoleByName(u.getRoleName());
         u.setRoleId(role.getId());
+        // cart
+        u.setCartSum(0);
         // password
         String hashPassword = this.passwordEncoder.encode(u.getPassword());
         u.setPassword(hashPassword);

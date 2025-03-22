@@ -37,4 +37,7 @@ public class UserDTO {
     private Date updatedAt;
     private long roleId;
     private String roleName;
+
+    private Long cartId;
+    private int cartSum;
 }
