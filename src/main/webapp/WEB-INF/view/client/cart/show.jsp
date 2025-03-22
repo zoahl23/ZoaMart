@@ -53,9 +53,14 @@
                                                 <c:forEach var="cartDetail" items="${cartDetails}">
                                                     <div class="single-cart-area-list main  item-parent">
                                                         <div class="product-main-cart">
-                                                            <div class="close section-activation">
-                                                                <i class="fa-regular fa-x"></i>
-                                                            </div>
+                                                            <form action="/delete-product-in-cart/${cartDetail.id}"
+                                                                method="post">
+                                                                <input type="hidden" name="${_csrf.parameterName}"
+                                                                    value="${_csrf.token}" />
+                                                                <button class="close section-activation">
+                                                                    <i class="fa-regular fa-x"></i>
+                                                                </button>
+                                                            </form>
                                                             <div class="thumbnail" style="margin: 0 20px;">
                                                                 <a href="/product/${cartDetail.product.id}"
                                                                     style="all: unset; cursor: pointer;">
