@@ -27,171 +27,150 @@
 
 
 
-                    <!-- rts cart area start -->
-                    <div class="rts-cart-area rts-section-gap bg_light-1">
-                        <div class="container">
-                            <div class="row g-5">
-                                <div
-                                    class="col-xl-9 col-lg-12 col-md-12 col-12 order-2 order-xl-1 order-lg-2 order-md-2 order-sm-2">
-                                    <div class="rts-cart-list-area">
-                                        <div class="single-cart-area-list head">
-                                            <div class="product-main">
-                                                <P>Danh sách sản phẩm</P>
-                                            </div>
-                                            <div class="price">
-                                                <p>Giá tiền</p>
-                                            </div>
-                                            <div class="quantity">
-                                                <p>Số lượng</p>
-                                            </div>
-                                            <div class="subtotal">
-                                                <p>Tổng tiền</p>
-                                            </div>
-                                        </div>
-                                        <div class="single-cart-area-list main  item-parent">
-                                            <div class="product-main-cart">
-                                                <div class="close section-activation">
-                                                    <i class="fa-regular fa-x"></i>
-                                                </div>
-                                                <div class="thumbnail">
-                                                    <img src="/images2/shop/02.png" alt="shop">
-                                                </div>
-                                                <div class="information">
-                                                    <h6 class="title">SunChips Minis, Garden Salsa Flavored Canister,
-                                                        Multigrain Chips</h6>
-                                                    <span>SKU:BG-1001</span>
-                                                </div>
-                                            </div>
-                                            <div class="price">
-                                                <p>$550.00</p>
-                                            </div>
-                                            <div class="quantity">
-                                                <div class="quantity-edit">
-                                                    <input type="text" class="input" value="1">
-                                                    <div class="button-wrapper-action">
-                                                        <button class="button"><i
-                                                                class="fa-regular fa-chevron-down"></i></button>
-                                                        <button class="button plus">+<i
-                                                                class="fa-regular fa-chevron-up"></i></button>
+                    <c:choose>
+                        <c:when test="${not empty cartDetails}">
+                            <!-- rts cart area start -->
+                            <div class="rts-cart-area rts-section-gap bg_light-1">
+                                <div class="container">
+                                    <div class="row g-5">
+                                        <div
+                                            class="col-xl-9 col-lg-12 col-md-12 col-12 order-2 order-xl-1 order-lg-2 order-md-2 order-sm-2">
+                                            <div class="rts-cart-list-area">
+                                                <div class="single-cart-area-list head">
+                                                    <div class="product-main">
+                                                        <P>Danh sách sản phẩm</P>
+                                                    </div>
+                                                    <div class="price">
+                                                        <p>Giá tiền</p>
+                                                    </div>
+                                                    <div class="quantity">
+                                                        <p>Số lượng</p>
+                                                    </div>
+                                                    <div class="subtotal">
+                                                        <p>Tổng tiền</p>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="subtotal">
-                                                <p>$550.00</p>
-                                            </div>
-                                        </div>
-                                        <div class="single-cart-area-list main  item-parent">
-                                            <div class="product-main-cart">
-                                                <div class="close section-activation">
-                                                    <i class="fa-regular fa-x"></i>
-                                                </div>
-                                                <div class="thumbnail">
-                                                    <img src="/images2/shop/04.png" alt="shop">
-                                                </div>
-                                                <div class="information">
-                                                    <h6 class="title">SunChips Minis, Garden Salsa Flavored Canister,
-                                                        Multigrain Chips</h6>
-                                                    <span>SKU:BG-1001</span>
-                                                </div>
-                                            </div>
-                                            <div class="price">
-                                                <p>$550.00</p>
-                                            </div>
-                                            <div class="quantity">
-                                                <div class="quantity-edit">
-                                                    <input type="text" class="input" value="1">
-                                                    <div class="button-wrapper-action">
-                                                        <button class="button"><i
-                                                                class="fa-regular fa-chevron-down"></i></button>
-                                                        <button class="button plus">+<i
-                                                                class="fa-regular fa-chevron-up"></i></button>
+                                                <c:forEach var="cartDetail" items="${cartDetails}">
+                                                    <div class="single-cart-area-list main  item-parent">
+                                                        <div class="product-main-cart">
+                                                            <div class="close section-activation">
+                                                                <i class="fa-regular fa-x"></i>
+                                                            </div>
+                                                            <div class="thumbnail" style="margin: 0 20px;">
+                                                                <a href="/product/${cartDetail.product.id}"
+                                                                    style="all: unset; cursor: pointer;">
+                                                                    <img src="/img/products/${cartDetail.product.imageUrl}"
+                                                                        alt="${cartDetail.product.name}"
+                                                                        style="width: 65px; height: 65px; object-fit: contain;">
+                                                                </a>
+                                                            </div>
+                                                            <div class="information">
+                                                                <a href="/product/${cartDetail.product.id}"
+                                                                    style="all: unset; cursor: pointer;">
+                                                                    <h6 class="title">${cartDetail.product.name}</h6>
+                                                                    <span>Danh mục:
+                                                                        ${cartDetail.product.category.name}</span>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="price">
+                                                            <p>
+                                                                <fmt:formatNumber value="${cartDetail.price}"
+                                                                    type="number" groupingUsed="true" /> đ
+                                                            </p>
+                                                        </div>
+                                                        <div class="quantity">
+                                                            <div class="quantity-edit">
+                                                                <input type="text" class="input"
+                                                                    value="${cartDetail.quantity}">
+                                                                <div class="button-wrapper-action">
+                                                                    <button type="button" class="button"><i
+                                                                            class="fa-regular fa-chevron-down"></i></button>
+                                                                    <button type="button" class="button plus">+<i
+                                                                            class="fa-regular fa-chevron-up"></i></button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="subtotal">
+                                                            <p>
+                                                                <fmt:formatNumber
+                                                                    value="${cartDetail.price * cartDetail.quantity}"
+                                                                    type="number" groupingUsed="true" /> đ
+                                                            </p>
+                                                        </div>
                                                     </div>
+                                                </c:forEach>
+                                                <div class="bottom-cupon-code-cart-area">
+                                                    <a href="#" class="rts-btn btn-primary mr--50">Xóa giỏ hàng</a>
                                                 </div>
-                                            </div>
-                                            <div class="subtotal">
-                                                <p>$550.00</p>
                                             </div>
                                         </div>
-                                        <div class="single-cart-area-list main  item-parent">
-                                            <div class="product-main-cart">
-                                                <div class="close section-activation">
-                                                    <i class="fa-regular fa-x"></i>
+                                        <div
+                                            class="col-xl-3 col-lg-12 col-md-12 col-12 order-1 order-xl-2 order-lg-1 order-md-1 order-sm-1">
+                                            <div class="cart-total-area-start-right">
+                                                <h5 class="title">Tổng giỏ hàng</h5>
+                                                <div class="subtotal">
+                                                    <span>Tạm tính</span>
+                                                    <h6 class="price">110.000đ</h6>
                                                 </div>
-                                                <div class="thumbnail">
-                                                    <img src="/images2/shop/05.png" alt="shop">
-                                                </div>
-                                                <div class="information">
-                                                    <h6 class="title">SunChips Minis, Garden Salsa Flavored Canister,
-                                                        Multigrain Chips</h6>
-                                                    <span>SKU:BG-1001</span>
-                                                </div>
-                                            </div>
-                                            <div class="price">
-                                                <p>$550.00</p>
-                                            </div>
-                                            <div class="quantity">
-                                                <div class="quantity-edit">
-                                                    <input type="text" class="input" value="1">
-                                                    <div class="button-wrapper-action">
-                                                        <button class="button"><i
-                                                                class="fa-regular fa-chevron-down"></i></button>
-                                                        <button class="button plus">+<i
-                                                                class="fa-regular fa-chevron-up"></i></button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="subtotal">
-                                                <p>$550.00</p>
-                                            </div>
-                                        </div>
-                                        <div class="bottom-cupon-code-cart-area">
-                                            <a href="#" class="rts-btn btn-primary mr--50">Xóa giỏ hàng</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div
-                                    class="col-xl-3 col-lg-12 col-md-12 col-12 order-1 order-xl-2 order-lg-1 order-md-1 order-sm-1">
-                                    <div class="cart-total-area-start-right">
-                                        <h5 class="title">Tổng giỏ hàng</h5>
-                                        <div class="subtotal">
-                                            <span>Tạm tính</span>
-                                            <h6 class="price">110.000đ</h6>
-                                        </div>
-                                        <div class="shipping">
-                                            <span>Vận chuyển</span>
-                                            <ul>
-                                                <li>
-                                                    <input type="radio" id="f-option" name="selector">
-                                                    <label for="f-option">Giao hàng tận nơi</label>
+                                                <div class="shipping">
+                                                    <span>Vận chuyển</span>
+                                                    <ul>
+                                                        <li>
+                                                            <input type="radio" id="f-option" name="selector">
+                                                            <label for="f-option">Giao hàng tận nơi</label>
 
-                                                    <div class="check"></div>
-                                                </li>
+                                                            <div class="check"></div>
+                                                        </li>
 
-                                                <li>
-                                                    <input type="radio" id="t-option" name="selector">
-                                                    <label for="t-option">Nhận tại cửa hàng</label>
+                                                        <li>
+                                                            <input type="radio" id="t-option" name="selector">
+                                                            <label for="t-option">Nhận tại cửa hàng</label>
 
-                                                    <div class="check">
-                                                        <div class="inside"></div>
+                                                            <div class="check">
+                                                                <div class="inside"></div>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="bottom">
+                                                    <div class="wrapper">
+                                                        <span>Thành tiền</span>
+                                                        <h6 class="price">110.000đ</h6>
                                                     </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="bottom">
-                                            <div class="wrapper">
-                                                <span>Thành tiền</span>
-                                                <h6 class="price">110.000đ</h6>
-                                            </div>
-                                            <div class="button-area">
-                                                <button class="rts-btn btn-primary">Tiến hành thanh toán</button>
+                                                    <div class="button-area">
+                                                        <button class="rts-btn btn-primary">Tiến hành thanh
+                                                            toán</button>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <!-- rts cart area end -->
+                            <!-- rts cart area end -->
+                        </c:when>
+                        <c:otherwise>
+                            <div class="error-area-main-wrapper rts-section-gap2" style="padding-top: 30px;">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="error-main-wrapper">
+                                                <div class="thumbnail">
+                                                    <img src="/images2/contact/02.png" alt="error"
+                                                        style="height: 40vh;">
+                                                </div>
+                                                <div class="content-main" style="margin-top:30px;">
+                                                    <h2 class="title">Giỏ hàng chưa có sản phẩm</h2>
+                                                    <a href="/" class="rts-btn btn-primary">Quay về Trang chủ</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </c:otherwise>
+                    </c:choose>
 
                     <!-- rts shorts service area start -->
                     <jsp:include page="../layout/service.jsp" />
