@@ -1,6 +1,7 @@
 package com.example.zoamart.service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
@@ -105,7 +106,8 @@ public class ProductService {
                     cartDetail.setQuantity(quantity);
                     this.cartDetailRepository.save(cartDetail);
 
-                    int sum = cart.getSum() + 1;
+                    List<CartDetail> remaining = this.cartDetailRepository.findByCart(cart);
+                    int sum = remaining.size();
                     cart.setSum(sum);
                     this.cartRepository.save(cart);
                     session.setAttribute("sum", sum);
@@ -124,20 +126,25 @@ public class ProductService {
     }
 
     public void handleRemoveCartDetail(long cartDetailId, HttpSession session) {
-        CartDetail cartDetail = this.cartDetailRepository.findById(cartDetailId).get();
+        Optional<CartDetail> cartDetail = this.cartDetailRepository.findById(cartDetailId);
 
-        if (cartDetail != null) {
-            Cart cart = cartDetail.getCart();
+        if (cartDetail.isPresent()) {
+            CartDetail cd = cartDetail.get();
+            Cart cart = cd.getCart();
             this.cartDetailRepository.deleteById(cartDetailId);
-            if (cart.getSum() > 1) {
-                int s = cart.getSum() - 1;
-                cart.setSum(s);
-                session.setAttribute("sum", s);
+
+            List<CartDetail> remaining = this.cartDetailRepository.findByCart(cart);
+            int newSum = remaining.size();
+            if (newSum > 0) {
+                cart.setSum(newSum);
                 this.cartRepository.save(cart);
+                session.setAttribute("sum", newSum);
             } else {
-                this.cartRepository.deleteById(cart.getId());
                 session.setAttribute("sum", 0);
+                cart.setSum(0);
+                // this.cartRepository.deleteById(cart.getId());
             }
+
         }
     }
 
