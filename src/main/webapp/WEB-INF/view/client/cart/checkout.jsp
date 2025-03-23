@@ -83,6 +83,10 @@
                                                         <label for="ordernotes">Order Notes*</label>
                                                         <textarea id="ordernotes" name="receiverNote"></textarea>
                                                     </div>
+                                                    <div class="single-input" style="display: none;">
+                                                        <input id="phone" name="receiverTotalPrice" type="text"
+                                                            value="${totalPrice}" required>
+                                                    </div>
                                                 </form:form>
                                                 <a href="/cart" class="rts-btn btn-primary">Quay lại giỏ hàng</a>
                                             </div>

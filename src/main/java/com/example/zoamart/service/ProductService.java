@@ -1,5 +1,6 @@
 package com.example.zoamart.service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -180,14 +181,19 @@ public class ProductService {
     }
 
     public void handlePlaceOrder(User user, HttpSession session, String receiverName, String receiverAddress,
-            String receiverPhone, String receiverNote) {
+            String receiverPhone, String receiverNote, int receiverTotalPrice) {
 
+        Date date = new Date();
         Order order = new Order();
         order.setUser(user);
         order.setReceiverName(receiverName);
         order.setReceiverAddress(receiverAddress);
         order.setReceiverPhone(receiverPhone);
         order.setReceiverNote(receiverNote);
+        order.setTotalPrice(receiverTotalPrice);
+        order.setStatus(1);
+        order.setPaymentMethod(1);
+        order.setCreatedAt(date);
         order = this.orderRepository.save(order);
 
         Cart cart = this.cartRepository.findByUser(user);

@@ -138,7 +138,8 @@ public class ItemController {
             @RequestParam("receiverName") String receiverName,
             @RequestParam("receiverAddress") String receiverAddress,
             @RequestParam("receiverPhone") String receiverPhone,
-            @RequestParam("receiverNote") String receiverNote) {
+            @RequestParam("receiverNote") String receiverNote,
+            @RequestParam("receiverTotalPrice") int receiverTotalPrice) {
 
         User user = new User();
         HttpSession session = request.getSession(false);
@@ -146,7 +147,8 @@ public class ItemController {
         long userId = (long) session.getAttribute("id");
         user.setId(userId);
 
-        this.productService.handlePlaceOrder(user, session, receiverName, receiverAddress, receiverPhone, receiverNote);
+        this.productService.handlePlaceOrder(user, session, receiverName, receiverAddress, receiverPhone, receiverNote,
+                receiverTotalPrice);
 
         return "redirect:/thanks";
     }

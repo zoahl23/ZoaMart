@@ -138,15 +138,6 @@
 
                                                             <div class="check"></div>
                                                         </li>
-
-                                                        <li>
-                                                            <input type="radio" id="t-option" name="selector">
-                                                            <label for="t-option">Nhận tại cửa hàng</label>
-
-                                                            <div class="check">
-                                                                <div class="inside"></div>
-                                                            </div>
-                                                        </li>
                                                     </ul>
                                                 </div>
                                                 <div class="bottom">
