@@ -109,11 +109,14 @@
                                                     </div>
                                                     <div class="short-contact-info">
                                                         <p class="name">Price</p>
-                                                        <a href="#">${product.price}</a>
+                                                        <a href="#">
+                                                            <fmt:formatNumber value="${product.price}" type="number"
+                                                                groupingUsed="true" /> đ
+                                                        </a>
                                                     </div>
                                                     <div class="short-contact-info">
                                                         <p class="name">Discount</p>
-                                                        <a href="#">${product.discountPercent}</a>
+                                                        <a href="#">${product.discountPercent}%</a>
                                                     </div>
                                                     <div class="short-contact-info">
                                                         <p class="name">Quantity</p>
@@ -152,7 +155,7 @@
                                                     <p><span>Image :</span></p>
                                                     <p><img src="/img/products/${product.imageUrl}"
                                                             class="rounded mx-auto d-block"
-                                                            style="width: 400px; height: 400px; object-fit: contain; background-color: #f0f0f0;">
+                                                            style="width: 400px; height: 400px; object-fit: contain;">
                                                     </p>
                                                 </div>
                                             </div>

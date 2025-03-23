@@ -109,7 +109,9 @@ public class ProductService {
                     CartDetail cartDetail = new CartDetail();
                     cartDetail.setCart(cart);
                     cartDetail.setProduct(product);
-                    cartDetail.setPrice(product.getPrice());
+                    int price = (product.getPrice() - (product.getPrice() * product.getDiscountPercent() / 100))
+                            - ((product.getPrice() - (product.getPrice() * product.getDiscountPercent() / 100)) % 1);
+                    cartDetail.setPrice(price);
                     cartDetail.setQuantity(quantity);
                     this.cartDetailRepository.save(cartDetail);
 
@@ -207,6 +209,17 @@ public class ProductService {
                     orderDetail.setQuantity(cd.getQuantity());
                     orderDetail.setUnitPrice(cd.getPrice());
                     this.orderDetailRepository.save(orderDetail);
+
+                    Product product = cd.getProduct();
+                    int sold = product.getSold() + cd.getQuantity();
+                    int quantity = product.getQuantity() - cd.getQuantity();
+                    product.setSold(sold);
+                    if (quantity < 0) {
+                        product.setQuantity(0);
+                    } else {
+                        product.setQuantity(quantity);
+                    }
+
                 }
 
                 this.cartDetailRepository.deleteByCartId(cart.getId());

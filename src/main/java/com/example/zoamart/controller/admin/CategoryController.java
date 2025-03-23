@@ -73,7 +73,7 @@ public class CategoryController {
     public String getDetailCategoryPage(Model model, @PathVariable long id) {
         CategoryDTO category = this.categoryService.getCategoryById(id);
         model.addAttribute("category", category);
-        return "/admin/category/detail";
+        return "admin/category/detail";
     }
 
     @GetMapping("/admin/category/update/{id}")

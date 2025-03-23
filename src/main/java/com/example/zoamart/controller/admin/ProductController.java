@@ -84,7 +84,7 @@ public class ProductController {
     public String getDetailProductPage(Model model, @PathVariable long id) {
         ProductDTO product = this.productService.getAProductById(id);
         model.addAttribute("product", product);
-        return "/admin/product/detail";
+        return "admin/product/detail";
     }
 
     @GetMapping("/admin/product/delete/{id}") // GET

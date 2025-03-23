@@ -125,7 +125,8 @@
                                                                 </td>
                                                                 <td>
                                                                     <p style="color: #2d3b29;">
-                                                                        ${product.price}
+                                                                        <fmt:formatNumber value="${product.price}"
+                                                                            type="number" groupingUsed="true" /> đ
                                                                     </p>
                                                                 </td>
                                                                 <td>

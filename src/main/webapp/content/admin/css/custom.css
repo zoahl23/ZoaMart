@@ -14,7 +14,7 @@
 .table-user th,
 .table-user td {
     white-space: nowrap;
-    overflow: hidden;
+    /* overflow: hidden; */
     text-overflow: ellipsis;
 }
 
@@ -35,7 +35,7 @@
 .table-category th,
 .table-category td {
     white-space: nowrap;
-    overflow: hidden;
+    /* overflow: hidden; */
     text-overflow: ellipsis;
 }
 
@@ -54,7 +54,7 @@
 .table-product th,
 .table-product td {
     white-space: nowrap;
-    overflow: hidden;
+    /* overflow: hidden; */
     text-overflow: ellipsis;
 }
 
@@ -74,7 +74,7 @@
 .table-order th,
 .table-order td {
     white-space: nowrap;
-    overflow: hidden;
+    /* overflow: hidden; */
     text-overflow: ellipsis;
 }
 

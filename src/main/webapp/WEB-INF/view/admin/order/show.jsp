@@ -135,7 +135,7 @@
                                                                     </p>
                                                                 </td>
                                                                 <td>
-                                                                    <div class="between-stock-table statrusts">
+                                                                    <div class="statrusts">
                                                                         <p>${order.status}</p>
                                                                     </div>
                                                                 </td>
