@@ -9,7 +9,7 @@
                 <head>
                     <meta charset="UTF-8">
                     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                    <title>Giỏ hàng</title>
+                    <title>Thanh toán</title>
                     <link rel="shortcut icon" type="image/x-icon" href="/images2/fav.png">
                     <link rel="stylesheet preload" href="/css2/plugins.css" as="style">
                     <link rel="stylesheet preload" href="/css2/style.css" as="style">
@@ -24,7 +24,7 @@
                     <!-- rts header area end -->
 
 
-                    <div class="error-area-main-wrapper rts-section-gap2" style="padding-top: 30px;">
+                    <div class="error-area-main-wrapper rts-section-gap2" style="margin-top: 114px; padding-top: 30px;">
                         <div class="container">
                             <div class="row">
                                 <div class="col-lg-12">
@@ -33,8 +33,9 @@
                                             <img src="/images2/contact/02.png" alt="error" style="height: 40vh;">
                                         </div>
                                         <div class="content-main" style="margin-top:30px;">
-                                            <h2 class="title">Cảm ơn đã mua hàng</h2>
-                                            <a href="/" class="rts-btn btn-primary">Quay về Trang chủ</a>
+                                            <h2 class="title">Cảm ơn bạn đã đặt hàng</h2>
+                                            <p>Chúng tôi sẽ liên hệ và giao hàng cho bạn trong thời gian sớm nhất.</p>
+                                            <a href="/" class="rts-btn btn-primary">Tiếp tục mua sắm</a>
                                         </div>
                                     </div>
                                 </div>

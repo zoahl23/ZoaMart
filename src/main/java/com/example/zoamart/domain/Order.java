@@ -23,7 +23,7 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private int totalPrice;
-    private int status;
+    private String status;
     private int paymentMethod;
     private String receiverName;
     private String receiverAddress;

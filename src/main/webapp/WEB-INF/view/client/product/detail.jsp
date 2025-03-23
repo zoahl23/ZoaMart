@@ -76,29 +76,36 @@
                                                                         type="number" groupingUsed="true" /> đ
                                                                 </span>
                                                             </span>
-                                                            <div class="product-bottom-action">
-                                                                <div class="cart-edits">
-                                                                    <div class="quantity-edit action-item">
-                                                                        <button class="button"><i
-                                                                                class="fal fa-minus minus"></i></button>
-                                                                        <input type="text" class="input" value="01" />
-                                                                        <button class="button plus">+<i
-                                                                                class="fal fa-plus plus"></i></button>
+                                                            <form action="/add-product-detail-to-cart/${product.id}"
+                                                                method="post">
+                                                                <div class="product-bottom-action">
+                                                                    <input type="hidden" name="${_csrf.parameterName}"
+                                                                        value="${_csrf.token}" />
+                                                                    <div class="cart-edits">
+                                                                        <div class="quantity-edit action-item">
+                                                                            <button type="button" class="button"><i
+                                                                                    class="fal fa-minus minus"></i></button>
+                                                                            <input type="text" class="input"
+                                                                                name="quantity" value="01" />
+                                                                            <button type="button"
+                                                                                class="button plus">+<i
+                                                                                    class="fal fa-plus plus"></i></button>
+                                                                        </div>
                                                                     </div>
+                                                                    <button type="submit"
+                                                                        class="rts-btn btn-primary radious-sm with-icon">
+                                                                        <div class="btn-text">
+                                                                            Thêm vào giỏ
+                                                                        </div>
+                                                                        <div class="arrow-icon">
+                                                                            <i class="fa-regular fa-cart-shopping"></i>
+                                                                        </div>
+                                                                        <div class="arrow-icon">
+                                                                            <i class="fa-regular fa-cart-shopping"></i>
+                                                                        </div>
+                                                                    </button>
                                                                 </div>
-                                                                <a href="#"
-                                                                    class="rts-btn btn-primary radious-sm with-icon">
-                                                                    <div class="btn-text">
-                                                                        Thêm vào giỏ
-                                                                    </div>
-                                                                    <div class="arrow-icon">
-                                                                        <i class="fa-regular fa-cart-shopping"></i>
-                                                                    </div>
-                                                                    <div class="arrow-icon">
-                                                                        <i class="fa-regular fa-cart-shopping"></i>
-                                                                    </div>
-                                                                </a>
-                                                            </div>
+                                                            </form>
                                                             <div class="product-uniques">
                                                                 <span class="sku product-unipue mb--10"><span
                                                                         style="font-weight: 400; margin-right: 10px;">Số
@@ -446,29 +453,36 @@
                                                                         type="number" groupingUsed="true" /> đ
                                                                 </div>
                                                             </div>
-                                                            <div class="cart-counter-action">
-                                                                <div class="quantity-edit">
-                                                                    <input type="text" class="input" value="1">
-                                                                    <div class="button-wrapper-action">
-                                                                        <button class="button"><i
-                                                                                class="fa-regular fa-chevron-down"></i></button>
-                                                                        <button class="button plus">+<i
-                                                                                class="fa-regular fa-chevron-up"></i></button>
+                                                            <form action="/add-product-detail-to-cart/${products[0].id}"
+                                                                method="post">
+                                                                <div class="cart-counter-action">
+                                                                    <input type="hidden" name="${_csrf.parameterName}"
+                                                                        value="${_csrf.token}" />
+                                                                    <div class="quantity-edit">
+                                                                        <input type="text" class="input" name="quantity"
+                                                                            value="1">
+                                                                        <div class="button-wrapper-action">
+                                                                            <button type="button" class="button"><i
+                                                                                    class="fa-regular fa-chevron-down"></i></button>
+                                                                            <button type="button"
+                                                                                class="button plus">+<i
+                                                                                    class="fa-regular fa-chevron-up"></i></button>
+                                                                        </div>
                                                                     </div>
+                                                                    <button type="submit"
+                                                                        class="rts-btn btn-primary radious-sm with-icon">
+                                                                        <div class="btn-text">
+                                                                            Thêm vào giỏ
+                                                                        </div>
+                                                                        <div class="arrow-icon">
+                                                                            <i class="fa-regular fa-cart-shopping"></i>
+                                                                        </div>
+                                                                        <div class="arrow-icon">
+                                                                            <i class="fa-regular fa-cart-shopping"></i>
+                                                                        </div>
+                                                                    </button>
                                                                 </div>
-                                                                <a href="#"
-                                                                    class="rts-btn btn-primary radious-sm with-icon">
-                                                                    <div class="btn-text">
-                                                                        Thêm vào giỏ
-                                                                    </div>
-                                                                    <div class="arrow-icon">
-                                                                        <i class="fa-regular fa-cart-shopping"></i>
-                                                                    </div>
-                                                                    <div class="arrow-icon">
-                                                                        <i class="fa-regular fa-cart-shopping"></i>
-                                                                    </div>
-                                                                </a>
-                                                            </div>
+                                                            </form>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -514,29 +528,36 @@
                                                                         type="number" groupingUsed="true" /> đ
                                                                 </div>
                                                             </div>
-                                                            <div class="cart-counter-action">
-                                                                <div class="quantity-edit">
-                                                                    <input type="text" class="input" value="1">
-                                                                    <div class="button-wrapper-action">
-                                                                        <button class="button"><i
-                                                                                class="fa-regular fa-chevron-down"></i></button>
-                                                                        <button class="button plus">+<i
-                                                                                class="fa-regular fa-chevron-up"></i></button>
+                                                            <form action="/add-product-detail-to-cart/${products[1].id}"
+                                                                method="post">
+                                                                <div class="cart-counter-action">
+                                                                    <input type="hidden" name="${_csrf.parameterName}"
+                                                                        value="${_csrf.token}" />
+                                                                    <div class="quantity-edit">
+                                                                        <input type="text" class="input" name="quantity"
+                                                                            value="1">
+                                                                        <div class="button-wrapper-action">
+                                                                            <button type="button" class="button"><i
+                                                                                    class="fa-regular fa-chevron-down"></i></button>
+                                                                            <button type="button"
+                                                                                class="button plus">+<i
+                                                                                    class="fa-regular fa-chevron-up"></i></button>
+                                                                        </div>
                                                                     </div>
+                                                                    <button type="submit"
+                                                                        class="rts-btn btn-primary radious-sm with-icon">
+                                                                        <div class="btn-text">
+                                                                            Thêm vào giỏ
+                                                                        </div>
+                                                                        <div class="arrow-icon">
+                                                                            <i class="fa-regular fa-cart-shopping"></i>
+                                                                        </div>
+                                                                        <div class="arrow-icon">
+                                                                            <i class="fa-regular fa-cart-shopping"></i>
+                                                                        </div>
+                                                                    </button>
                                                                 </div>
-                                                                <a href="#"
-                                                                    class="rts-btn btn-primary radious-sm with-icon">
-                                                                    <div class="btn-text">
-                                                                        Thêm vào giỏ
-                                                                    </div>
-                                                                    <div class="arrow-icon">
-                                                                        <i class="fa-regular fa-cart-shopping"></i>
-                                                                    </div>
-                                                                    <div class="arrow-icon">
-                                                                        <i class="fa-regular fa-cart-shopping"></i>
-                                                                    </div>
-                                                                </a>
-                                                            </div>
+                                                            </form>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -582,29 +603,36 @@
                                                                         type="number" groupingUsed="true" /> đ
                                                                 </div>
                                                             </div>
-                                                            <div class="cart-counter-action">
-                                                                <div class="quantity-edit">
-                                                                    <input type="text" class="input" value="1">
-                                                                    <div class="button-wrapper-action">
-                                                                        <button class="button"><i
-                                                                                class="fa-regular fa-chevron-down"></i></button>
-                                                                        <button class="button plus">+<i
-                                                                                class="fa-regular fa-chevron-up"></i></button>
+                                                            <form action="/add-product-detail-to-cart/${products[2].id}"
+                                                                method="post">
+                                                                <div class="cart-counter-action">
+                                                                    <input type="hidden" name="${_csrf.parameterName}"
+                                                                        value="${_csrf.token}" />
+                                                                    <div class="quantity-edit">
+                                                                        <input type="text" class="input" name="quantity"
+                                                                            value="1">
+                                                                        <div class="button-wrapper-action">
+                                                                            <button type="button" class="button"><i
+                                                                                    class="fa-regular fa-chevron-down"></i></button>
+                                                                            <button type="button"
+                                                                                class="button plus">+<i
+                                                                                    class="fa-regular fa-chevron-up"></i></button>
+                                                                        </div>
                                                                     </div>
+                                                                    <button type="submit"
+                                                                        class="rts-btn btn-primary radious-sm with-icon">
+                                                                        <div class="btn-text">
+                                                                            Thêm vào giỏ
+                                                                        </div>
+                                                                        <div class="arrow-icon">
+                                                                            <i class="fa-regular fa-cart-shopping"></i>
+                                                                        </div>
+                                                                        <div class="arrow-icon">
+                                                                            <i class="fa-regular fa-cart-shopping"></i>
+                                                                        </div>
+                                                                    </button>
                                                                 </div>
-                                                                <a href="#"
-                                                                    class="rts-btn btn-primary radious-sm with-icon">
-                                                                    <div class="btn-text">
-                                                                        Thêm vào giỏ
-                                                                    </div>
-                                                                    <div class="arrow-icon">
-                                                                        <i class="fa-regular fa-cart-shopping"></i>
-                                                                    </div>
-                                                                    <div class="arrow-icon">
-                                                                        <i class="fa-regular fa-cart-shopping"></i>
-                                                                    </div>
-                                                                </a>
-                                                            </div>
+                                                            </form>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -650,29 +678,36 @@
                                                                         type="number" groupingUsed="true" /> đ
                                                                 </div>
                                                             </div>
-                                                            <div class="cart-counter-action">
-                                                                <div class="quantity-edit">
-                                                                    <input type="text" class="input" value="1">
-                                                                    <div class="button-wrapper-action">
-                                                                        <button class="button"><i
-                                                                                class="fa-regular fa-chevron-down"></i></button>
-                                                                        <button class="button plus">+<i
-                                                                                class="fa-regular fa-chevron-up"></i></button>
+                                                            <form action="/add-product-detail-to-cart/${products[3].id}"
+                                                                method="post">
+                                                                <div class="cart-counter-action">
+                                                                    <input type="hidden" name="${_csrf.parameterName}"
+                                                                        value="${_csrf.token}" />
+                                                                    <div class="quantity-edit">
+                                                                        <input type="text" class="input" name="quantity"
+                                                                            value="1">
+                                                                        <div class="button-wrapper-action">
+                                                                            <button type="button" class="button"><i
+                                                                                    class="fa-regular fa-chevron-down"></i></button>
+                                                                            <button type="button"
+                                                                                class="button plus">+<i
+                                                                                    class="fa-regular fa-chevron-up"></i></button>
+                                                                        </div>
                                                                     </div>
+                                                                    <button type="submit"
+                                                                        class="rts-btn btn-primary radious-sm with-icon">
+                                                                        <div class="btn-text">
+                                                                            Thêm vào giỏ
+                                                                        </div>
+                                                                        <div class="arrow-icon">
+                                                                            <i class="fa-regular fa-cart-shopping"></i>
+                                                                        </div>
+                                                                        <div class="arrow-icon">
+                                                                            <i class="fa-regular fa-cart-shopping"></i>
+                                                                        </div>
+                                                                    </button>
                                                                 </div>
-                                                                <a href="#"
-                                                                    class="rts-btn btn-primary radious-sm with-icon">
-                                                                    <div class="btn-text">
-                                                                        Thêm vào giỏ
-                                                                    </div>
-                                                                    <div class="arrow-icon">
-                                                                        <i class="fa-regular fa-cart-shopping"></i>
-                                                                    </div>
-                                                                    <div class="arrow-icon">
-                                                                        <i class="fa-regular fa-cart-shopping"></i>
-                                                                    </div>
-                                                                </a>
-                                                            </div>
+                                                            </form>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -719,29 +754,36 @@
                                                                         type="number" groupingUsed="true" /> đ
                                                                 </div>
                                                             </div>
-                                                            <div class="cart-counter-action">
-                                                                <div class="quantity-edit">
-                                                                    <input type="text" class="input" value="1">
-                                                                    <div class="button-wrapper-action">
-                                                                        <button class="button"><i
-                                                                                class="fa-regular fa-chevron-down"></i></button>
-                                                                        <button class="button plus">+<i
-                                                                                class="fa-regular fa-chevron-up"></i></button>
+                                                            <form action="/add-product-detail-to-cart/${products[4].id}"
+                                                                method="post">
+                                                                <div class="cart-counter-action">
+                                                                    <input type="hidden" name="${_csrf.parameterName}"
+                                                                        value="${_csrf.token}" />
+                                                                    <div class="quantity-edit">
+                                                                        <input type="text" class="input" name="quantity"
+                                                                            value="1">
+                                                                        <div class="button-wrapper-action">
+                                                                            <button type="button" class="button"><i
+                                                                                    class="fa-regular fa-chevron-down"></i></button>
+                                                                            <button type="button"
+                                                                                class="button plus">+<i
+                                                                                    class="fa-regular fa-chevron-up"></i></button>
+                                                                        </div>
                                                                     </div>
+                                                                    <button type="submit"
+                                                                        class="rts-btn btn-primary radious-sm with-icon">
+                                                                        <div class="btn-text">
+                                                                            Thêm vào giỏ
+                                                                        </div>
+                                                                        <div class="arrow-icon">
+                                                                            <i class="fa-regular fa-cart-shopping"></i>
+                                                                        </div>
+                                                                        <div class="arrow-icon">
+                                                                            <i class="fa-regular fa-cart-shopping"></i>
+                                                                        </div>
+                                                                    </button>
                                                                 </div>
-                                                                <a href="#"
-                                                                    class="rts-btn btn-primary radious-sm with-icon">
-                                                                    <div class="btn-text">
-                                                                        Thêm vào giỏ
-                                                                    </div>
-                                                                    <div class="arrow-icon">
-                                                                        <i class="fa-regular fa-cart-shopping"></i>
-                                                                    </div>
-                                                                    <div class="arrow-icon">
-                                                                        <i class="fa-regular fa-cart-shopping"></i>
-                                                                    </div>
-                                                                </a>
-                                                            </div>
+                                                            </form>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -787,29 +829,36 @@
                                                                         type="number" groupingUsed="true" /> đ
                                                                 </div>
                                                             </div>
-                                                            <div class="cart-counter-action">
-                                                                <div class="quantity-edit">
-                                                                    <input type="text" class="input" value="1">
-                                                                    <div class="button-wrapper-action">
-                                                                        <button class="button"><i
-                                                                                class="fa-regular fa-chevron-down"></i></button>
-                                                                        <button class="button plus">+<i
-                                                                                class="fa-regular fa-chevron-up"></i></button>
+                                                            <form action="/add-product-detail-to-cart/${products[5].id}"
+                                                                method="post">
+                                                                <div class="cart-counter-action">
+                                                                    <input type="hidden" name="${_csrf.parameterName}"
+                                                                        value="${_csrf.token}" />
+                                                                    <div class="quantity-edit">
+                                                                        <input type="text" class="input" name="quantity"
+                                                                            value="1">
+                                                                        <div class="button-wrapper-action">
+                                                                            <button type="button" class="button"><i
+                                                                                    class="fa-regular fa-chevron-down"></i></button>
+                                                                            <button type="button"
+                                                                                class="button plus">+<i
+                                                                                    class="fa-regular fa-chevron-up"></i></button>
+                                                                        </div>
                                                                     </div>
+                                                                    <button type="submit"
+                                                                        class="rts-btn btn-primary radious-sm with-icon">
+                                                                        <div class="btn-text">
+                                                                            Thêm vào giỏ
+                                                                        </div>
+                                                                        <div class="arrow-icon">
+                                                                            <i class="fa-regular fa-cart-shopping"></i>
+                                                                        </div>
+                                                                        <div class="arrow-icon">
+                                                                            <i class="fa-regular fa-cart-shopping"></i>
+                                                                        </div>
+                                                                    </button>
                                                                 </div>
-                                                                <a href="#"
-                                                                    class="rts-btn btn-primary radious-sm with-icon">
-                                                                    <div class="btn-text">
-                                                                        Thêm vào giỏ
-                                                                    </div>
-                                                                    <div class="arrow-icon">
-                                                                        <i class="fa-regular fa-cart-shopping"></i>
-                                                                    </div>
-                                                                    <div class="arrow-icon">
-                                                                        <i class="fa-regular fa-cart-shopping"></i>
-                                                                    </div>
-                                                                </a>
-                                                            </div>
+                                                            </form>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -855,29 +904,36 @@
                                                                         type="number" groupingUsed="true" /> đ
                                                                 </div>
                                                             </div>
-                                                            <div class="cart-counter-action">
-                                                                <div class="quantity-edit">
-                                                                    <input type="text" class="input" value="1">
-                                                                    <div class="button-wrapper-action">
-                                                                        <button class="button"><i
-                                                                                class="fa-regular fa-chevron-down"></i></button>
-                                                                        <button class="button plus">+<i
-                                                                                class="fa-regular fa-chevron-up"></i></button>
+                                                            <form action="/add-product-detail-to-cart/${products[6].id}"
+                                                                method="post">
+                                                                <div class="cart-counter-action">
+                                                                    <input type="hidden" name="${_csrf.parameterName}"
+                                                                        value="${_csrf.token}" />
+                                                                    <div class="quantity-edit">
+                                                                        <input type="text" class="input" name="quantity"
+                                                                            value="1">
+                                                                        <div class="button-wrapper-action">
+                                                                            <button type="button" class="button"><i
+                                                                                    class="fa-regular fa-chevron-down"></i></button>
+                                                                            <button type="button"
+                                                                                class="button plus">+<i
+                                                                                    class="fa-regular fa-chevron-up"></i></button>
+                                                                        </div>
                                                                     </div>
+                                                                    <button type="submit"
+                                                                        class="rts-btn btn-primary radious-sm with-icon">
+                                                                        <div class="btn-text">
+                                                                            Thêm vào giỏ
+                                                                        </div>
+                                                                        <div class="arrow-icon">
+                                                                            <i class="fa-regular fa-cart-shopping"></i>
+                                                                        </div>
+                                                                        <div class="arrow-icon">
+                                                                            <i class="fa-regular fa-cart-shopping"></i>
+                                                                        </div>
+                                                                    </button>
                                                                 </div>
-                                                                <a href="#"
-                                                                    class="rts-btn btn-primary radious-sm with-icon">
-                                                                    <div class="btn-text">
-                                                                        Thêm vào giỏ
-                                                                    </div>
-                                                                    <div class="arrow-icon">
-                                                                        <i class="fa-regular fa-cart-shopping"></i>
-                                                                    </div>
-                                                                    <div class="arrow-icon">
-                                                                        <i class="fa-regular fa-cart-shopping"></i>
-                                                                    </div>
-                                                                </a>
-                                                            </div>
+                                                            </form>
                                                         </div>
                                                     </div>
                                                 </div>

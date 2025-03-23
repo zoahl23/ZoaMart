@@ -191,7 +191,7 @@ public class ProductService {
         order.setReceiverPhone(receiverPhone);
         order.setReceiverNote(receiverNote);
         order.setTotalPrice(receiverTotalPrice);
-        order.setStatus(1);
+        order.setStatus("PENDING");
         order.setPaymentMethod(1);
         order.setCreatedAt(date);
         order = this.orderRepository.save(order);
