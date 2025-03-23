@@ -57,23 +57,27 @@
 
                                             <div class="rts-billing-details-area">
                                                 <h3 class="title">Thông tin người nhận</h3>
-                                                <form:form action="/place-order" method="post" modelAttribute="cart">
+                                                <form:form id="placeOrderForm" action="/place-order" method="post"
+                                                    modelAttribute="cart">
                                                     <input type="hidden" name="${_csrf.parameterName}"
                                                         value="${_csrf.token}" />
                                                     <div class="single-input">
                                                         <label for="fullName">Tên người nhận <font color="red">*
                                                             </font></label>
-                                                        <input id="fullName" name="receiverName" type="text" required>
+                                                        <input id="fullName" name="receiverName" type="text"
+                                                            value="${sessionScope.fullName}" required>
                                                     </div>
                                                     <div class="single-input">
                                                         <label for="street">Địa chỉ người nhận <font color="red">*
                                                             </font></label>
-                                                        <input id="street" name="receiverAddress" type="text" required>
+                                                        <input id="street" name="receiverAddress" type="text"
+                                                            value="${sessionScope.address}" required>
                                                     </div>
                                                     <div class="single-input">
                                                         <label for="phone">Số điện thoại <font color="red">*</font>
                                                         </label>
-                                                        <input id="phone" name="receiverPhone" type="text" required>
+                                                        <input id="phone" name="receiverPhone" type="text"
+                                                            value="${sessionScope.phone}" required>
                                                     </div>
                                                     <div class="single-input">
                                                         <label for="ordernotes">Order Notes*</label>
@@ -94,55 +98,34 @@
                                                         Giá
                                                     </div>
                                                 </div>
-                                                <div class="single-shop-list">
-                                                    <div class="left-area">
-                                                        <a href="#" class="thumbnail">
-                                                            <img src="/images2/shop/04.png" alt="">
-                                                        </a>
-                                                        <a href="#" class="title">
-                                                            Foster Farms Breast Nuggets Shaped Chicken
-                                                        </a>
+                                                <c:forEach var="cartDetail" items="${cartDetails}">
+                                                    <div class="single-shop-list">
+                                                        <div class="left-area">
+                                                            <a href="/product/${cartDetail.product.id}"
+                                                                class="thumbnail">
+                                                                <img src="/img/products/${cartDetail.product.imageUrl}"
+                                                                    alt="${cartDetail.product.name}"
+                                                                    style="width: 78px; height: 78px; object-fit: contain;">
+                                                            </a>
+                                                            <a href="/product/${cartDetail.product.id}" class="title">
+                                                                ${cartDetail.product.name}
+                                                            </a>
+                                                        </div>
+                                                        <span class="price">
+                                                            ${cartDetail.quantity} x
+                                                            <fmt:formatNumber value="${cartDetail.price}" type="number"
+                                                                groupingUsed="true" /> đ
+                                                        </span>
                                                     </div>
-                                                    <span class="price">$500.00</span>
-                                                </div>
-                                                <div class="single-shop-list">
-                                                    <div class="left-area">
-                                                        <a href="#" class="thumbnail">
-                                                            <img src="/images2/shop/04.png" alt="">
-                                                        </a>
-                                                        <a href="#" class="title">
-                                                            Foster Farms Breast Nuggets Shaped Chicken
-                                                        </a>
-                                                    </div>
-                                                    <span class="price">$500.00</span>
-                                                </div>
-                                                <div class="single-shop-list">
-                                                    <div class="left-area">
-                                                        <a href="#" class="thumbnail">
-                                                            <img src="/images2/shop/04.png" alt="">
-                                                        </a>
-                                                        <a href="#" class="title">
-                                                            Foster Farms Breast Nuggets Shaped Chicken
-                                                        </a>
-                                                    </div>
-                                                    <span class="price">$500.00</span>
-                                                </div>
-                                                <div class="single-shop-list">
-                                                    <div class="left-area">
-                                                        <a href="#" class="thumbnail">
-                                                            <img src="/images2/shop/04.png" alt="">
-                                                        </a>
-                                                        <a href="#" class="title">
-                                                            Foster Farms Breast Nuggets Shaped Chicken
-                                                        </a>
-                                                    </div>
-                                                    <span class="price">$500.00</span>
-                                                </div>
+                                                </c:forEach>
                                                 <div class="single-shop-list">
                                                     <div class="left-area">
                                                         <span>Tạm tính</span>
                                                     </div>
-                                                    <span class="price">$500.00</span>
+                                                    <span class="price">
+                                                        <fmt:formatNumber value="${totalPrice}" type="number"
+                                                            groupingUsed="true" /> đ
+                                                    </span>
                                                 </div>
                                                 <div class="single-shop-list">
                                                     <div class="left-area">
@@ -161,10 +144,15 @@
                                                         <span style="font-weight: 600; color: #2C3C28;">Thành
                                                             tiền:</span>
                                                     </div>
-                                                    <span class="price" style="color: #629D23;">$550.00</span>
+                                                    <span class="price" style="color: #629D23;">
+                                                        <fmt:formatNumber value="${totalPrice}" type="number"
+                                                            groupingUsed="true" /> đ
+                                                    </span>
                                                 </div>
                                                 <div class="cottom-cart-right-area">
-                                                    <button class="rts-btn btn-primary">Xác nhận thanh toán</a>
+                                                    <button class="rts-btn btn-primary"
+                                                        onclick="document.getElementById('placeOrderForm').submit()">Xác
+                                                        nhận thanh toán</a>
                                                 </div>
                                             </div>
                                         </div>

@@ -5,15 +5,20 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.zoamart.domain.Cart;
 import com.example.zoamart.domain.CartDetail;
+import com.example.zoamart.domain.Order;
+import com.example.zoamart.domain.OrderDetail;
 import com.example.zoamart.domain.Product;
 import com.example.zoamart.domain.User;
 import com.example.zoamart.dto.ProductDTO;
 import com.example.zoamart.mapper.ProductMapper;
 import com.example.zoamart.repository.CartDetailRepository;
 import com.example.zoamart.repository.CartRepository;
+import com.example.zoamart.repository.OrderDetailRepository;
+import com.example.zoamart.repository.OrderRepository;
 import com.example.zoamart.repository.ProductRepository;
 import com.example.zoamart.repository.UserRepository;
 
@@ -28,6 +33,8 @@ public class ProductService {
     private final CartRepository cartRepository;
     private final CartDetailRepository cartDetailRepository;
     private final UserRepository userRepository;
+    private final OrderRepository orderRepository;
+    private final OrderDetailRepository orderDetailRepository;
 
     public ProductDTO handleSaveProduct(ProductDTO productDTO) {
         Product product = ProductMapper.PRODUCT_INSTANCE.toEntity(productDTO);
@@ -142,7 +149,6 @@ public class ProductService {
             } else {
                 session.setAttribute("sum", 0);
                 cart.setSum(0);
-                // this.cartRepository.deleteById(cart.getId());
             }
 
         }
@@ -169,6 +175,39 @@ public class ProductService {
                 CartDetail currenCd = cdDetails.get();
                 currenCd.setQuantity(cd.getQuantity());
                 this.cartDetailRepository.save(currenCd);
+            }
+        }
+    }
+
+    public void handlePlaceOrder(User user, HttpSession session, String receiverName, String receiverAddress,
+            String receiverPhone, String receiverNote) {
+
+        Order order = new Order();
+        order.setUser(user);
+        order.setReceiverName(receiverName);
+        order.setReceiverAddress(receiverAddress);
+        order.setReceiverPhone(receiverPhone);
+        order.setReceiverNote(receiverNote);
+        order = this.orderRepository.save(order);
+
+        Cart cart = this.cartRepository.findByUser(user);
+        if (cart != null) {
+            List<CartDetail> cartDetails = cart.getCartDetails();
+
+            if (cartDetails != null) {
+                for (CartDetail cd : cartDetails) {
+                    OrderDetail orderDetail = new OrderDetail();
+                    orderDetail.setOrder(order);
+                    orderDetail.setProduct(cd.getProduct());
+                    orderDetail.setQuantity(cd.getQuantity());
+                    orderDetail.setUnitPrice(cd.getPrice());
+                    this.orderDetailRepository.save(orderDetail);
+                }
+
+                this.cartDetailRepository.deleteByCartId(cart.getId());
+
+                session.setAttribute("sum", 0);
+                cart.setSum(0);
             }
         }
     }
