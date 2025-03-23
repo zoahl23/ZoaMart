@@ -55,6 +55,12 @@ public class ProductService {
         return ProductMapper.PRODUCT_INSTANCE.toDTO(product);
     }
 
+    public ProductDTO getAvailableProductById(Long id) {
+        Product product = productRepository.findAvailableById(id)
+                .orElseThrow(() -> new RuntimeException("Sản phẩm không tồn tại hoặc đã hết hàng"));
+        return ProductMapper.PRODUCT_INSTANCE.toDTO(product); // hoặc tự map tay nếu không dùng MapStruct
+    }
+
     public void deleteAProduct(long id) {
         this.productRepository.deleteById(id);
     }
