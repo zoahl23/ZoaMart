@@ -197,6 +197,10 @@
             $parent.find('a.add-to-cart').attr('data-quantity', newVal);
             $parent.find('.input').val(newVal);
 
+            const index = $parent.find('.input').attr("data-cart-detail-index");
+            const el = document.getElementById(`cartDetails${index}.quantity`);
+            $(el).val(newVal);
+
             const price = $parent.find('.input').attr("data-cart-detail-price");
             const id = $parent.find('.input').attr("data-cart-detail-id");
 

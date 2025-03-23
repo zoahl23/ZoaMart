@@ -74,8 +74,8 @@
                                                             groupingUsed="true" /> đ
                                                     </div>
                                                 </div>
-                                                <div class="cart-counter-action">
-                                                    <form action="/add-product-to-cart/${product.id}" method="post">
+                                                <form action="/add-product-to-cart/${product.id}" method="post">
+                                                    <div class="cart-counter-action">
                                                         <input type="hidden" name="${_csrf.parameterName}"
                                                             value="${_csrf.token}" />
 
@@ -100,8 +100,8 @@
                                                                 <i class="fa-regular fa-cart-shopping"></i>
                                                             </div>
                                                         </button>
-                                                    </form>
-                                                </div>
+                                                    </div>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>

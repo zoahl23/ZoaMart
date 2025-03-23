@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import com.example.zoamart.domain.Cart;
@@ -73,6 +74,7 @@ public class ItemController {
 
         model.addAttribute("cartDetails", cartDetails);
         model.addAttribute("totalPrice", totalPrice);
+        model.addAttribute("cart", cart);
         return "client/cart/show";
     }
 
@@ -85,6 +87,61 @@ public class ItemController {
         this.productService.handleRemoveCartDetail(id, session);
 
         return "redirect:/cart";
+    }
+
+    @PostMapping("/delete-all-product-in-cart/{id}")
+    public String deleteAllProductInCart(@PathVariable long id,
+            HttpServletRequest request) {
+
+        HttpSession session = request.getSession(false);
+
+        this.productService.handleRemoveAllCartDetail(id, session);
+
+        return "redirect:/cart";
+    }
+
+    @PostMapping("/confirm-checkout")
+    public String getCheckOutPage(@ModelAttribute("cart") Cart cart) {
+
+        List<CartDetail> cartDetails = cart == null ? new ArrayList<CartDetail>() : cart.getCartDetails();
+        this.productService.handleUpdateCartBeforeCheckout(cartDetails);
+
+        return "redirect:/checkout";
+    }
+
+    @GetMapping("/checkout")
+    public String getCheckoutPage(Model model, HttpServletRequest request) {
+        User user = new User();
+        HttpSession session = request.getSession(false);
+
+        long userId = (long) session.getAttribute("id");
+        user.setId(userId);
+
+        Cart cart = this.productService.fetchByUser(user);
+        List<CartDetail> cartDetails = new ArrayList<>();
+        int totalPrice = 0;
+
+        if (cart != null && cart.getCartDetails() != null) {
+            cartDetails = cart.getCartDetails();
+            for (CartDetail cd : cartDetails) {
+                totalPrice += cd.getPrice() * cd.getQuantity();
+            }
+        }
+
+        model.addAttribute("cartDetails", cartDetails);
+        model.addAttribute("totalPrice", totalPrice);
+        return "client/cart/checkout";
+    }
+
+    @PostMapping("/place-order")
+    public String handlePlaceOrder(HttpServletRequest request,
+            @RequestParam("receiverName") String receiverName,
+            @RequestParam("receiverAddress") String receiverAddress,
+            @RequestParam("receiverPhone") String receiverPhone,
+            @RequestParam("receiverNote") String receiverNote) {
+        HttpSession session = request.getSession(false);
+
+        return "redirect:/";
     }
 
 }

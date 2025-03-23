@@ -148,4 +148,29 @@ public class ProductService {
         }
     }
 
+    public void handleRemoveAllCartDetail(long cartId, HttpSession session) {
+
+        Optional<Cart> cart = this.cartRepository.findById(cartId);
+
+        if (cart.isPresent()) {
+            Cart c = cart.get();
+            this.cartDetailRepository.deleteByCartId(cartId);
+
+            session.setAttribute("sum", 0);
+            c.setSum(0);
+        }
+    }
+
+    public void handleUpdateCartBeforeCheckout(List<CartDetail> cartDetails) {
+        for (CartDetail cd : cartDetails) {
+            Optional<CartDetail> cdDetails = this.cartDetailRepository.findById(cd.getId());
+
+            if (cdDetails.isPresent()) {
+                CartDetail currenCd = cdDetails.get();
+                currenCd.setQuantity(cd.getQuantity());
+                this.cartDetailRepository.save(currenCd);
+            }
+        }
+    }
+
 }

@@ -50,7 +50,7 @@
                                                         <p>Tổng tiền</p>
                                                     </div>
                                                 </div>
-                                                <c:forEach var="cartDetail" items="${cartDetails}">
+                                                <c:forEach var="cartDetail" items="${cartDetails}" varStatus="status">
                                                     <div class="single-cart-area-list main  item-parent">
                                                         <div class="product-main-cart">
                                                             <form action="/delete-product-in-cart/${cartDetail.id}"
@@ -89,7 +89,8 @@
                                                                 <input type="text" class="input"
                                                                     value="${cartDetail.quantity}"
                                                                     data-cart-detail-id="${cartDetail.id}"
-                                                                    data-cart-detail-price="${cartDetail.price}">
+                                                                    data-cart-detail-price="${cartDetail.price}"
+                                                                    data-cart-detail-index="${status.index}">
                                                                 <div class="button-wrapper-action">
                                                                     <button class="button"><i
                                                                             class="fa-regular fa-chevron-down"></i></button>
@@ -108,7 +109,12 @@
                                                     </div>
                                                 </c:forEach>
                                                 <div class="bottom-cupon-code-cart-area">
-                                                    <a href="#" class="rts-btn btn-primary mr--50">Xóa giỏ hàng</a>
+                                                    <form action="/delete-all-product-in-cart/${cart.id}" method="post">
+                                                        <input type="hidden" name="${_csrf.parameterName}"
+                                                            value="${_csrf.token}" />
+                                                        <button class="rts-btn btn-primary mr--50">Xóa giỏ
+                                                            hàng</button>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
@@ -124,10 +130,10 @@
                                                     </p>
                                                 </div>
                                                 <div class="shipping">
-                                                    <span>Vận chuyển</span>
+                                                    <span>Hình thức vận chuyển</span>
                                                     <ul>
                                                         <li>
-                                                            <input type="radio" id="f-option" name="selector">
+                                                            <input type="radio" id="f-option" name="selector" checked>
                                                             <label for="f-option">Giao hàng tận nơi</label>
 
                                                             <div class="check"></div>
@@ -151,10 +157,33 @@
                                                                 groupingUsed="true" /> đ
                                                         </p>
                                                     </div>
-                                                    <div class="button-area">
-                                                        <button class="rts-btn btn-primary">Tiến hành thanh
-                                                            toán</button>
-                                                    </div>
+                                                    <form:form action="/confirm-checkout" method="post"
+                                                        modelAttribute="cart">
+                                                        <input type="hidden" name="${_csrf.parameterName}"
+                                                            value="${_csrf.token}" />
+                                                        <div style="display: none;">
+                                                            <c:forEach var="cartDetail" items="${cart.cartDetails}"
+                                                                varStatus="status">
+                                                                <div class="mb-3">
+                                                                    <div class="form-group">
+                                                                        <label>Id:</label>
+                                                                        <form:input type="text"
+                                                                            path="cartDetails[${status.index}].id"
+                                                                            cssClass="form-control" />
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>Quantity:</label>
+                                                                        <form:input class="form-control" type="text"
+                                                                            path="cartDetails[${status.index}].quantity" />
+                                                                    </div>
+                                                                </div>
+                                                            </c:forEach>
+                                                        </div>
+                                                        <div class="button-area">
+                                                            <button class="rts-btn btn-primary">Tiến hành thanh
+                                                                toán</button>
+                                                        </div>
+                                                    </form:form>
                                                 </div>
                                             </div>
                                         </div>
