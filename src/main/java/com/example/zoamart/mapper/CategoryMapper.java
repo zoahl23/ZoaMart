@@ -13,6 +13,7 @@ public interface CategoryMapper {
     CategoryMapper CATEGORY_INSTANCE = Mappers.getMapper(CategoryMapper.class);
 
     @Mapping(source = "category.id", target = "parentId")
+    @Mapping(source = "category.name", target = "parentName")
     CategoryDTO toDTO(Category category);
 
     @Mapping(source = "parentId", target = "category")

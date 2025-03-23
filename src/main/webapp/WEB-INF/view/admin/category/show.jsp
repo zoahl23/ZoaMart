@@ -101,7 +101,7 @@
                                                         <tr>
                                                             <th>ID</th>
                                                             <th>Name</th>
-                                                            <th>Parent ID</th>
+                                                            <th>Parent Category</th>
                                                             <th>Created At</th>
                                                             <th>Updated At</th>
                                                             <th class="text-start">Action</th>
@@ -121,7 +121,7 @@
                                                                 <td>
                                                                     <div class="payment d-flex align-items-center">
                                                                         <p style="color: #2d3b29;">
-                                                                            ${category.parentId}
+                                                                            ${category.parentName}
                                                                         </p>
                                                                     </div>
                                                                 </td>

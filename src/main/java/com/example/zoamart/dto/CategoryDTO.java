@@ -16,4 +16,5 @@ public class CategoryDTO {
     private Date createdAt;
     private Date updatedAt;
     private Long parentId;
+    private String parentName;
 }
