@@ -6,9 +6,9 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="navigator-breadcrumb-wrapper">
-                            <a href="/">Home</a>
+                            <a href="/">Trang chủ</a>
                             <i class="fa-regular fa-chevron-right"></i>
-                            <a class="current" href="/customer">Account</a>
+                            <a class="current" href="/customer">Tài khoản</a>
                         </div>
                     </div>
                 </div>

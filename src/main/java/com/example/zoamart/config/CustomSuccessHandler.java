@@ -60,7 +60,6 @@ public class CustomSuccessHandler implements AuthenticationSuccessHandler {
             session.setAttribute("fullName", user.getFullName());
             session.setAttribute("email", user.getEmail());
             session.setAttribute("phone", user.getPhone());
-            session.setAttribute("password", user.getPassword());
             session.setAttribute("address", user.getAddress());
             session.setAttribute("id", user.getId());
 
