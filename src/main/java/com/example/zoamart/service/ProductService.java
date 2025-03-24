@@ -243,4 +243,21 @@ public class ProductService {
         }
     }
 
+    public long countP() {
+        return this.productRepository.count();
+    }
+
+    public long countO() {
+        return this.orderRepository.count();
+    }
+
+    public long getRevenue() {
+        List<Order> orders = this.orderRepository.findAll();
+        long total = 0;
+        for (Order order : orders) {
+            total += order.getTotalPrice();
+        }
+
+        return total;
+    }
 }

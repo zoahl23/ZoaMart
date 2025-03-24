@@ -55,4 +55,8 @@ public class UserService {
         User user = userRepository.findByEmail(email).orElseThrow(() -> new RuntimeException("User not found"));
         return UserMapper.USER_INSTANCE.toDTO(user);
     }
+
+    public long countU() {
+        return this.userRepository.count();
+    }
 }
