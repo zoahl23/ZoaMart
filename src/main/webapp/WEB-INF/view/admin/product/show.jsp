@@ -66,11 +66,16 @@
                                                         </li>
                                                     </ul>
                                                 </div>
-                                                <div class="popup-footer-btn">
-                                                    <a href="#" class="geex-content__header__popup__footer__link">Logout
-                                                        <i class="fa-light fa-arrow-right"></i>
-                                                    </a>
-                                                </div>
+                                                <form method="post" action="/logout">
+                                                    <input type="hidden" name="${_csrf.parameterName}"
+                                                        value="${_csrf.token}" />
+                                                    <div class="popup-footer-btn">
+                                                        <button class="geex-content__header__popup__footer__link">Đăng
+                                                            xuất
+                                                            <i class="fa-light fa-arrow-right"></i>
+                                                        </button>
+                                                    </div>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
