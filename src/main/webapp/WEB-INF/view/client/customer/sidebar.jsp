@@ -13,11 +13,8 @@
                     aria-selected="false"><i class="fa-light fa-user"></i>Thông tin tài khoản</button>
                 <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill"
                     data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile"
-                    aria-selected="false"><i class="fa-regular fa-bag-shopping"></i>Đơn hàng</button>
-                <button class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill"
-                    data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages"
-                    aria-selected="false"><i class="fa-sharp fa-regular fa-tractor"></i>Theo dõi đơn
-                    hàng</button>
+                    aria-selected="false"><i class="fa-regular fa-bag-shopping"></i>Lịch sử mua hàng</button>
+
                 <form method="post" action="/logout">
                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                     <button class="nav-link">

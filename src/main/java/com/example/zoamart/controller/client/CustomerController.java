@@ -1,18 +1,21 @@
 package com.example.zoamart.controller.client;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.example.zoamart.domain.Role;
+import com.example.zoamart.domain.Order;
 import com.example.zoamart.domain.User;
 import com.example.zoamart.dto.UserDTO;
+import com.example.zoamart.service.OrderService;
 import com.example.zoamart.service.UserService;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -24,6 +27,7 @@ import lombok.RequiredArgsConstructor;
 public class CustomerController {
 
     private final UserService userService;
+    private final OrderService orderService;
 
     private final PasswordEncoder passwordEncoder;
 
@@ -32,10 +36,15 @@ public class CustomerController {
         HttpSession session = request.getSession(false);
 
         long userId = (long) session.getAttribute("id");
+        User user = new User();
+        user.setId(userId);
 
-        UserDTO user = this.userService.getUserById(userId);
+        List<Order> orders = this.orderService.getAllOrdersByUser(user);
+        model.addAttribute("orders", orders);
 
-        model.addAttribute("newUser", user);
+        UserDTO userDto = this.userService.getUserById(userId);
+
+        model.addAttribute("newUser", userDto);
 
         if (!model.containsAttribute("imageNotification")) {
             model.addAttribute("imageNotification", "02.png");
@@ -84,5 +93,14 @@ public class CustomerController {
         }
 
         return "redirect:/customer";
+    }
+
+    @GetMapping("/customer/order/{id}")
+    public String getOrderDetailPage(Model model, @PathVariable long id) {
+        Order order = this.orderService.getOrderById(id).get();
+        model.addAttribute("order", order);
+        model.addAttribute("id", id);
+        model.addAttribute("orderDetails", order.getOrderDetails());
+        return "client/customer/detail";
     }
 }

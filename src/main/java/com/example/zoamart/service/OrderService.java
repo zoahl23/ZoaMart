@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.zoamart.domain.Order;
 import com.example.zoamart.domain.OrderDetail;
+import com.example.zoamart.domain.User;
 import com.example.zoamart.repository.OrderDetailRepository;
 import com.example.zoamart.repository.OrderRepository;
 
@@ -25,6 +26,10 @@ public class OrderService {
 
     public Optional<Order> getOrderById(long id) {
         return this.orderRepository.findById(id);
+    }
+
+    public List<Order> getAllOrdersByUser(User user) {
+        return this.orderRepository.findByUser(user);
     }
 
     public void deleteOrderById(long id) {

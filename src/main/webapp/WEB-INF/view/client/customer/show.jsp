@@ -36,7 +36,6 @@
                                         <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
                                             aria-labelledby="v-pills-home-tab" tabindex="0">
                                             <jsp:include page="notification.jsp" />
-
                                         </div>
                                         <div class="tab-pane fade" id="v-pills-settingsa" role="tabpanel"
                                             aria-labelledby="v-pills-settingsa-tab" tabindex="0">
@@ -70,79 +69,38 @@
                                                     <table class="table">
                                                         <thead>
                                                             <tr>
-                                                                <th>Mã đơn hàng</th>
-                                                                <th>Ngày tạo</th>
-                                                                <th>Trạng thái</th>
-                                                                <th>Tổng tiền</th>
-                                                                <th>Hành động</th>
+                                                                <th>Order</th>
+                                                                <th>Date</th>
+                                                                <th>Status</th>
+                                                                <th>Total</th>
+                                                                <th>Action</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            <tr>
-                                                                <td>#1357</td>
-                                                                <td>March 45, 2020</td>
-                                                                <td>Đang giao hàng</td>
-                                                                <td>$125.00 for 2 item</td>
-                                                                <td><a href="#" class="btn-small d-block">Xem chi
-                                                                        tiết</a>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>#2468</td>
-                                                                <td>June 29, 2020</td>
-                                                                <td>Đã hoàn thành</td>
-                                                                <td>$364.00 for 5 item</td>
-                                                                <td><a href="#" class="btn-small d-block">Xem chi
-                                                                        tiết</a>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>#2366</td>
-                                                                <td>August 02, 2020</td>
-                                                                <td>Đã hoàn thành</td>
-                                                                <td>$280.00 for 3 item</td>
-                                                                <td><a href="#" class="btn-small d-block">Xem chi
-                                                                        tiết</a>
-                                                                </td>
-                                                            </tr>
+                                                            <c:forEach var="order" items="${orders}">
+                                                                <tr>
+                                                                    <td>#${order.id}</td>
+                                                                    <td>
+                                                                        <fmt:formatDate value="${order.createdAt}"
+                                                                            pattern="yyyy-MM-dd HH:mm:ss" />
+                                                                    </td>
+                                                                    <td>
+                                                                        ${order.status}
+                                                                    </td>
+                                                                    <td>
+                                                                        <fmt:formatNumber value="${order.totalPrice}"
+                                                                            type="number" groupingUsed="true" /> đ
+                                                                    </td>
+                                                                    <td><a href="/customer/order/${order.id}"
+                                                                            class="btn-small d-block">View</a>
+                                                                    </td>
+                                                                </tr>
+                                                            </c:forEach>
                                                         </tbody>
                                                     </table>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="tab-pane fade" id="v-pills-messages" role="tabpanel"
-                                            aria-labelledby="v-pills-messages-tab" tabindex="0">
-                                            <div class="tracing-order-account">
-                                                <h2 class="title">Theo dõi đơn hàng</h2>
-                                                <p>
-                                                    Để theo dõi trạng thái đơn hàng của bạn, vui lòng nhập Mã Đơn Hàng
-                                                    (OrderID) vào ô
-                                                    được chỉ định bên dưới và nhấp vào nút 'Theo dõi'. Mã định danh duy
-                                                    nhất
-                                                    này có thể
-                                                    được tìm thấy trên biên nhận của bạn cũng như trong email xác nhận
-                                                    đã
-                                                    được gửi cho
-                                                    bạn.
-                                                </p>
-                                                <form action="#" class="order-tracking">
-                                                    <div class="single-input">
-                                                        <label for="order-id">Mã đơn hàng</label>
-                                                        <input type="text"
-                                                            placeholder="Được tìm thấy trong email xác nhận đơn hàng của bạn."
-                                                            required>
-                                                    </div>
-                                                    <div class="single-input">
-                                                        <label for="order-id">Email thanh toán</label>
-                                                        <input type="text"
-                                                            placeholder="Email bạn đã sử dụng khi thanh toán">
-                                                    </div>
-                                                    <button class="rts-btn btn-primary">Kiểm tra</button>
-                                                </form>
-                                            </div>
-                                        </div>
-                                        <div class="tab-pane fade" id="v-pills-settingsb" role="tabpanel"
-                                            aria-labelledby="v-pills-settingsb-tab" tabindex="0">...</div>
                                     </div>
                                 </div>
                             </div>
