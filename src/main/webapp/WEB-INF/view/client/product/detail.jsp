@@ -82,11 +82,13 @@
                                                                     <input type="hidden" name="${_csrf.parameterName}"
                                                                         value="${_csrf.token}" />
                                                                     <div class="cart-edits">
-                                                                        <div class="quantity-edit action-item">
+                                                                        <div class="quantity-edit action-item"
+                                                                            style="width: 123px;">
                                                                             <button type="button" class="button"><i
                                                                                     class="fal fa-minus minus"></i></button>
                                                                             <input type="text" class="input"
-                                                                                name="quantity" value="01" />
+                                                                                name="quantity" value="01"
+                                                                                style=" max-width: 55px;" />
                                                                             <button type="button"
                                                                                 class="button plus">+<i
                                                                                     class="fal fa-plus plus"></i></button>
@@ -460,7 +462,7 @@
                                                                         value="${_csrf.token}" />
                                                                     <div class="quantity-edit">
                                                                         <input type="text" class="input" name="quantity"
-                                                                            value="1">
+                                                                            value="1" style="max-width: 20px;">
                                                                         <div class="button-wrapper-action">
                                                                             <button type="button" class="button"><i
                                                                                     class="fa-regular fa-chevron-down"></i></button>
@@ -535,7 +537,7 @@
                                                                         value="${_csrf.token}" />
                                                                     <div class="quantity-edit">
                                                                         <input type="text" class="input" name="quantity"
-                                                                            value="1">
+                                                                            value="1" style="max-width: 20px;">
                                                                         <div class="button-wrapper-action">
                                                                             <button type="button" class="button"><i
                                                                                     class="fa-regular fa-chevron-down"></i></button>
@@ -610,7 +612,7 @@
                                                                         value="${_csrf.token}" />
                                                                     <div class="quantity-edit">
                                                                         <input type="text" class="input" name="quantity"
-                                                                            value="1">
+                                                                            value="1" style="max-width: 20px;">
                                                                         <div class="button-wrapper-action">
                                                                             <button type="button" class="button"><i
                                                                                     class="fa-regular fa-chevron-down"></i></button>
@@ -685,7 +687,7 @@
                                                                         value="${_csrf.token}" />
                                                                     <div class="quantity-edit">
                                                                         <input type="text" class="input" name="quantity"
-                                                                            value="1">
+                                                                            value="1" style="max-width: 20px;">
                                                                         <div class="button-wrapper-action">
                                                                             <button type="button" class="button"><i
                                                                                     class="fa-regular fa-chevron-down"></i></button>
@@ -761,7 +763,7 @@
                                                                         value="${_csrf.token}" />
                                                                     <div class="quantity-edit">
                                                                         <input type="text" class="input" name="quantity"
-                                                                            value="1">
+                                                                            value="1" style="max-width: 20px;">
                                                                         <div class="button-wrapper-action">
                                                                             <button type="button" class="button"><i
                                                                                     class="fa-regular fa-chevron-down"></i></button>
@@ -836,7 +838,7 @@
                                                                         value="${_csrf.token}" />
                                                                     <div class="quantity-edit">
                                                                         <input type="text" class="input" name="quantity"
-                                                                            value="1">
+                                                                            value="1" style="max-width: 20px;">
                                                                         <div class="button-wrapper-action">
                                                                             <button type="button" class="button"><i
                                                                                     class="fa-regular fa-chevron-down"></i></button>
@@ -911,7 +913,7 @@
                                                                         value="${_csrf.token}" />
                                                                     <div class="quantity-edit">
                                                                         <input type="text" class="input" name="quantity"
-                                                                            value="1">
+                                                                            value="1" style="max-width: 20px;">
                                                                         <div class="button-wrapper-action">
                                                                             <button type="button" class="button"><i
                                                                                     class="fa-regular fa-chevron-down"></i></button>

@@ -18,7 +18,7 @@
                                             <ul class="category-sub-menu" id="category-active-four">
                                                 <c:forEach var="cateParent" items="${cateParents}">
                                                     <li>
-                                                        <a href="#" class="menu-item">
+                                                        <a class="menu-item">
                                                             <span>${cateParent.name}</span>
                                                             <i class="fa-regular fa-plus"></i>
                                                         </a>
@@ -26,7 +26,8 @@
                                                             <c:forEach var="cateChild" items="${cateChildren}">
                                                                 <c:if test="${cateParent.id == cateChild.parentId}">
                                                                     <li><a class="mobile-menu-link"
-                                                                            href="#">${cateChild.name}</a></li>
+                                                                            href="/category/${cateChild.id}">${cateChild.name}</a>
+                                                                    </li>
                                                                 </c:if>
                                                             </c:forEach>
                                                         </ul>

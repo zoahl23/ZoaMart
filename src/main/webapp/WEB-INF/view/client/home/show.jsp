@@ -80,7 +80,8 @@
                                                             value="${_csrf.token}" />
 
                                                         <div class="quantity-edit">
-                                                            <input type="text" class="input" name="quantity" value="1">
+                                                            <input type="text" class="input" name="quantity" value="1"
+                                                                style="max-width: 20px;">
                                                             <div class="button-wrapper-action">
                                                                 <button type="button" class="button"><i
                                                                         class="fa-regular fa-chevron-down"></i></button>
