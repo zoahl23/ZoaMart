@@ -95,32 +95,26 @@
                                         <div class=" header-two show right-collups-add-product">
                                             <!-- inner menu area desktop start -->
                                             <div class="right-collups-area-top">
-                                                <h6 class="title" style="font-size: 32px;">Update Category</h6>
+                                                <h6 class="title" style="font-size: 32px;">Update Order</h6>
                                             </div>
                                             <div class="input-main-wrapper">
-                                                <form:form method="post" action="/admin/category/update"
-                                                    modelAttribute="updateCategory" class="row">
+                                                <form:form method="post" action="/admin/order/update"
+                                                    modelAttribute="newOrder" class="row">
                                                     <div class="single-input" style="display: none;">
                                                         <label style="color: #2d3b29;">ID</label>
                                                         <form:input type="text" path="id" />
                                                     </div>
-                                                    <div class="single-input col-12 col-md-6">
-                                                        <c:set var="errorName">
-                                                            <form:errors path="name" cssClass="invalid-feedback" />
-                                                        </c:set>
-                                                        <label style="color: #2d3b29;">Category Name</label>
-                                                        <form:input type="text" path="name"
-                                                            class="${not empty errorName? 'is-invalid':''}" />
-                                                        ${errorName}
-                                                    </div>
-                                                    <div class="single-input col-12 col-md-6 mb--30">
-                                                        <label style="color: #2d3b29;">Category Parent</label>
-                                                        <form:select path="parentId"
-                                                            style="height: 62px; border: 1px solid #E8E9EB; border-radius: 4px; padding: 0 10px">
-                                                            <form:option value="">-- Select Parent Category --
-                                                            </form:option>
-                                                            <form:options items="${categoriesIsNull}" itemValue="id"
-                                                                itemLabel="name" />
+                                                    <div class="single-input mb--30">
+                                                        <label style="color: #2d3b29;">Status</label>
+                                                        <form:select
+                                                            style="height: 62px; border: 1px solid #E8E9EB; border-radius: 4px; padding: 0 10px"
+                                                            path="status">
+                                                            <form:option value="PENDING">PENDING</form:option>
+                                                            <form:option value="PROCESSING">PROCESSING</form:option>
+                                                            <form:option value="DELIVERING">DELIVERING</form:option>
+                                                            <form:option value="COMPLETED">COMPLETED</form:option>
+                                                            <form:option value="CANCELLED">CANCELLED</form:option>
+                                                            <form:option value="RETURNED">RETURNED</form:option>
                                                         </form:select>
                                                     </div>
                                                     <div class="button-area-botton-wrapper-p-list justify-content-end">

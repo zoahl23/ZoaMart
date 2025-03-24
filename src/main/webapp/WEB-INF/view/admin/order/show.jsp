@@ -136,7 +136,49 @@
                                                                 </td>
                                                                 <td>
                                                                     <div class="statrusts">
-                                                                        <p>${order.status}</p>
+                                                                        <c:choose>
+                                                                            <c:when test="${order.status == 'PENDING'}">
+                                                                                <p>${order.status}</p>
+                                                                            </c:when>
+                                                                            <c:when
+                                                                                test="${order.status == 'PROCESSING'}">
+                                                                                <p>
+                                                                                    <font color="orange">${order.status}
+                                                                                    </font>
+                                                                                </p>
+                                                                            </c:when>
+                                                                            <c:when
+                                                                                test="${order.status == 'DELIVERING'}">
+                                                                                <p>
+                                                                                    <font color="blue">${order.status}
+                                                                                    </font>
+                                                                                </p>
+                                                                            </c:when>
+                                                                            <c:when
+                                                                                test="${order.status == 'COMPLETED'}">
+                                                                                <p>
+                                                                                    <font color="green">${order.status}
+                                                                                    </font>
+                                                                                </p>
+                                                                            </c:when>
+                                                                            <c:when
+                                                                                test="${order.status == 'CANCELLED'}">
+                                                                                <p>
+                                                                                    <font color="red">${order.status}
+                                                                                    </font>
+                                                                                </p>
+                                                                            </c:when>
+                                                                            <c:when
+                                                                                test="${order.status == 'RETURNED'}">
+                                                                                <p>
+                                                                                    <font color="pink">${order.status}
+                                                                                    </font>
+                                                                                </p>
+                                                                            </c:when>
+                                                                            <c:otherwise>
+                                                                                <p>${order.status}</p>
+                                                                            </c:otherwise>
+                                                                        </c:choose>
                                                                     </div>
                                                                 </td>
                                                                 <td class="text-end">
