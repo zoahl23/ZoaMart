@@ -175,16 +175,23 @@ public class ProductService {
         }
     }
 
-    public void handleUpdateCartBeforeCheckout(List<CartDetail> cartDetails) {
+    public String handleUpdateCartBeforeCheckout(List<CartDetail> cartDetails) {
         for (CartDetail cd : cartDetails) {
             Optional<CartDetail> cdDetails = this.cartDetailRepository.findById(cd.getId());
 
             if (cdDetails.isPresent()) {
                 CartDetail currenCd = cdDetails.get();
-                currenCd.setQuantity(cd.getQuantity());
-                this.cartDetailRepository.save(currenCd);
+
+                if (cd.getQuantity() <= currenCd.getProduct().getQuantity()) {
+                    currenCd.setQuantity(cd.getQuantity());
+                    this.cartDetailRepository.save(currenCd);
+                } else {
+                    return "client/auth/empty";
+                }
             }
         }
+
+        return "redirect:/checkout";
     }
 
     public void handlePlaceOrder(User user, HttpSession session, String receiverName, String receiverAddress,

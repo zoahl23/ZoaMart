@@ -29,8 +29,12 @@ public class ItemController {
 
     @GetMapping("/product/{id}")
     public String getProductPage(Model model, @PathVariable long id) {
-        ProductDTO product = this.productService.getAvailableProductById(id);
+        ProductDTO product = this.productService.getAProductById(id);
         model.addAttribute("product", product);
+
+        if (product.getQuantity() == 0) {
+            return "client/auth/error";
+        }
 
         List<ProductDTO> products = this.productService
                 .getProductForDetail(Long.valueOf(id));
@@ -47,6 +51,12 @@ public class ItemController {
         String email = (String) session.getAttribute("email");
 
         long productId = id;
+        ProductDTO product = this.productService.getAProductById(id);
+
+        if (product.getQuantity() < quantity) {
+            this.productService.handleAddProductToCart(email, productId, 1, session);
+            return "client/auth/empty";
+        }
 
         this.productService.handleAddProductToCart(email, productId, quantity, session);
 
@@ -62,6 +72,12 @@ public class ItemController {
         String email = (String) session.getAttribute("email");
 
         long productId = id;
+        ProductDTO product = this.productService.getAProductById(id);
+
+        if (product.getQuantity() < quantity) {
+            this.productService.handleAddProductToCart(email, productId, 1, session);
+            return "client/auth/empty";
+        }
 
         this.productService.handleAddProductToCart(email, productId, quantity, session);
 
@@ -119,9 +135,8 @@ public class ItemController {
     public String getCheckOutPage(@ModelAttribute("cart") Cart cart) {
 
         List<CartDetail> cartDetails = cart == null ? new ArrayList<CartDetail>() : cart.getCartDetails();
-        this.productService.handleUpdateCartBeforeCheckout(cartDetails);
 
-        return "redirect:/checkout";
+        return this.productService.handleUpdateCartBeforeCheckout(cartDetails);
     }
 
     @GetMapping("/checkout")
