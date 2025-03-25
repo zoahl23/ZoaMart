@@ -14,7 +14,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.zoamart.domain.Order;
 import com.example.zoamart.domain.User;
+import com.example.zoamart.dto.CategoryDTO;
 import com.example.zoamart.dto.UserDTO;
+import com.example.zoamart.service.CategoryService;
 import com.example.zoamart.service.OrderService;
 import com.example.zoamart.service.UserService;
 
@@ -28,11 +30,15 @@ public class CustomerController {
 
     private final UserService userService;
     private final OrderService orderService;
-
+    private final CategoryService categoryService;
     private final PasswordEncoder passwordEncoder;
 
     @GetMapping("/customer")
     public String getAccountPage(Model model, HttpServletRequest request) {
+        List<CategoryDTO> cateParent = categoryService.getAllCategoriesIsNull();
+        List<CategoryDTO> categories = categoryService.getAllCategoriesIsNotNull();
+        model.addAttribute("cateParents", cateParent);
+        model.addAttribute("cateChildren", categories);
         HttpSession session = request.getSession(false);
 
         long userId = (long) session.getAttribute("id");
@@ -97,6 +103,10 @@ public class CustomerController {
 
     @GetMapping("/customer/order/{id}")
     public String getOrderDetailPage(Model model, @PathVariable long id) {
+        List<CategoryDTO> cateParent = categoryService.getAllCategoriesIsNull();
+        List<CategoryDTO> categories = categoryService.getAllCategoriesIsNotNull();
+        model.addAttribute("cateParents", cateParent);
+        model.addAttribute("cateChildren", categories);
         Order order = this.orderService.getOrderById(id).get();
         model.addAttribute("order", order);
         model.addAttribute("id", id);

@@ -31,8 +31,6 @@
                             <div class="row g-0">
                                 <jsp:include page="sidebar.jsp" />
                                 <div class="col-xl-9 col-lg-12">
-                                    <jsp:include page="header.jsp" />
-
                                     <div class="tab-content" id="myTabContent">
                                         <div class="product-area-wrapper-shopgrid-list mt--20 tab-pane fade show active"
                                             id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
@@ -124,30 +122,51 @@
                                                 </c:forEach>
                                             </div>
                                             <div class="page-parrent">
+                                                <c:set var="maxPageShow" value="5" />
+                                                <c:set var="startPage" value="${currentPage - 2}" />
+                                                <c:set var="endPage" value="${currentPage + 2}" />
+
+                                                <c:if test="${startPage < 1}">
+                                                    <c:set var="endPage" value="${endPage + (1 - startPage)}" />
+                                                    <c:set var="startPage" value="1" />
+                                                </c:if>
+                                                <c:if test="${endPage > totalPages}">
+                                                    <c:set var="startPage"
+                                                        value="${startPage - (endPage - totalPages)}" />
+                                                    <c:set var="endPage" value="${totalPages}" />
+                                                </c:if>
+                                                <c:if test="${startPage < 1}">
+                                                    <c:set var="startPage" value="1" />
+                                                </c:if>
+                                                <!-- First & Prev -->
                                                 <a href="/category/${id}?page=1"
-                                                    class="${1 eq currentPage ? 'page_button disabled-page' : 'page_button'}">
-                                                    First
-                                                </a>
+                                                    class="${currentPage == 1 ? 'page_button disabled-page' : 'page_button'}">First</a>
                                                 <a href="/category/${id}?page=${currentPage - 1}"
-                                                    class="${1 eq currentPage ? 'page_button disabled-page' : 'page_button'}">
-                                                    Previous
-                                                </a>
-                                                <span>
-                                                    <c:forEach begin="0" end="${totalPages - 1}" varStatus="loop">
-                                                        <a href="/category/${id}?page=${loop.index + 1}"
-                                                            class="${(loop.index + 1) eq currentPage ? 'page_button current-page' : 'page_button'} ">
-                                                            ${loop.index + 1}
-                                                        </a>
-                                                    </c:forEach>
-                                                </span>
+                                                    class="${currentPage == 1 ? 'page_button disabled-page' : 'page_button'}">Previous</a>
+
+                                                <!-- Dấu ... đầu nếu cần -->
+                                                <c:if test="${startPage > 1}">
+                                                    <a href="/category/${id}?page=${currentPage - 1}"
+                                                        class="${currentPage == 1 ? 'page_button disabled-page' : 'page_button'}">...</a>
+                                                </c:if>
+
+                                                <!-- Vòng lặp các trang hiển thị -->
+                                                <c:forEach var="i" begin="${startPage}" end="${endPage}">
+                                                    <a href="/category/${id}?page=${i}"
+                                                        class="${i == currentPage ? 'page_button current-page' : 'page_button'}">${i}</a>
+                                                </c:forEach>
+
+                                                <!-- Dấu ... cuối nếu cần -->
+                                                <c:if test="${endPage < totalPages}">
+                                                    <a href="/category/${id}?page=${currentPage + 1}"
+                                                        class="${currentPage == totalPages ? 'page_button disabled-page' : 'page_button'}">...</a>
+                                                </c:if>
+
+                                                <!-- Next & Last -->
                                                 <a href="/category/${id}?page=${currentPage + 1}"
-                                                    class="${totalPages eq currentPage ? 'page_button disabled-page' : 'page_button'}">
-                                                    Next
-                                                </a>
+                                                    class="${currentPage == totalPages ? 'page_button disabled-page' : 'page_button'}">Next</a>
                                                 <a href="/category/${id}?page=${totalPages}"
-                                                    class="${totalPages eq currentPage ? 'page_button disabled-page' : 'page_button'}">
-                                                    Last
-                                                </a>
+                                                    class="${currentPage == totalPages ? 'page_button disabled-page' : 'page_button'}">Last</a>
                                             </div>
                                         </div>
                                     </div>
