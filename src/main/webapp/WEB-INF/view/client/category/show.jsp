@@ -25,156 +25,186 @@
 
                     <jsp:include page="breadcrumb.jsp" />
 
-                    <!-- shop[ grid sidebar wrapper -->
-                    <div class="shop-grid-sidebar-area rts-section-gap">
-                        <div class="container">
-                            <div class="row g-0">
-                                <jsp:include page="sidebar.jsp" />
-                                <div class="col-xl-9 col-lg-12">
-                                    <div class="tab-content" id="myTabContent">
-                                        <div class="product-area-wrapper-shopgrid-list mt--20 tab-pane fade show active"
-                                            id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
-                                            <div class="row g-4">
-                                                <c:forEach var="product" items="${products}">
-                                                    <div class="col-lg-20 col-lg-4 col-md-6 col-sm-6 col-12">
-                                                        <div class="single-shopping-card-one">
-                                                            <!-- iamge and sction area start -->
-                                                            <div class="image-and-action-area-wrapper">
-                                                                <a href="/product/${product.id}"
-                                                                    class="thumbnail-preview">
-                                                                    <div class="badge">
-                                                                        <span>${product.discountPercent}% <br>
-                                                                            Off
-                                                                        </span>
-                                                                        <i class="fa-solid fa-bookmark"></i>
-                                                                    </div>
-                                                                    <img src="/img/products/${product.imageUrl}"
-                                                                        alt="${product.name}"
-                                                                        style="width: 181px; height: 157px; object-fit: contain;">
-                                                                </a>
-                                                            </div>
-                                                            <!-- iamge and sction area start -->
 
-                                                            <div class="body-content">
-
-                                                                <a href="/product/${product.id}">
-                                                                    <h4 class="title"
-                                                                        style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; display: block;">
-                                                                        ${product.name}</h4>
-                                                                </a>
-                                                                <span class="availability">${product.quantity}
-                                                                    Pack</span>
-                                                                <div class="price-area">
-                                                                    <span class="current">
-                                                                        <fmt:formatNumber
-                                                                            value="${(product.price - (product.price * product.discountPercent / 100)) - ((product.price - (product.price * product.discountPercent / 100)) % 1)}"
-                                                                            type="number" groupingUsed="true" /> đ
-                                                                    </span>
-                                                                    <div class="previous">
-                                                                        <fmt:formatNumber value="${product.price}"
-                                                                            type="number" groupingUsed="true" /> đ
+                    <c:choose>
+                        <c:when test="${not empty products}">
+                            <!-- shop[ grid sidebar wrapper -->
+                            <div class="shop-grid-sidebar-area rts-section-gap">
+                                <div class="container">
+                                    <div class="row g-0">
+                                        <jsp:include page="sidebar.jsp" />
+                                        <div class="col-xl-9 col-lg-12">
+                                            <div class="tab-content" id="myTabContent">
+                                                <div class="product-area-wrapper-shopgrid-list mt--20 tab-pane fade show active"
+                                                    id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab"
+                                                    tabindex="0">
+                                                    <div class="row g-4">
+                                                        <c:forEach var="product" items="${products}">
+                                                            <div class="col-lg-20 col-lg-4 col-md-6 col-sm-6 col-12">
+                                                                <div class="single-shopping-card-one">
+                                                                    <!-- iamge and sction area start -->
+                                                                    <div class="image-and-action-area-wrapper">
+                                                                        <a href="/product/${product.id}"
+                                                                            class="thumbnail-preview">
+                                                                            <div class="badge">
+                                                                                <span>${product.discountPercent}% <br>
+                                                                                    Off
+                                                                                </span>
+                                                                                <i class="fa-solid fa-bookmark"></i>
+                                                                            </div>
+                                                                            <img src="/img/products/${product.imageUrl}"
+                                                                                alt="${product.name}"
+                                                                                style="width: 181px; height: 157px; object-fit: contain;">
+                                                                        </a>
                                                                     </div>
-                                                                </div>
-                                                                <form
-                                                                    action="/add-product-category-to-cart/${product.id}"
-                                                                    method="post">
-                                                                    <div class="cart-counter-action">
-                                                                        <input type="hidden"
-                                                                            name="${_csrf.parameterName}"
-                                                                            value="${_csrf.token}" />
-                                                                        <input type="hidden" name="currentPage"
-                                                                            value="${currentPage}" />
-                                                                        <input type="hidden" name="categoryId"
-                                                                            value="${id}" />
-                                                                        <div class="quantity-edit"
-                                                                            style="width: 100%; max-width: 100%;">
-                                                                            <input type="text" class="input"
-                                                                                name="quantity" value="1"
-                                                                                style="max-width: 30px;">
-                                                                            <div class="button-wrapper-action">
-                                                                                <button type="button" class="button"><i
-                                                                                        class="fa-regular fa-chevron-down"></i></button>
-                                                                                <button type="button"
-                                                                                    class="button plus">+<i
-                                                                                        class="fa-regular fa-chevron-up"></i></button>
+                                                                    <!-- iamge and sction area start -->
+
+                                                                    <div class="body-content">
+
+                                                                        <a href="/product/${product.id}">
+                                                                            <h4 class="title"
+                                                                                style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; display: block;">
+                                                                                ${product.name}</h4>
+                                                                        </a>
+                                                                        <span class="availability">${product.quantity}
+                                                                            Pack</span>
+                                                                        <div class="price-area">
+                                                                            <span class="current">
+                                                                                <fmt:formatNumber
+                                                                                    value="${(product.price - (product.price * product.discountPercent / 100)) - ((product.price - (product.price * product.discountPercent / 100)) % 1)}"
+                                                                                    type="number" groupingUsed="true" />
+                                                                                đ
+                                                                            </span>
+                                                                            <div class="previous">
+                                                                                <fmt:formatNumber
+                                                                                    value="${product.price}"
+                                                                                    type="number" groupingUsed="true" />
+                                                                                đ
                                                                             </div>
                                                                         </div>
-                                                                        <button type="submit" class=" rts-btn btn-primary radious-sm
+                                                                        <form
+                                                                            action="/add-product-category-to-cart/${product.id}"
+                                                                            method="post">
+                                                                            <div class="cart-counter-action">
+                                                                                <input type="hidden"
+                                                                                    name="${_csrf.parameterName}"
+                                                                                    value="${_csrf.token}" />
+                                                                                <input type="hidden" name="currentPage"
+                                                                                    value="${currentPage}" />
+                                                                                <input type="hidden" name="categoryId"
+                                                                                    value="${id}" />
+                                                                                <div class="quantity-edit"
+                                                                                    style="width: 100%; max-width: 100%;">
+                                                                                    <input type="text" class="input"
+                                                                                        name="quantity" value="1"
+                                                                                        style="max-width: 30px;">
+                                                                                    <div class="button-wrapper-action">
+                                                                                        <button type="button"
+                                                                                            class="button"><i
+                                                                                                class="fa-regular fa-chevron-down"></i></button>
+                                                                                        <button type="button"
+                                                                                            class="button plus">+<i
+                                                                                                class="fa-regular fa-chevron-up"></i></button>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <button type="submit" class=" rts-btn btn-primary radious-sm
                                                                             with-icon"
-                                                                            style="width: 100%; max-width: 100%; justify-content: center;">
-                                                                            <div class="btn-text">
-                                                                                Thêm vào giỏ
+                                                                                    style="width: 100%; max-width: 100%; justify-content: center;">
+                                                                                    <div class="btn-text">
+                                                                                        Thêm vào giỏ
+                                                                                    </div>
+                                                                                    <div class="arrow-icon">
+                                                                                        <i
+                                                                                            class="fa-regular fa-cart-shopping"></i>
+                                                                                    </div>
+                                                                                    <div class="arrow-icon">
+                                                                                        <i
+                                                                                            class="fa-regular fa-cart-shopping"></i>
+                                                                                    </div>
+                                                                                    </a>
                                                                             </div>
-                                                                            <div class="arrow-icon">
-                                                                                <i
-                                                                                    class="fa-regular fa-cart-shopping"></i>
-                                                                            </div>
-                                                                            <div class="arrow-icon">
-                                                                                <i
-                                                                                    class="fa-regular fa-cart-shopping"></i>
-                                                                            </div>
-                                                                            </a>
+                                                                        </form>
                                                                     </div>
-                                                                </form>
+                                                                </div>
                                                             </div>
-                                                        </div>
+                                                        </c:forEach>
                                                     </div>
-                                                </c:forEach>
-                                            </div>
-                                            <div class="page-parrent">
-                                                <c:set var="maxPageShow" value="5" />
-                                                <c:set var="startPage" value="${currentPage - 2}" />
-                                                <c:set var="endPage" value="${currentPage + 2}" />
+                                                    <div class="page-parrent">
+                                                        <c:set var="maxPageShow" value="5" />
+                                                        <c:set var="startPage" value="${currentPage - 2}" />
+                                                        <c:set var="endPage" value="${currentPage + 2}" />
 
-                                                <c:if test="${startPage < 1}">
-                                                    <c:set var="endPage" value="${endPage + (1 - startPage)}" />
-                                                    <c:set var="startPage" value="1" />
-                                                </c:if>
-                                                <c:if test="${endPage > totalPages}">
-                                                    <c:set var="startPage"
-                                                        value="${startPage - (endPage - totalPages)}" />
-                                                    <c:set var="endPage" value="${totalPages}" />
-                                                </c:if>
-                                                <c:if test="${startPage < 1}">
-                                                    <c:set var="startPage" value="1" />
-                                                </c:if>
-                                                <!-- First & Prev -->
-                                                <a href="/category/${id}?page=1"
-                                                    class="${currentPage == 1 ? 'page_button disabled-page' : 'page_button'}">First</a>
-                                                <a href="/category/${id}?page=${currentPage - 1}"
-                                                    class="${currentPage == 1 ? 'page_button disabled-page' : 'page_button'}">Previous</a>
+                                                        <c:if test="${startPage < 1}">
+                                                            <c:set var="endPage" value="${endPage + (1 - startPage)}" />
+                                                            <c:set var="startPage" value="1" />
+                                                        </c:if>
+                                                        <c:if test="${endPage > totalPages}">
+                                                            <c:set var="startPage"
+                                                                value="${startPage - (endPage - totalPages)}" />
+                                                            <c:set var="endPage" value="${totalPages}" />
+                                                        </c:if>
+                                                        <c:if test="${startPage < 1}">
+                                                            <c:set var="startPage" value="1" />
+                                                        </c:if>
+                                                        <!-- First & Prev -->
+                                                        <a href="/category/${id}?page=1"
+                                                            class="${currentPage == 1 ? 'page_button disabled-page' : 'page_button'}">First</a>
+                                                        <a href="/category/${id}?page=${currentPage - 1}"
+                                                            class="${currentPage == 1 ? 'page_button disabled-page' : 'page_button'}">Previous</a>
 
-                                                <!-- Dấu ... đầu nếu cần -->
-                                                <c:if test="${startPage > 1}">
-                                                    <a href="/category/${id}?page=${currentPage - 1}"
-                                                        class="${currentPage == 1 ? 'page_button disabled-page' : 'page_button'}">...</a>
-                                                </c:if>
+                                                        <!-- Dấu ... đầu nếu cần -->
+                                                        <c:if test="${startPage > 1}">
+                                                            <a href="/category/${id}?page=${currentPage - 1}"
+                                                                class="${currentPage == 1 ? 'page_button disabled-page' : 'page_button'}">...</a>
+                                                        </c:if>
 
-                                                <!-- Vòng lặp các trang hiển thị -->
-                                                <c:forEach var="i" begin="${startPage}" end="${endPage}">
-                                                    <a href="/category/${id}?page=${i}"
-                                                        class="${i == currentPage ? 'page_button current-page' : 'page_button'}">${i}</a>
-                                                </c:forEach>
+                                                        <!-- Vòng lặp các trang hiển thị -->
+                                                        <c:forEach var="i" begin="${startPage}" end="${endPage}">
+                                                            <a href="/category/${id}?page=${i}"
+                                                                class="${i == currentPage ? 'page_button current-page' : 'page_button'}">${i}</a>
+                                                        </c:forEach>
 
-                                                <!-- Dấu ... cuối nếu cần -->
-                                                <c:if test="${endPage < totalPages}">
-                                                    <a href="/category/${id}?page=${currentPage + 1}"
-                                                        class="${currentPage == totalPages ? 'page_button disabled-page' : 'page_button'}">...</a>
-                                                </c:if>
+                                                        <!-- Dấu ... cuối nếu cần -->
+                                                        <c:if test="${endPage < totalPages}">
+                                                            <a href="/category/${id}?page=${currentPage + 1}"
+                                                                class="${currentPage == totalPages ? 'page_button disabled-page' : 'page_button'}">...</a>
+                                                        </c:if>
 
-                                                <!-- Next & Last -->
-                                                <a href="/category/${id}?page=${currentPage + 1}"
-                                                    class="${currentPage == totalPages ? 'page_button disabled-page' : 'page_button'}">Next</a>
-                                                <a href="/category/${id}?page=${totalPages}"
-                                                    class="${currentPage == totalPages ? 'page_button disabled-page' : 'page_button'}">Last</a>
+                                                        <!-- Next & Last -->
+                                                        <a href="/category/${id}?page=${currentPage + 1}"
+                                                            class="${currentPage == totalPages ? 'page_button disabled-page' : 'page_button'}">Next</a>
+                                                        <a href="/category/${id}?page=${totalPages}"
+                                                            class="${currentPage == totalPages ? 'page_button disabled-page' : 'page_button'}">Last</a>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <!-- shop[ grid sidebar wrapper end -->
+                            <!-- shop[ grid sidebar wrapper end -->
+                        </c:when>
+                        <c:otherwise>
+                            <div class="error-area-main-wrapper rts-section-gap2" style="padding-top: 30px;">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="error-main-wrapper">
+                                                <div class="thumbnail">
+                                                    <img src="/images2/contact/02.png" alt="error"
+                                                        style="height: 40vh;">
+                                                </div>
+                                                <div class="content-main" style="margin-top:30px;">
+                                                    <h2 class="title">Không tìm thấy sản phẩm</h2>
+                                                    <a href="/" class="rts-btn btn-primary">Quay về Trang chủ</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </c:otherwise>
+                    </c:choose>
 
                     <!-- rts shorts service area start -->
                     <jsp:include page="../layout/service.jsp" />
