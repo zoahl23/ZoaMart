@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.example.zoamart.domain.Cart;
@@ -47,6 +49,10 @@ public class ProductService {
         return products.stream()
                 .map(ProductMapper.PRODUCT_INSTANCE::toDTO)
                 .collect(Collectors.toList());
+    }
+
+    public Page<Product> getAllProductsWithPage(Pageable page) {
+        return this.productRepository.findAll(page);
     }
 
     public ProductDTO getAProductById(Long id) {

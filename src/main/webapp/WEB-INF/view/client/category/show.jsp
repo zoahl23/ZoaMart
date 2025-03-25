@@ -109,6 +109,104 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <div class="col-lg-20 col-lg-4 col-md-6 col-sm-6 col-12">
+                                                    <div class="single-shopping-card-one">
+                                                        <!-- iamge and sction area start -->
+                                                        <div class="image-and-action-area-wrapper">
+                                                            <a href="shop-details.html" class="thumbnail-preview">
+                                                                <div class="badge">
+                                                                    <span>25% <br>
+                                                                        Off
+                                                                    </span>
+                                                                    <i class="fa-solid fa-bookmark"></i>
+                                                                </div>
+                                                                <img src="/images2/grocery/01.jpg" alt="grocery"
+                                                                    style="width: 181px; height: 157px; object-fit: contain;">
+                                                            </a>
+                                                            <div class="action-share-option">
+                                                                <div class="single-action openuptip message-show-action"
+                                                                    data-flow="up" title="Add To Wishlist">
+                                                                    <i class="fa-light fa-heart"></i>
+                                                                </div>
+                                                                <div class="single-action openuptip" data-flow="up"
+                                                                    title="Compare" data-bs-toggle="modal"
+                                                                    data-bs-target="#exampleModal">
+                                                                    <i class="fa-solid fa-arrows-retweet"></i>
+                                                                </div>
+                                                                <div class="single-action openuptip cta-quickview product-details-popup-btn"
+                                                                    data-flow="up" title="Quick View">
+                                                                    <i class="fa-regular fa-eye"></i>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- iamge and sction area start -->
+
+                                                        <div class="body-content">
+
+                                                            <a href="shop-details.html">
+                                                                <h4 class="title">Best Cerelac Mixed Fruits &amp;
+                                                                    Wheat with Milk</h4>
+                                                            </a>
+                                                            <span class="availability">500g Pack</span>
+                                                            <div class="price-area">
+                                                                <span class="current">$36.00</span>
+                                                                <div class="previous">$36.00</div>
+                                                            </div>
+                                                            <div class="cart-counter-action">
+                                                                <div class="quantity-edit"
+                                                                    style="width: 100%; max-width: 100%;">
+                                                                    <input type="text" class="input" value="1"
+                                                                        style="max-width: 30px;">
+                                                                    <div class="button-wrapper-action">
+                                                                        <button class="button"><i
+                                                                                class="fa-regular fa-chevron-down"></i></button>
+                                                                        <button class="button plus">+<i
+                                                                                class="fa-regular fa-chevron-up"></i></button>
+                                                                    </div>
+                                                                </div>
+                                                                <a href="#"
+                                                                    class="rts-btn btn-primary radious-sm with-icon"
+                                                                    style="width: 100%; max-width: 100%; justify-content: center;">
+                                                                    <div class="btn-text">
+                                                                        Add To Cart
+                                                                    </div>
+                                                                    <div class="arrow-icon">
+                                                                        <i class="fa-regular fa-cart-shopping"></i>
+                                                                    </div>
+                                                                    <div class="arrow-icon">
+                                                                        <i class="fa-regular fa-cart-shopping"></i>
+                                                                    </div>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="page-parrent">
+                                                <a href="/category/${id}?page=1"
+                                                    class="${1 eq currentPage ? 'page_button disabled-page' : 'page_button'}">
+                                                    First
+                                                </a>
+                                                <a href="/category/${id}?page=${currentPage - 1}"
+                                                    class="${1 eq currentPage ? 'page_button disabled-page' : 'page_button'}">
+                                                    Previous
+                                                </a>
+                                                <span>
+                                                    <c:forEach begin="0" end="${totalPages - 1}" varStatus="loop">
+                                                        <a href="/category/${id}?page=${loop.index + 1}"
+                                                            class="${(loop.index + 1) eq currentPage ? 'page_button current-page' : 'page_button'} ">
+                                                            ${loop.index + 1}
+                                                        </a>
+                                                    </c:forEach>
+                                                </span>
+                                                <a href="/category/${id}?page=${currentPage + 1}"
+                                                    class="${totalPages eq currentPage ? 'page_button disabled-page' : 'page_button'}">
+                                                    Next
+                                                </a>
+                                                <a href="/category/${id}?page=${totalPages}"
+                                                    class="${totalPages eq currentPage ? 'page_button disabled-page' : 'page_button'}">
+                                                    Last
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
