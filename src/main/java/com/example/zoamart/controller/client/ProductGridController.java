@@ -40,6 +40,9 @@ public class ProductGridController {
         model.addAttribute("id", id);
         model.addAttribute("cateChildren", categories);
 
+        CategoryDTO c = this.categoryService.getCategoryById(id);
+        model.addAttribute("category", c);
+
         int page = 1;
         try {
             if (pageOptional.isPresent()) {
