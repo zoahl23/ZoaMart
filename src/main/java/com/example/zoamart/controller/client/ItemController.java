@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import com.example.zoamart.domain.Cart;
 import com.example.zoamart.domain.CartDetail;
 import com.example.zoamart.domain.User;
+import com.example.zoamart.dto.CategoryDTO;
 import com.example.zoamart.dto.ProductDTO;
+import com.example.zoamart.service.CategoryService;
 import com.example.zoamart.service.ProductService;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -25,10 +27,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequiredArgsConstructor
 public class ItemController {
 
+    private final CategoryService categoryService;
     private final ProductService productService;
 
     @GetMapping("/product/{id}")
     public String getProductPage(Model model, @PathVariable long id) {
+        List<CategoryDTO> cateParent = categoryService.getAllCategoriesIsNull();
+        List<CategoryDTO> categories = categoryService.getAllCategoriesIsNotNull();
+        model.addAttribute("cateParents", cateParent);
+        model.addAttribute("cateChildren", categories);
+
         ProductDTO product = this.productService.getAProductById(id);
         model.addAttribute("product", product);
 
@@ -86,6 +94,11 @@ public class ItemController {
 
     @GetMapping("/cart")
     public String getCartPage(Model model, HttpServletRequest request) {
+        List<CategoryDTO> cateParent = categoryService.getAllCategoriesIsNull();
+        List<CategoryDTO> categories = categoryService.getAllCategoriesIsNotNull();
+        model.addAttribute("cateParents", cateParent);
+        model.addAttribute("cateChildren", categories);
+
         User user = new User();
         HttpSession session = request.getSession(false);
 
@@ -141,6 +154,10 @@ public class ItemController {
 
     @GetMapping("/checkout")
     public String getCheckoutPage(Model model, HttpServletRequest request) {
+        List<CategoryDTO> cateParent = categoryService.getAllCategoriesIsNull();
+        List<CategoryDTO> categories = categoryService.getAllCategoriesIsNotNull();
+        model.addAttribute("cateParents", cateParent);
+        model.addAttribute("cateChildren", categories);
         User user = new User();
         HttpSession session = request.getSession(false);
 
@@ -185,6 +202,10 @@ public class ItemController {
 
     @GetMapping("/thanks")
     public String getThankYouPage(Model model) {
+        List<CategoryDTO> cateParent = categoryService.getAllCategoriesIsNull();
+        List<CategoryDTO> categories = categoryService.getAllCategoriesIsNotNull();
+        model.addAttribute("cateParents", cateParent);
+        model.addAttribute("cateChildren", categories);
         return "client/cart/thanks";
     }
 

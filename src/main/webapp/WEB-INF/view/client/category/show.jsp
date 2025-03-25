@@ -37,150 +37,91 @@
                                         <div class="product-area-wrapper-shopgrid-list mt--20 tab-pane fade show active"
                                             id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
                                             <div class="row g-4">
-                                                <div class="col-lg-20 col-lg-4 col-md-6 col-sm-6 col-12">
-                                                    <div class="single-shopping-card-one">
-                                                        <!-- iamge and sction area start -->
-                                                        <div class="image-and-action-area-wrapper">
-                                                            <a href="shop-details.html" class="thumbnail-preview">
-                                                                <div class="badge">
-                                                                    <span>25% <br>
-                                                                        Off
-                                                                    </span>
-                                                                    <i class="fa-solid fa-bookmark"></i>
-                                                                </div>
-                                                                <img src="/images2/grocery/01.jpg" alt="grocery"
-                                                                    style="width: 181px; height: 157px; object-fit: contain;">
-                                                            </a>
-                                                            <div class="action-share-option">
-                                                                <div class="single-action openuptip message-show-action"
-                                                                    data-flow="up" title="Add To Wishlist">
-                                                                    <i class="fa-light fa-heart"></i>
-                                                                </div>
-                                                                <div class="single-action openuptip" data-flow="up"
-                                                                    title="Compare" data-bs-toggle="modal"
-                                                                    data-bs-target="#exampleModal">
-                                                                    <i class="fa-solid fa-arrows-retweet"></i>
-                                                                </div>
-                                                                <div class="single-action openuptip cta-quickview product-details-popup-btn"
-                                                                    data-flow="up" title="Quick View">
-                                                                    <i class="fa-regular fa-eye"></i>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <!-- iamge and sction area start -->
-
-                                                        <div class="body-content">
-
-                                                            <a href="shop-details.html">
-                                                                <h4 class="title">Best Cerelac Mixed Fruits &amp;
-                                                                    Wheat with Milk</h4>
-                                                            </a>
-                                                            <span class="availability">500g Pack</span>
-                                                            <div class="price-area">
-                                                                <span class="current">$36.00</span>
-                                                                <div class="previous">$36.00</div>
-                                                            </div>
-                                                            <div class="cart-counter-action">
-                                                                <div class="quantity-edit"
-                                                                    style="width: 100%; max-width: 100%;">
-                                                                    <input type="text" class="input" value="1"
-                                                                        style="max-width: 30px;">
-                                                                    <div class="button-wrapper-action">
-                                                                        <button class="button"><i
-                                                                                class="fa-regular fa-chevron-down"></i></button>
-                                                                        <button class="button plus">+<i
-                                                                                class="fa-regular fa-chevron-up"></i></button>
+                                                <c:forEach var="product" items="${products}">
+                                                    <div class="col-lg-20 col-lg-4 col-md-6 col-sm-6 col-12">
+                                                        <div class="single-shopping-card-one">
+                                                            <!-- iamge and sction area start -->
+                                                            <div class="image-and-action-area-wrapper">
+                                                                <a href="/product/${product.id}"
+                                                                    class="thumbnail-preview">
+                                                                    <div class="badge">
+                                                                        <span>${product.discountPercent}% <br>
+                                                                            Off
+                                                                        </span>
+                                                                        <i class="fa-solid fa-bookmark"></i>
                                                                     </div>
-                                                                </div>
-                                                                <a href="#"
-                                                                    class="rts-btn btn-primary radious-sm with-icon"
-                                                                    style="width: 100%; max-width: 100%; justify-content: center;">
-                                                                    <div class="btn-text">
-                                                                        Add To Cart
-                                                                    </div>
-                                                                    <div class="arrow-icon">
-                                                                        <i class="fa-regular fa-cart-shopping"></i>
-                                                                    </div>
-                                                                    <div class="arrow-icon">
-                                                                        <i class="fa-regular fa-cart-shopping"></i>
-                                                                    </div>
+                                                                    <img src="/img/products/${product.imageUrl}"
+                                                                        alt="${product.name}"
+                                                                        style="width: 181px; height: 157px; object-fit: contain;">
                                                                 </a>
+                                                            </div>
+                                                            <!-- iamge and sction area start -->
+
+                                                            <div class="body-content">
+
+                                                                <a href="/product/${product.id}">
+                                                                    <h4 class="title"
+                                                                        style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; display: block;">
+                                                                        ${product.name}</h4>
+                                                                </a>
+                                                                <span class="availability">${product.quantity}
+                                                                    Pack</span>
+                                                                <div class="price-area">
+                                                                    <span class="current">
+                                                                        <fmt:formatNumber
+                                                                            value="${(product.price - (product.price * product.discountPercent / 100)) - ((product.price - (product.price * product.discountPercent / 100)) % 1)}"
+                                                                            type="number" groupingUsed="true" /> đ
+                                                                    </span>
+                                                                    <div class="previous">
+                                                                        <fmt:formatNumber value="${product.price}"
+                                                                            type="number" groupingUsed="true" /> đ
+                                                                    </div>
+                                                                </div>
+                                                                <form
+                                                                    action="/add-product-category-to-cart/${product.id}"
+                                                                    method="post">
+                                                                    <div class="cart-counter-action">
+                                                                        <input type="hidden"
+                                                                            name="${_csrf.parameterName}"
+                                                                            value="${_csrf.token}" />
+                                                                        <input type="hidden" name="currentPage"
+                                                                            value="${currentPage}" />
+                                                                        <input type="hidden" name="categoryId"
+                                                                            value="${id}" />
+                                                                        <div class="quantity-edit"
+                                                                            style="width: 100%; max-width: 100%;">
+                                                                            <input type="text" class="input"
+                                                                                name="quantity" value="1"
+                                                                                style="max-width: 30px;">
+                                                                            <div class="button-wrapper-action">
+                                                                                <button type="button" class="button"><i
+                                                                                        class="fa-regular fa-chevron-down"></i></button>
+                                                                                <button type="button"
+                                                                                    class="button plus">+<i
+                                                                                        class="fa-regular fa-chevron-up"></i></button>
+                                                                            </div>
+                                                                        </div>
+                                                                        <button type="submit" class=" rts-btn btn-primary radious-sm
+                                                                            with-icon"
+                                                                            style="width: 100%; max-width: 100%; justify-content: center;">
+                                                                            <div class="btn-text">
+                                                                                Thêm vào giỏ
+                                                                            </div>
+                                                                            <div class="arrow-icon">
+                                                                                <i
+                                                                                    class="fa-regular fa-cart-shopping"></i>
+                                                                            </div>
+                                                                            <div class="arrow-icon">
+                                                                                <i
+                                                                                    class="fa-regular fa-cart-shopping"></i>
+                                                                            </div>
+                                                                            </a>
+                                                                    </div>
+                                                                </form>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-lg-20 col-lg-4 col-md-6 col-sm-6 col-12">
-                                                    <div class="single-shopping-card-one">
-                                                        <!-- iamge and sction area start -->
-                                                        <div class="image-and-action-area-wrapper">
-                                                            <a href="shop-details.html" class="thumbnail-preview">
-                                                                <div class="badge">
-                                                                    <span>25% <br>
-                                                                        Off
-                                                                    </span>
-                                                                    <i class="fa-solid fa-bookmark"></i>
-                                                                </div>
-                                                                <img src="/images2/grocery/01.jpg" alt="grocery"
-                                                                    style="width: 181px; height: 157px; object-fit: contain;">
-                                                            </a>
-                                                            <div class="action-share-option">
-                                                                <div class="single-action openuptip message-show-action"
-                                                                    data-flow="up" title="Add To Wishlist">
-                                                                    <i class="fa-light fa-heart"></i>
-                                                                </div>
-                                                                <div class="single-action openuptip" data-flow="up"
-                                                                    title="Compare" data-bs-toggle="modal"
-                                                                    data-bs-target="#exampleModal">
-                                                                    <i class="fa-solid fa-arrows-retweet"></i>
-                                                                </div>
-                                                                <div class="single-action openuptip cta-quickview product-details-popup-btn"
-                                                                    data-flow="up" title="Quick View">
-                                                                    <i class="fa-regular fa-eye"></i>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <!-- iamge and sction area start -->
-
-                                                        <div class="body-content">
-
-                                                            <a href="shop-details.html">
-                                                                <h4 class="title">Best Cerelac Mixed Fruits &amp;
-                                                                    Wheat with Milk</h4>
-                                                            </a>
-                                                            <span class="availability">500g Pack</span>
-                                                            <div class="price-area">
-                                                                <span class="current">$36.00</span>
-                                                                <div class="previous">$36.00</div>
-                                                            </div>
-                                                            <div class="cart-counter-action">
-                                                                <div class="quantity-edit"
-                                                                    style="width: 100%; max-width: 100%;">
-                                                                    <input type="text" class="input" value="1"
-                                                                        style="max-width: 30px;">
-                                                                    <div class="button-wrapper-action">
-                                                                        <button class="button"><i
-                                                                                class="fa-regular fa-chevron-down"></i></button>
-                                                                        <button class="button plus">+<i
-                                                                                class="fa-regular fa-chevron-up"></i></button>
-                                                                    </div>
-                                                                </div>
-                                                                <a href="#"
-                                                                    class="rts-btn btn-primary radious-sm with-icon"
-                                                                    style="width: 100%; max-width: 100%; justify-content: center;">
-                                                                    <div class="btn-text">
-                                                                        Add To Cart
-                                                                    </div>
-                                                                    <div class="arrow-icon">
-                                                                        <i class="fa-regular fa-cart-shopping"></i>
-                                                                    </div>
-                                                                    <div class="arrow-icon">
-                                                                        <i class="fa-regular fa-cart-shopping"></i>
-                                                                    </div>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                </c:forEach>
                                             </div>
                                             <div class="page-parrent">
                                                 <a href="/category/${id}?page=1"
