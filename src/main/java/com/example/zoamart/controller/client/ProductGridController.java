@@ -97,7 +97,6 @@ public class ProductGridController {
                 Pageable pageable = PageRequest.of(page - 1, 25, sortConfig);
                 Page<Product> prs = this.productService.getFilteredProducts(pageable, name, minPrice, maxPrice,
                                 categoryId);
-                CategoryDTO c = categoryService.getCategoryById(categoryId);
                 List<Product> products = prs.getContent();
 
                 if (products.isEmpty()) {
@@ -111,7 +110,6 @@ public class ProductGridController {
                 model.addAttribute("currentPage", page);
                 model.addAttribute("totalPages", prs.getTotalPages());
                 model.addAttribute("id", categoryId);
-                model.addAttribute("category", c);
                 model.addAttribute("min", minPrice);
                 model.addAttribute("max", maxPrice);
                 model.addAttribute("sort", sort);
