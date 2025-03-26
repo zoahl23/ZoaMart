@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,34 +31,63 @@ public class ProductGridController {
     private final CategoryService categoryService;
     private final ProductService productService;
 
-    @GetMapping("/category/{id}")
+    @GetMapping("/products")
     public String getProductPage(Model model,
-            @PathVariable long id,
-            @RequestParam("page") Optional<String> pageOptional) {
+            @RequestParam("category") Optional<String> categoryOptional,
+            @RequestParam("page") Optional<String> pageOptional,
+            @RequestParam("name") Optional<String> nameOptional,
+            @RequestParam("min") Optional<String> minOptional,
+            @RequestParam("max") Optional<String> maxOptional,
+            @RequestParam("sort") Optional<String> sortOptional) {
+
         List<CategoryDTO> cateParent = categoryService.getAllCategoriesIsNull();
         List<CategoryDTO> categories = categoryService.getAllCategoriesIsNotNull();
-        model.addAttribute("cateParents", cateParent);
-        model.addAttribute("id", id);
-        model.addAttribute("cateChildren", categories);
 
-        CategoryDTO c = this.categoryService.getCategoryById(id);
-        model.addAttribute("category", c);
+        Long categoryId = categoryOptional
+                .filter(s -> !s.isEmpty()) // Kiểm tra xem có dữ liệu không
+                .map(Long::parseLong) // Chuyển từ String -> Long
+                .orElse(null);
+        int page = pageOptional
+                .filter(s -> !s.isEmpty())
+                .map(Integer::parseInt)
+                .orElse(1);
+        String name = nameOptional
+                .orElse("");
+        int minPrice = minOptional
+                .filter(s -> !s.isEmpty())
+                .map(Integer::parseInt)
+                .orElse(0);
+        int maxPrice = maxOptional
+                .filter(s -> !s.isEmpty())
+                .map(Integer::parseInt)
+                .orElse(0);
+        String sort = sortOptional
+                .orElse("discount");
 
-        int page = 1;
-        try {
-            if (pageOptional.isPresent()) {
-                page = Integer.parseInt(pageOptional.get());
-            }
-        } catch (Exception e) {
-
+        Sort sortConfig = Sort.unsorted();
+        switch (sort) {
+            case "sold":
+                sortConfig = Sort.by(Sort.Direction.DESC, "sold");
+                break;
+            case "discount":
+                sortConfig = Sort.by(Sort.Direction.DESC, "discountPercent");
+                break;
+            case "new":
+                sortConfig = Sort.by(Sort.Direction.DESC, "createdAt");
+                break;
         }
-        Pageable pageable = PageRequest.of(page - 1, 25); // page, size
-        Page<Product> prs = this.productService.getAllProductsWithPage(pageable);
-        List<Product> products = prs.getContent();
 
-        model.addAttribute("products", products);
+        Pageable pageable = PageRequest.of(page - 1, 25, sortConfig);
+        Page<Product> prs = this.productService.getFilteredProducts(pageable, name, minPrice, maxPrice, categoryId);
+        CategoryDTO c = categoryService.getCategoryById(categoryId);
+
+        model.addAttribute("cateParents", cateParent);
+        model.addAttribute("cateChildren", categories);
+        model.addAttribute("products", prs.getContent());
         model.addAttribute("currentPage", page);
         model.addAttribute("totalPages", prs.getTotalPages());
+        model.addAttribute("id", categoryId);
+        model.addAttribute("category", c);
 
         return "client/category/show";
     }
@@ -66,12 +96,11 @@ public class ProductGridController {
     public String addProductCategoryToCart(@PathVariable long id,
             @RequestParam(name = "quantity", defaultValue = "1") int quantity,
             @RequestParam("currentPage") Optional<String> currentPage,
-            @RequestParam("categoryId") long categoryId,
+            @RequestParam("category") Optional<String> categoryOptional,
             HttpServletRequest request) {
 
         HttpSession session = request.getSession(false);
         String email = (String) session.getAttribute("email");
-
         long productId = id;
         ProductDTO product = this.productService.getAProductById(id);
 
@@ -82,15 +111,16 @@ public class ProductGridController {
 
         this.productService.handleAddProductToCart(email, productId, quantity, session);
 
-        int page = 1;
-        try {
-            if (currentPage.isPresent()) {
-                page = Integer.parseInt(currentPage.get());
-            }
-        } catch (Exception e) {
+        int page = currentPage
+                .filter(s -> !s.isEmpty())
+                .map(Integer::parseInt)
+                .orElse(1);
+        Long categoryId = categoryOptional
+                .filter(s -> !s.isEmpty()) // Kiểm tra xem có dữ liệu không
+                .map(Long::parseLong) // Chuyển từ String -> Long
+                .orElse(null);
 
-        }
-        return "redirect:/category/" + categoryId + "?page=" + page;
+        return "redirect:/products?category=" + categoryId + "&page=" + page;
     }
 
 }

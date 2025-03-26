@@ -26,7 +26,7 @@
                                                             <c:forEach var="cateChild" items="${cateChildren}">
                                                                 <c:if test="${cateParent.id == cateChild.parentId}">
                                                                     <li><a class="mobile-menu-link"
-                                                                            href="/category/${cateChild.id}">${cateChild.name}</a>
+                                                                            href="/products?category=${cateChild.id}">${cateChild.name}</a>
                                                                     </li>
                                                                 </c:if>
                                                             </c:forEach>

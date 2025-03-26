@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import com.example.zoamart.domain.Cart;
@@ -23,6 +24,7 @@ import com.example.zoamart.repository.OrderDetailRepository;
 import com.example.zoamart.repository.OrderRepository;
 import com.example.zoamart.repository.ProductRepository;
 import com.example.zoamart.repository.UserRepository;
+import com.example.zoamart.service.specification.ProductSpecs;
 
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
@@ -51,8 +53,27 @@ public class ProductService {
                 .collect(Collectors.toList());
     }
 
-    public Page<Product> getAllProductsWithPage(Pageable page) {
-        return this.productRepository.findAll(page);
+    public Page<Product> getFilteredProducts(Pageable pageable, String name, Integer min, Integer max,
+            Long categoryId) {
+
+        Specification<Product> spec = Specification.where(null);
+
+        // Filter theo danh mục (nếu có)
+        if (categoryId != null && categoryId > 0) {
+            spec = spec.and(ProductSpecs.filterByCategory(categoryId));
+        }
+
+        // Filter theo tên sản phẩm (nếu có)
+        if (!name.isEmpty()) {
+            spec = spec.and(ProductSpecs.nameLike(name));
+        }
+
+        // Filter theo giá (chỉ khi min hoặc max được truyền lên)
+        if (min > 0 || max > 0) {
+            spec = spec.and(ProductSpecs.matchPrice(min, max));
+        }
+
+        return this.productRepository.findAll(spec, pageable);
     }
 
     public ProductDTO getAProductById(Long id) {

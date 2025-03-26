@@ -147,33 +147,33 @@
                                                             <c:set var="startPage" value="1" />
                                                         </c:if>
                                                         <!-- First & Prev -->
-                                                        <a href="/category/${id}?page=1"
+                                                        <a href="/products?category=${id}&page=1"
                                                             class="${currentPage == 1 ? 'page_button disabled-page' : 'page_button'}">First</a>
-                                                        <a href="/category/${id}?page=${currentPage - 1}"
+                                                        <a href="/products?category=${id}&page=${currentPage - 1}"
                                                             class="${currentPage == 1 ? 'page_button disabled-page' : 'page_button'}">Previous</a>
 
                                                         <!-- Dấu ... đầu nếu cần -->
                                                         <c:if test="${startPage > 1}">
-                                                            <a href="/category/${id}?page=${currentPage - 1}"
+                                                            <a href="/products?category=${id}&page=${currentPage - 1}"
                                                                 class="${currentPage == 1 ? 'page_button disabled-page' : 'page_button'}">...</a>
                                                         </c:if>
 
                                                         <!-- Vòng lặp các trang hiển thị -->
                                                         <c:forEach var="i" begin="${startPage}" end="${endPage}">
-                                                            <a href="/category/${id}?page=${i}"
+                                                            <a href="/products?category=${id}&page=${i}"
                                                                 class="${i == currentPage ? 'page_button current-page' : 'page_button'}">${i}</a>
                                                         </c:forEach>
 
                                                         <!-- Dấu ... cuối nếu cần -->
                                                         <c:if test="${endPage < totalPages}">
-                                                            <a href="/category/${id}?page=${currentPage + 1}"
+                                                            <a href="/products?category=${id}&page=${currentPage + 1}"
                                                                 class="${currentPage == totalPages ? 'page_button disabled-page' : 'page_button'}">...</a>
                                                         </c:if>
 
                                                         <!-- Next & Last -->
-                                                        <a href="/category/${id}?page=${currentPage + 1}"
+                                                        <a href="/products?category=${id}&page=${currentPage + 1}"
                                                             class="${currentPage == totalPages ? 'page_button disabled-page' : 'page_button'}">Next</a>
-                                                        <a href="/category/${id}?page=${totalPages}"
+                                                        <a href="/products?category=${id}&page=${totalPages}"
                                                             class="${currentPage == totalPages ? 'page_button disabled-page' : 'page_button'}">Last</a>
                                                     </div>
                                                 </div>

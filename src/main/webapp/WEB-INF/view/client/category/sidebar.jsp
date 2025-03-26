@@ -21,25 +21,9 @@
                                     </div>
                                     <div class="filter-value-min-max">
                                         <button class="rts-btn btn-primary"
-                                            style="max-width: 100%; width: 100%; margin-top: 30px;">Filter</button>
+                                            style="max-width: 100%; width: 100%; margin-top: 30px;">Lọc</button>
                                     </div>
                                 </form>
-                            </div>
-                        </div>
-                        <div class="single-filter-box">
-                            <h5 class="title">Loại sản phẩm</h5>
-                            <div class="filterbox-body">
-                                <div class="category-wrapper ">
-                                    <c:forEach var="category" items="${cateChildren}">
-                                        <!-- single category -->
-                                        <div class="single-category">
-                                            <input id="${category.id}" type="checkbox">
-                                            <label for="${category.id}">${category.name}
-                                            </label>
-                                        </div>
-                                        <!-- single category end -->
-                                    </c:forEach>
-                                </div>
                             </div>
                         </div>
                         <div class="single-filter-box">
@@ -48,22 +32,22 @@
                                 <div class="category-wrapper">
                                     <!-- single category -->
                                     <div class="single-category">
-                                        <input id="cat11" type="checkbox">
-                                        <label for="cat11">Bán chạy
+                                        <input id="sold" name="dac-diem" type="radio">
+                                        <label for="sold">Bán chạy
                                         </label>
                                     </div>
                                     <!-- single category end -->
                                     <!-- single category -->
                                     <div class="single-category">
-                                        <input id="cat12" type="checkbox">
-                                        <label for="cat12">Đang giảm giá
+                                        <input id="discount" name="dac-diem" type="radio">
+                                        <label for="discount">Đang giảm giá
                                         </label>
                                     </div>
                                     <!-- single category end -->
                                     <!-- single category -->
                                     <div class="single-category">
-                                        <input id="cat12" type="checkbox">
-                                        <label for="cat12">Hàng mới về
+                                        <input id="new" name="dac-diem" type="radio">
+                                        <label for="new">Hàng mới về
                                         </label>
                                     </div>
                                     <!-- single category end -->
