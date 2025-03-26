@@ -107,7 +107,7 @@
                     <div class="col-lg-12">
                         <div class="copyright-arae-two-wrapper">
                             <p class="disc">
-                                Copyright 2025 <a href="#">©Zoamart</a>. All rights reserved.
+                                Copyright 2025 <a href="#">©Zoahl23</a>. All rights reserved.
                             </p>
                             <div class="payment-processw-area">
                                 <span>Payment Accepts:</span>

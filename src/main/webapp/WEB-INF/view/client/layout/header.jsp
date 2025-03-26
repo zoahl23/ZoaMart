@@ -35,10 +35,11 @@
                                                 </c:forEach>
                                             </ul>
                                         </div>
-                                        <form action="#" class="search-header">
-                                            <input type="text" placeholder="Tìm kiếm sản phẩm, danh mục" required="">
-                                            <a href="javascript: void(0);"
-                                                class="rts-btn btn-primary radious-sm with-icon">
+                                        <form action="/products" method="get" class="search-header">
+                                            <input type="hidden" name="category" value="${id}" />
+                                            <input type="text" name="name" placeholder="Tìm kiếm sản phẩm, danh mục"
+                                                value="${nameRaw}">
+                                            <button class="rts-btn btn-primary radious-sm with-icon">
                                                 <div class="btn-text">
                                                     Tìm
                                                 </div>
@@ -48,7 +49,7 @@
                                                 <div class="arrow-icon">
                                                     <i class="fa-light fa-magnifying-glass"></i>
                                                 </div>
-                                            </a>
+                                            </button>
                                         </form>
                                     </div>
                                     <div class="accont-wishlist-cart-area-header">

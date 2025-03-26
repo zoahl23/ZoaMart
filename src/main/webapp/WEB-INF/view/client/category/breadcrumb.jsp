@@ -10,7 +10,7 @@
                                 <div class="navigator-breadcrumb-wrapper">
                                     <a href="/">Trang chủ</a>
                                     <i class="fa-regular fa-chevron-right"></i>
-                                    <a class="current" href="/products?category=${id}">${category.name}</a>
+                                    <a class="current" href="/products?category=${id}">Danh mục</a>
                                 </div>
                             </div>
                         </div>

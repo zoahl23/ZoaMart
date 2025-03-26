@@ -53,6 +53,22 @@ public class ProductService {
                 .collect(Collectors.toList());
     }
 
+    public Page<Product> getProductWithName(Pageable pageable, String name, Integer min, Integer max) {
+        Specification<Product> spec = Specification.where(null);
+
+        // Filter theo tên sản phẩm (nếu có)
+        if (!name.isEmpty()) {
+            spec = spec.and(ProductSpecs.nameLike(name));
+        }
+
+        // Filter theo giá (chỉ khi min hoặc max được truyền lên)
+        if (min > 0 || max > 0) {
+            spec = spec.and(ProductSpecs.matchPrice(min, max));
+        }
+
+        return this.productRepository.findAll(spec, pageable);
+    }
+
     public Page<Product> getFilteredProducts(Pageable pageable, String name, Integer min, Integer max,
             Long categoryId) {
 
