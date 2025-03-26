@@ -88,6 +88,9 @@ public class ProductGridController {
         model.addAttribute("totalPages", prs.getTotalPages());
         model.addAttribute("id", categoryId);
         model.addAttribute("category", c);
+        model.addAttribute("min", minPrice);
+        model.addAttribute("max", maxPrice);
+        model.addAttribute("sort", sort);
 
         return "client/category/show";
     }
@@ -96,7 +99,10 @@ public class ProductGridController {
     public String addProductCategoryToCart(@PathVariable long id,
             @RequestParam(name = "quantity", defaultValue = "1") int quantity,
             @RequestParam("currentPage") Optional<String> currentPage,
-            @RequestParam("category") Optional<String> categoryOptional,
+            @RequestParam("categoryId") Optional<String> categoryOptional,
+            @RequestParam("min") Optional<String> minOptional,
+            @RequestParam("max") Optional<String> maxOptional,
+            @RequestParam("sort") Optional<String> sortOptional,
             HttpServletRequest request) {
 
         HttpSession session = request.getSession(false);
@@ -111,16 +117,27 @@ public class ProductGridController {
 
         this.productService.handleAddProductToCart(email, productId, quantity, session);
 
-        int page = currentPage
-                .filter(s -> !s.isEmpty())
-                .map(Integer::parseInt)
-                .orElse(1);
         Long categoryId = categoryOptional
                 .filter(s -> !s.isEmpty()) // Kiểm tra xem có dữ liệu không
                 .map(Long::parseLong) // Chuyển từ String -> Long
                 .orElse(null);
+        int page = currentPage
+                .filter(s -> !s.isEmpty())
+                .map(Integer::parseInt)
+                .orElse(1);
+        int minPrice = minOptional
+                .filter(s -> !s.isEmpty())
+                .map(Integer::parseInt)
+                .orElse(0);
+        int maxPrice = maxOptional
+                .filter(s -> !s.isEmpty())
+                .map(Integer::parseInt)
+                .orElse(0);
+        String sort = sortOptional
+                .orElse("discount");
 
-        return "redirect:/products?category=" + categoryId + "&page=" + page;
+        return "redirect:/products?category=" + categoryId + "&page=" + page + "&min=" + minPrice + "&max="
+                + maxPrice + "&sort=" + sort;
     }
 
 }

@@ -508,6 +508,52 @@
         $(this).addClass('active').siblings().removeClass('active');
       })
 
+      $(document).ready(function () {
+        // Lấy query param từ URL
+        let params = new URLSearchParams(window.location.search);
+
+        // Set lại min / max nếu có
+        if (params.has("min")) {
+          $("#min").val(params.get("min"));
+        }
+        if (params.has("max")) {
+          $("#max").val(params.get("max"));
+        }
+
+        // Set lại radio (dac-diem) nếu có sort
+        if (params.has("sort")) {
+          let sortValue = params.get("sort");
+          $("input[name='sort']").each(function () {
+            if ($(this).val() === sortValue) {
+              $(this).prop("checked", true);
+            }
+          });
+        }
+      });
+
+      $('#btnFilter').click(function () {
+        let minPrice = $("#min").val();
+        let maxPrice = $("#max").val();
+        let sortBy = $("input[name='sort']:checked").val();
+
+        // Lấy các query param hiện tại từ URL (để giữ category và các thứ khác nếu có)
+        let currentParams = new URLSearchParams(window.location.search);
+        let category = currentParams.get("category");
+
+        // Tạo URL mới với tất cả tham số cần thiết
+        let queryParams = new URLSearchParams();
+        if (category) queryParams.set("category", category);
+        if (minPrice) queryParams.set("min", minPrice);
+        if (maxPrice) queryParams.set("max", maxPrice);
+        if (sortBy) queryParams.set("sort", sortBy);
+
+        // Reset lại page về 1 mỗi khi lọc mới
+        queryParams.set("page", "1");
+
+        // Điều hướng
+        window.location.href = "/products?" + queryParams.toString();
+      });
+
     },
 
     counterUp: function () {
