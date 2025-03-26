@@ -26,13 +26,14 @@
                     <jsp:include page="breadcrumb.jsp" />
 
 
-                    <c:choose>
-                        <c:when test="${not empty products}">
-                            <!-- shop[ grid sidebar wrapper -->
-                            <div class="shop-grid-sidebar-area rts-section-gap">
-                                <div class="container">
-                                    <div class="row g-0">
-                                        <jsp:include page="sidebar.jsp" />
+
+                    <!-- shop[ grid sidebar wrapper -->
+                    <div class="shop-grid-sidebar-area rts-section-gap">
+                        <div class="container">
+                            <div class="row g-0">
+                                <jsp:include page="sidebar.jsp" />
+                                <c:choose>
+                                    <c:when test="${not empty products}">
                                         <div class="col-xl-9 col-lg-12">
                                             <div class="tab-content" id="myTabContent">
                                                 <div class="product-area-wrapper-shopgrid-list mt--20 tab-pane fade show active"
@@ -185,32 +186,35 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- shop[ grid sidebar wrapper end -->
-                        </c:when>
-                        <c:otherwise>
-                            <div class="error-area-main-wrapper rts-section-gap2" style="padding-top: 30px;">
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <div class="error-main-wrapper">
-                                                <div class="thumbnail">
-                                                    <img src="/images2/contact/02.png" alt="error"
-                                                        style="height: 40vh;">
-                                                </div>
-                                                <div class="content-main" style="margin-top:30px;">
-                                                    <h2 class="title">Không tìm thấy sản phẩm</h2>
-                                                    <a href="/" class="rts-btn btn-primary">Quay về Trang chủ</a>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <div class="col-xl-9 col-lg-12 error-area-main-wrapper rts-section-gap2"
+                                            style="padding-top: 30px;">
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <div class="error-main-wrapper">
+                                                            <div class="thumbnail">
+                                                                <img src="/images2/contact/02.png" alt="error"
+                                                                    style="height: 40vh;">
+                                                            </div>
+                                                            <div class="content-main" style="margin-top:30px;">
+                                                                <h2 class="title">Không tìm thấy sản phẩm</h2>
+                                                                <a href="/" class="rts-btn btn-primary">Quay về Trang
+                                                                    chủ</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
+                                    </c:otherwise>
+                                </c:choose>
                             </div>
-                        </c:otherwise>
-                    </c:choose>
+                        </div>
+                    </div>
+                    <!-- shop[ grid sidebar wrapper end -->
+
 
                     <!-- rts shorts service area start -->
                     <jsp:include page="../layout/service.jsp" />
